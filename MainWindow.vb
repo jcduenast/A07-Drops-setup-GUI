@@ -60,5 +60,4 @@ Public Class MainWindow
             Me.txtReceived.Text &= [text]
         End If
     End Sub
-
 End Class

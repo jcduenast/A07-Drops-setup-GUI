@@ -22,5 +22,10 @@ Drops_Mechanism_GUI
   resource lookups using this strongly typed resource class.
 </summary>
 </member>
+<member name="P:Drops_Mechanism_GUI.My.Resources.Resources.XYZ">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
 </members>
 </doc>
