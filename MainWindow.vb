@@ -60,4 +60,9 @@ Public Class MainWindow
             Me.txtReceived.Text &= [text]
         End If
     End Sub
+
+    Private Sub btnSZUp_Click(sender As Object, e As EventArgs) Handles btnSZUp.Click
+        'Send the command to move upwards the amount especified in the box
+        SerialPort1.Write("MSZ: " + txtSZMove.Text)
+    End Sub
 End Class
