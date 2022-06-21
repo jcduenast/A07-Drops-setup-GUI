@@ -39,7 +39,7 @@ Partial Class MainWindow
         Me.RichTextBox1 = New System.Windows.Forms.RichTextBox()
         Me.PictureBox5 = New System.Windows.Forms.PictureBox()
         Me.txtSYMove = New System.Windows.Forms.TextBox()
-        Me.btnZXHome = New System.Windows.Forms.Button()
+        Me.btnSXHome = New System.Windows.Forms.Button()
         Me.txtSXMove = New System.Windows.Forms.TextBox()
         Me.btnSXLeft = New System.Windows.Forms.Button()
         Me.btnSXRight = New System.Windows.Forms.Button()
@@ -193,15 +193,15 @@ Partial Class MainWindow
         Me.txtSYMove.Size = New System.Drawing.Size(80, 26)
         Me.txtSYMove.TabIndex = 80
         '
-        'btnZXHome
+        'btnSXHome
         '
-        Me.btnZXHome.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
-        Me.btnZXHome.Location = New System.Drawing.Point(100, 320)
-        Me.btnZXHome.Name = "btnZXHome"
-        Me.btnZXHome.Size = New System.Drawing.Size(250, 50)
-        Me.btnZXHome.TabIndex = 79
-        Me.btnZXHome.Text = "X: Home"
-        Me.btnZXHome.UseVisualStyleBackColor = True
+        Me.btnSXHome.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
+        Me.btnSXHome.Location = New System.Drawing.Point(100, 320)
+        Me.btnSXHome.Name = "btnSXHome"
+        Me.btnSXHome.Size = New System.Drawing.Size(250, 50)
+        Me.btnSXHome.TabIndex = 79
+        Me.btnSXHome.Text = "X: Home"
+        Me.btnSXHome.UseVisualStyleBackColor = True
         '
         'txtSXMove
         '
@@ -361,7 +361,7 @@ Partial Class MainWindow
         Me.Controls.Add(Me.btnSXYZHome)
         Me.Controls.Add(Me.PictureBox5)
         Me.Controls.Add(Me.txtSYMove)
-        Me.Controls.Add(Me.btnZXHome)
+        Me.Controls.Add(Me.btnSXHome)
         Me.Controls.Add(Me.txtSXMove)
         Me.Controls.Add(Me.btnSXLeft)
         Me.Controls.Add(Me.btnSXRight)
@@ -407,7 +407,7 @@ Partial Class MainWindow
     Friend WithEvents RichTextBox1 As RichTextBox
     Friend WithEvents PictureBox5 As PictureBox
     Friend WithEvents txtSYMove As TextBox
-    Friend WithEvents btnZXHome As Button
+    Friend WithEvents btnSXHome As Button
     Friend WithEvents txtSXMove As TextBox
     Friend WithEvents btnSXLeft As Button
     Friend WithEvents btnSXRight As Button
