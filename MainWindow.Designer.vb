@@ -35,7 +35,7 @@ Partial Class MainWindow
         Me.btnSendData = New System.Windows.Forms.Button()
         Me.SerialPort1 = New System.IO.Ports.SerialPort(Me.components)
         Me.btnDisconnect = New System.Windows.Forms.Button()
-        Me.RichTextBox1 = New System.Windows.Forms.RichTextBox()
+        Me.txtSerialInput = New System.Windows.Forms.RichTextBox()
         Me.txtSYMove = New System.Windows.Forms.TextBox()
         Me.btnSXHome = New System.Windows.Forms.Button()
         Me.txtSXMove = New System.Windows.Forms.TextBox()
@@ -158,11 +158,13 @@ Partial Class MainWindow
         '
         'txtReceived
         '
+        Me.txtReceived.Enabled = False
         Me.txtReceived.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
         Me.txtReceived.Location = New System.Drawing.Point(1456, 337)
         Me.txtReceived.Name = "txtReceived"
         Me.txtReceived.Size = New System.Drawing.Size(121, 26)
         Me.txtReceived.TabIndex = 5
+        Me.txtReceived.Text = "Not in use"
         '
         'lblDataReceived
         '
@@ -215,13 +217,13 @@ Partial Class MainWindow
         Me.btnDisconnect.Text = "Disconnect"
         Me.btnDisconnect.UseVisualStyleBackColor = True
         '
-        'RichTextBox1
+        'txtSerialInput
         '
-        Me.RichTextBox1.Location = New System.Drawing.Point(1456, 382)
-        Me.RichTextBox1.Name = "RichTextBox1"
-        Me.RichTextBox1.Size = New System.Drawing.Size(121, 96)
-        Me.RichTextBox1.TabIndex = 27
-        Me.RichTextBox1.Text = ""
+        Me.txtSerialInput.Location = New System.Drawing.Point(1456, 373)
+        Me.txtSerialInput.Name = "txtSerialInput"
+        Me.txtSerialInput.Size = New System.Drawing.Size(121, 332)
+        Me.txtSerialInput.TabIndex = 27
+        Me.txtSerialInput.Text = ""
         '
         'txtSYMove
         '
@@ -895,7 +897,7 @@ Partial Class MainWindow
         Me.Controls.Add(Me.txtSZMove)
         Me.Controls.Add(Me.btnSZDown)
         Me.Controls.Add(Me.btnSZUp)
-        Me.Controls.Add(Me.RichTextBox1)
+        Me.Controls.Add(Me.txtSerialInput)
         Me.Controls.Add(Me.btnDisconnect)
         Me.Controls.Add(Me.btnSendData)
         Me.Controls.Add(Me.lblDataToSend)
@@ -931,7 +933,7 @@ Partial Class MainWindow
     Friend WithEvents btnSendData As Button
     Friend WithEvents SerialPort1 As IO.Ports.SerialPort
     Friend WithEvents btnDisconnect As Button
-    Friend WithEvents RichTextBox1 As RichTextBox
+    Friend WithEvents txtSerialInput As RichTextBox
     Friend WithEvents PictureBox5 As PictureBox
     Friend WithEvents txtSYMove As TextBox
     Friend WithEvents btnSXHome As Button
