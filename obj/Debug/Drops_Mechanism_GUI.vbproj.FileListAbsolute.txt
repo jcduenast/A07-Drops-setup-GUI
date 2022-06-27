@@ -11,3 +11,4 @@ C:\Users\juanc\HESSENBOX-DA\Drops_Mechanism_GUI\A07-Drops-setup-GUI\bin\Debug\Dr
 C:\Users\juanc\HESSENBOX-DA\Drops_Mechanism_GUI\A07-Drops-setup-GUI\obj\Debug\Drops_Mechanism_GUI.exe
 C:\Users\juanc\HESSENBOX-DA\Drops_Mechanism_GUI\A07-Drops-setup-GUI\obj\Debug\Drops_Mechanism_GUI.xml
 C:\Users\juanc\HESSENBOX-DA\Drops_Mechanism_GUI\A07-Drops-setup-GUI\obj\Debug\Drops_Mechanism_GUI.pdb
+C:\Users\juanc\HESSENBOX-DA\Drops_Mechanism_GUI\A07-Drops-setup-GUI\obj\Debug\Drops_Mechanism_GUI.Resource1.resources
