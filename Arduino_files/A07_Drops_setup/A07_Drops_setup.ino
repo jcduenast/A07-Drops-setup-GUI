@@ -1,7 +1,5 @@
-// Version adjusted by: Juan Duenas
-// sufix:   S stands for Sensor
-// Major re-coding to organize new funtions alongside old ones
-// Date of transfer: 06.05.2022
+// Date of start: 27.06.2022
+// Tested on:
 
 #include "AccelStepper.h" 
 
@@ -33,10 +31,6 @@ const int sensor_y_home = 24;
 const int sensor_y_end  = 25;
 const int sensor_z_home = 26;
 const int sensor_z_end  = 27;
-
-
-#define home_switch5 40 // asigned but not used. itßs the old, not recommended sintax
-#define home_switch6 42 // asigned but not used. itßs the old, not recommended sintax
 
 AccelStepper stepperX(1, camera_X_step, camera_X_dir);  // 1 = Easy Driver interface, 2 STEP, 3 DIR
 AccelStepper stepperY(1, camera_Y_step, camera_Y_dir);  // 1 = Easy Driver interface, 6 STEP, 7 DIR
@@ -170,16 +164,7 @@ void setup() {
   stepperYS.setAcceleration(2000.0);   // Set Acceleration of Stepper*/
   stepperZS.setMaxSpeed(30000.0);      // Set Max Speed of Stepper (Faster for regular movements)
   stepperZS.setAcceleration(2000.0);   // Set Acceleration of Stepper*/
-
-  // purpose of these pins is still unknown
-  pinMode(38, OUTPUT);
-  digitalWrite(38, LOW);
-  pinMode(56, OUTPUT);
-  digitalWrite(56, LOW);
-  pinMode(62, OUTPUT);
-  digitalWrite(62, LOW);  
-
-  
+ 
 }
 
 void loop() {
@@ -194,13 +179,6 @@ void loop() {
     int_posXS=cfcXS*pos.toFloat();       // new
     int_posYS=cfcYS*pos.toFloat();       // new
     int_posZS=cfcZS*pos.toFloat();       // new
-
-  // Serial.print("help=");
-  // Serial.println(help);
-
-  scan_limit=int_posZ+stepperZ.currentPosition ();  // stores the new final position
-  scan_limitF=int_posF+stepperF.currentPosition (); // stores the new final position
-
 
     if(command =="XZ") {
       stepperX.setCurrentPosition(0);                 // sends X to "home"
