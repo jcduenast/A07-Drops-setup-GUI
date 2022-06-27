@@ -1,62 +1,37 @@
 // Version adjusted by: Juan Duenas
-// sufix:   S stands for Sensor
-// Major re-coding to organize new funtions alongside old ones
-// Date of transfer: 06.05.2022
+// sufix-S stands for Sensor
 
 #include "AccelStepper.h" 
 
-// pin-out declaration
-// define prefix for camera
-const int camera_X_step = 2;
-const int camera_X_dir  = 3;
-const int camera_Y_step = 6;
-const int camera_Y_dir  = 7;
-const int camera_Z_step = 4;
-const int camera_Z_dir  = 5;
 
-// drops height motor
-const int drops_Z_step = 8;
-const int drops_Z_dir  = 9;
+#define home_switch5 40 // Not in use
+#define home_switch6 42 // Not in use
 
-// sensor motors
-const int sensor_X_step = 14;
-const int sensor_X_dir  = 15;
-const int sensor_Y_step = 16;
-const int sensor_Y_dir  = 17;
-const int sensor_Z_step = 18;
-const int sensor_Z_dir  = 19;
-
-// sensor endswitch
-const int sensor_x_home = 22;
-const int sensor_x_end  = 23;
-const int sensor_y_home = 24;
-const int sensor_y_end  = 25;
-const int sensor_z_home = 26;
-const int sensor_z_end  = 27;
-
-
-#define home_switch5 40 // asigned but not used. itßs the old, not recommended sintax
-#define home_switch6 42 // asigned but not used. itßs the old, not recommended sintax
-
-AccelStepper stepperX(1, camera_X_step, camera_X_dir);  // 1 = Easy Driver interface, 2 STEP, 3 DIR
-AccelStepper stepperY(1, camera_Y_step, camera_Y_dir);  // 1 = Easy Driver interface, 6 STEP, 7 DIR
-AccelStepper stepperZ(1, camera_Z_step, camera_Z_dir);  // 1 = Easy Driver interface, 4 STEP, 5 DIR
-AccelStepper stepperF(1, drops_Z_step, drops_Z_dir);    // 1 = Easy Driver interface, 8 STEP, 9 DIR
+AccelStepper stepperX(1, 2, 3);    // 1 = Easy Driver interface
+                                   // NANO Pin 2 connected to STEP pin of Easy Driver
+                                   // NANO Pin 3 connected to DIR pin of Easy Driver
+                                   
+AccelStepper stepperY(1, 6, 7);    // 1 = Easy Driver interface
+                                   // NANO Pin 6 connected to STEP pin of Easy Driver
+                                   // NANO Pin 7 connected to DIR pin of Easy Driver*/
+                                   
+AccelStepper stepperZ(1, 4, 5);    // 1 = Easy Driver interface
+                                   // NANO Pin 4 connected to STEP pin of Easy Driver
+                                   // NANO Pin 5 connected to DIR pin of Easy Driver
+AccelStepper stepperF(1, 8, 9);    // 1 = Easy Driver interface
 
 // new
-AccelStepper stepperXS(1, sensor_X_step, sensor_X_dir);  // 1 = Easy Driver interface, 24 STEP, 25 DIR
-AccelStepper stepperYS(1, sensor_Y_step, sensor_Y_dir);  // 1 = Easy Driver interface, 27 STEP, 28 DIR
-AccelStepper stepperZS(1, sensor_Z_step, sensor_Z_dir);  // 1 = Easy Driver interface, 30 STEP, 31 DIR
+AccelStepper stepperXS(1, 14, 15);    // 1 = Easy Driver interface, 14 STEP, 15 DIR
+AccelStepper stepperYS(1, 16, 17);    // 1 = Easy Driver interface, 16 STEP, 17 DIR
+AccelStepper stepperZS(1, 18, 19);    // 1 = Easy Driver interface, 18 STEP, 19 DIR
 //
 
-AccelStepper motors_array[] = {stepperX, stepperY, stepperZ, stepperF, stepperXS, stepperYS, stepperZS};
-
                                    
-int ledPin = 13;        // LED connected to digital pin 13
-int inPin = 11;         // pushbutton connected to digital pin 11. Is declared as an output why?
-int val = 0;            // variable to store the read value
+int ledPin = 13;                   // LED connected to digital pin 13
+int inPin = 11;                    // pushbutton connected to digital pin 11. Is declared as an output why?
+int val = 0;                       // variable to store the read value
 int valsum =0;
-int scanit=0;           // Apparently related to inPin, used as flag
+int scanit=0;
 int moveit=0;
 int move_finishedX=1;
 int move_finishedY=1;
@@ -67,11 +42,15 @@ int move_finishedYS=1;  // new
 int move_finishedZS=1;  // new
 int FAC=1;
 int N_pic=1;
-
 // steps(eingegeben)/micrometer(gemessen)
 float cfcX=1.28;
 float cfcY=1.28;
+//float cfcZ=1/0.78;
+//float cfcZ=100000/78000;
+//float cfcZ=1.28205;
+//float cfcZ=0.645161;
 float cfcZ=3.2;
+//float cfcZ=1;
 float cfcF=6.4;
 float cfcXS=1;  // new
 float cfcYS=1;  // new
@@ -80,104 +59,95 @@ float cfcZS=1;  // new
 float micron_per_scan=8;
 float micron_per_scanF=8;
 
-float int_posX=0;
-float int_posY=0;
-float int_posZ=0;
-float int_posZsc=0; // What is sc? Scan?
-float int_posF=0;
-float int_posFsc=0; // What is sc? Scan?
-float int_posXS=0;  // new
-float int_posYS=0;  // new
-float int_posZS=0;  // new
-float scan_ende=0;
-float scan_limit=0;
-float scan_endeF=0; // why independent?
-float scan_limitF=0;// why independent?
-int help=0;
+    float int_posX=0;
+    float int_posY=0;
+    float int_posZ=0;
+    float int_posZsc=0; // What is sc? Scan?
+    float int_posF=0;
+    float int_posFsc=0; // What is sc? Scan?
+    float int_posXS=0;  // new
+    float int_posYS=0;  // new
+    float int_posZS=0;  // new
+    float scan_ende=0;
+    float scan_limit=0;
+    float scan_endeF=0; // why independent?
+    float scan_limitF=0;// why independent?
+    int help=0;
 
-String command;
-String pos;
+    String servo;
+    String pos;
 
 
-long TravelX;                       // Used to store the X value entered in the Serial Monitor
-long TravelY;                       // Used to store the Y value entered in the Serial Monitor
-long TravelZ;                       // Used to store the Z value entered in the Serial Monitor
-long TravelF;                       // Used to store the Z value entered in the Serial Monitor
-long TravelXS;                      // Used to store the XS value entered in the Serial Monitor (new)
-long TravelYS;                      // Used to store the YS value entered in the Serial Monitor (new)
-long TravelZS;                      // Used to store the ZS value entered in the Serial Monitor (new)
-int move_finished1=1;               // Used to check if move is completed - What does 1 or 0 means?
-long initial_homing1=-1;            // Used to Home Stepper at startup
-
+long TravelX;                     // Used to store the X value entered in the Serial Monitor
+long TravelY;                     // Used to store the Y value entered in the Serial Monitor
+long TravelZ;                     // Used to store the Z value entered in the Serial Monitor
+long TravelF;                     // Used to store the Z value entered in the Serial Monitor
+long TravelXS;                    // Used to store the XS value entered in the Serial Monitor (new)
+long TravelYS;                    // Used to store the YS value entered in the Serial Monitor (new)
+long TravelZS;                    // Used to store the ZS value entered in the Serial Monitor (new)
+int move_finished1=1;             // Used to check if move is completed - What does 1 or 0 means?
+long initial_homing1=-1;          // Used to Home Stepper at startup
 
 void setup() {
-  Serial.begin(9600);               // Start the Serial monitor with speed of 9600 Bauds    
-  delay(5);                         // Wait for EasyDriver wake up
-  pinMode(inPin, OUTPUT);           // Currently inPin = 11
+  Serial.begin(9600);              // Start the Serial monitor with speed of 9600 Bauds    
+  delay(5);                        // Wait for EasyDriver wake up
+  pinMode(inPin, OUTPUT);          // Currently inPin = 11
+  pinMode(2, OUTPUT);     // X-Axis
+  pinMode(3, OUTPUT);
+  digitalWrite(2, LOW);
+  digitalWrite(3, LOW);
+  pinMode(4, OUTPUT);     // Z-Axis
+  pinMode(5, OUTPUT);
+  digitalWrite(4, LOW);
+  digitalWrite(5, LOW);
+  pinMode(6, OUTPUT);     // Y-Axis
+  pinMode(7, OUTPUT);
+  digitalWrite(7, LOW);
+  digitalWrite(6, LOW);
+  pinMode(8, OUTPUT);     // F-Axis
+  pinMode(9, OUTPUT);
+  digitalWrite(8, LOW);
+  digitalWrite(9, LOW);
+  pinMode(14, OUTPUT);   // new XS-Axis
+  pinMode(15, OUTPUT);
+  digitalWrite(14, LOW);
+  digitalWrite(15, LOW);
+  pinMode(16, OUTPUT);   // new YS-Axis
+  pinMode(17, OUTPUT);
+  digitalWrite(16, LOW);
+  digitalWrite(17, LOW);
+  pinMode(18, OUTPUT);   // new ZS-Axis
+  pinMode(19, OUTPUT);
+  digitalWrite(18, LOW);
+  digitalWrite(19, LOW);
+ 
+ pinMode(38, OUTPUT);
+  digitalWrite(38, LOW);
+ 
+ pinMode(56, OUTPUT);
+  digitalWrite(56, LOW);
 
-  // End-Switch pin configuration
-  pinMode(sensor_x_home, INPUT);
-  pinMode(sensor_x_end, INPUT);
-  pinMode(sensor_y_home, INPUT);
-  pinMode(sensor_y_end, INPUT);
-  pinMode(sensor_z_home, INPUT);
-  pinMode(sensor_z_end, INPUT);
+ pinMode(62, OUTPUT);
+  digitalWrite(62, LOW);  
 
-  // Steppermotors pin configuration
-  pinMode(camera_X_step, OUTPUT);   // X-Axis
-  pinMode(camera_X_dir, OUTPUT);
-  digitalWrite(camera_X_step, LOW);
-  digitalWrite(camera_X_dir, LOW);
-  pinMode(camera_Y_step, OUTPUT);   // Y-Axis
-  pinMode(camera_Y_dir, OUTPUT);
-  digitalWrite(camera_Y_step, LOW);
-  digitalWrite(camera_Y_dir, LOW);
-  pinMode(camera_Z_step, OUTPUT);   // Z-Axis
-  pinMode(camera_Z_dir, OUTPUT);
-  digitalWrite(camera_Z_step, LOW);
-  digitalWrite(camera_Z_dir, LOW);
-  pinMode(drops_Z_step, OUTPUT);     // F-Axis
-  pinMode(drops_Z_dir, OUTPUT);
-  digitalWrite(drops_Z_step, LOW);
-  digitalWrite(drops_Z_dir, LOW);
-  pinMode(sensor_X_step, OUTPUT);   // new XS-Axis
-  pinMode(sensor_X_dir, OUTPUT);
-  digitalWrite(sensor_X_step, LOW);
-  digitalWrite(sensor_X_dir, LOW);
-  pinMode(sensor_Y_step, OUTPUT);   // new YS-Axis
-  pinMode(sensor_Y_dir, OUTPUT);
-  digitalWrite(sensor_Y_step, LOW);
-  digitalWrite(sensor_Y_dir, LOW);
-  pinMode(sensor_Z_step, OUTPUT);   // new ZS-Axis
-  pinMode(sensor_Z_dir, OUTPUT);
-  digitalWrite(sensor_Z_step, LOW);
-  digitalWrite(sensor_Z_dir, LOW);
-
-  // Stepper motors Speed setup
+  
   stepperX.setMaxSpeed(30000.0);      // Set Max Speed of Stepper (Faster for regular movements)
-  stepperX.setAcceleration(2000.0);   // Set Acceleration of Stepper
+  stepperX.setAcceleration(2000.0);  // Set Acceleration of Stepper
   stepperY.setMaxSpeed(30000.0);      // Set Max Speed of Stepper (Faster for regular movements)
-  stepperY.setAcceleration(2000.0);   // Set Acceleration of Stepper*/
+  stepperY.setAcceleration(2000.0);  // Set Acceleration of Stepper*/
   stepperZ.setMaxSpeed(30000.0);      // Set Max Speed of Stepper (Faster for regular movements)
-  stepperZ.setAcceleration(2000.0);   // Set Acceleration of Stepper
+  stepperZ.setAcceleration(2000.0);  // Set Acceleration of Stepper
   stepperF.setMaxSpeed(60000.0);      // Set Max Speed of Stepper (Faster for regular movements)
-  stepperF.setAcceleration(5000.0);   // Set Acceleration of Stepper
+  stepperF.setAcceleration(5000.0);  // Set Acceleration of Stepper
 
   // new --------------------------
   stepperXS.setMaxSpeed(30000.0);      // Set Max Speed of Stepper (Faster for regular movements)
-  stepperXS.setAcceleration(2000.0);   // Set Acceleration of Stepper
-  stepperYS.setMaxSpeed(30000.0);      // Set Max Speed of Stepper (Faster for regular movements)
-  stepperYS.setAcceleration(2000.0);   // Set Acceleration of Stepper*/
-  stepperZS.setMaxSpeed(30000.0);      // Set Max Speed of Stepper (Faster for regular movements)
-  stepperZS.setAcceleration(2000.0);   // Set Acceleration of Stepper*/
-
-  // purpose of these pins is still unknown
-  pinMode(38, OUTPUT);
-  digitalWrite(38, LOW);
-  pinMode(56, OUTPUT);
-  digitalWrite(56, LOW);
-  pinMode(62, OUTPUT);
-  digitalWrite(62, LOW);  
+  stepperXS.setAcceleration(1000.0);   // Set Acceleration of Stepper
+  stepperYS.setMaxSpeed(1000.0);      // Set Max Speed of Stepper (Faster for regular movements)
+  stepperYS.setAcceleration(100.0);   // Set Acceleration of Stepper*/
+  stepperZS.setMaxSpeed(10000.0);      // Set Max Speed of Stepper (Faster for regular movements)
+  stepperZS.setAcceleration(1000.0);   // Set Acceleration of Stepper*/
+  //
 
   
 }
@@ -185,24 +155,26 @@ void setup() {
 void loop() {
 
   while (Serial.available()>0)  {   // Check if values are available in the Serial Buffer
-    command = Serial.readStringUntil(':');  // Slices the command name out of the input
+
+    servo = Serial.readStringUntil(':');  // Slices the servo name out of the input
     pos = Serial.readStringUntil('&');    // gets the desired position
-    int_posX=cfcX*pos.toFloat();
-    int_posY=cfcY*pos.toFloat();
-    int_posZ=cfcZ*pos.toFloat();
-    int_posF=cfcF*pos.toFloat();
-    int_posXS=cfcXS*pos.toFloat();       // new
-    int_posYS=cfcYS*pos.toFloat();       // new
-    int_posZS=cfcZS*pos.toFloat();       // new
+     int_posX=cfcX*pos.toFloat();
+     int_posY=cfcY*pos.toFloat();
+     int_posZ=cfcZ*pos.toFloat();
+     int_posF=cfcF*pos.toFloat();
+     int_posXS=cfcXS*pos.toFloat();       // new
+     int_posYS=cfcYS*pos.toFloat();       // new
+     int_posZS=cfcZS*pos.toFloat();       // new
 
-  // Serial.print("help=");
-  // Serial.println(help);
-
-  scan_limit=int_posZ+stepperZ.currentPosition ();  // stores the new final position
-  scan_limitF=int_posF+stepperF.currentPosition (); // stores the new final position
+Serial.print("help=");
+Serial.println(help);
 
 
-    if(command =="XZ") {
+  scan_limit=int_posZ+stepperZ.currentPosition ();  // stores the new final position ?
+  scan_limitF=int_posF+stepperF.currentPosition (); // stores the new final position ?
+
+
+    if(servo =="XZ") {
       stepperX.setCurrentPosition(0);                 // sends X to "home"
       scanit=0;
       moveit=0;
@@ -221,7 +193,7 @@ void loop() {
       Serial.println("| micron");
     }
 
-    if(command =="YZ") {
+    if(servo =="YZ") {
       stepperY.setCurrentPosition(0);
       scanit=0;
       moveit=0;
@@ -240,7 +212,7 @@ void loop() {
       Serial.println("| micron");
     }
     
-    if(command =="ZZ") {
+    if(servo =="ZZ") {
       stepperZ.setCurrentPosition(0);
       scanit=0;
       moveit=0;
@@ -259,7 +231,7 @@ void loop() {
       Serial.println("| micron");
     }
 
-    if(command =="FZ") {
+    if(servo =="FZ") {
       stepperF.setCurrentPosition(0);
       scanit=0;
       moveit=0;
@@ -279,7 +251,7 @@ void loop() {
     }
 
     // new -------------
-    if(command =="XSZ") {
+    if(servo =="XSZ") {
       stepperXS.setCurrentPosition(0);                 // sends X to "home"
       scanit=0;
       moveit=0;
@@ -295,7 +267,7 @@ void loop() {
       Serial.print("| micron");
     }
 
-    if(command =="YSZ") {
+    if(servo =="YSZ") {
       stepperYS.setCurrentPosition(0);
       scanit=0;
       moveit=0;
@@ -311,7 +283,7 @@ void loop() {
       Serial.print("| micron");
     }
     
-    if(command =="ZSZ") {
+    if(servo =="ZSZ") {
       stepperZS.setCurrentPosition(0);
       scanit=0;
       moveit=0;
@@ -329,7 +301,7 @@ void loop() {
     // ---
     
     
-    if(command =="MX") {
+    if(servo =="MX") {
       scanit=0;
       moveit=1;
       stepperX.moveTo(int_posX);
@@ -337,7 +309,7 @@ void loop() {
       Serial.println("MOVE"); 
     }
     
-    if(command =="MY") {
+    if(servo =="MY") {
       scanit=0;
       moveit=1;
       stepperY.moveTo(int_posY);
@@ -345,7 +317,7 @@ void loop() {
       Serial.println("MOVE"); 
     }
     
-    if(command =="MZ") {
+    if(servo =="MZ") {
       scanit=0;
       moveit=1;
       stepperZ.moveTo(int_posZ);
@@ -353,7 +325,7 @@ void loop() {
       Serial.println("MOVE"); 
     }
 
-    if(command =="MF") {
+    if(servo =="MF") {
       scanit=0;
       moveit=1;
       stepperF.moveTo(int_posF);
@@ -362,7 +334,7 @@ void loop() {
     }
 
     // new -----------------
-    if(command =="MXS") {
+    if(servo =="MXS") {
       scanit=0;
       moveit=1;
       stepperXS.moveTo(int_posXS);
@@ -370,7 +342,7 @@ void loop() {
       Serial.println("MOVE"); 
     }
     
-    if(command =="MYS") {
+    if(servo =="MYS") {
       scanit=0;
       moveit=1;
       stepperYS.moveTo(int_posYS);
@@ -378,7 +350,7 @@ void loop() {
       Serial.println("MOVE"); 
     }
     
-    if(command =="MZS") {
+    if(servo =="MZS") {
       scanit=0;
       moveit=1;
       stepperZS.moveTo(int_posZS);
@@ -387,7 +359,7 @@ void loop() {
     }
     // ---
 
-    if(command =="RX") {
+    if(servo =="RX") {
       scanit=0;
       moveit=1;
       stepperX.moveTo(int_posX+stepperX.currentPosition ());
@@ -395,7 +367,7 @@ void loop() {
       Serial.println("MOVE");
     }
     
-    if(command =="RY") {
+    if(servo =="RY") {
       scanit=0;
       moveit=1;
       stepperY.moveTo(int_posY+stepperY.currentPosition ());
@@ -403,7 +375,7 @@ void loop() {
       Serial.println("MOVE");
     }
     
-    if(command =="RZ") {
+    if(servo =="RZ") {
       scanit=0;
       moveit=1;
       stepperZ.moveTo(int_posZ+stepperZ.currentPosition ());
@@ -411,7 +383,7 @@ void loop() {
       Serial.println("MOVE");
     }
 
-      if(command =="RF") {
+      if(servo =="RF") {
       scanit=0;
       moveit=1;
       stepperF.moveTo(int_posF+stepperF.currentPosition ());
@@ -420,7 +392,7 @@ void loop() {
     }
 
     // NEW ----------------------------
-    if(command =="RXS") {
+    if(servo =="RXS") {
       scanit=0;
       moveit=1;
       stepperXS.moveTo(int_posXS+stepperXS.currentPosition ());
@@ -428,7 +400,7 @@ void loop() {
       Serial.println("MOVE");
     }
     
-    if(command =="RYS") {
+    if(servo =="RYS") {
       scanit=0;
       moveit=1;
       stepperYS.moveTo(int_posYS+stepperYS.currentPosition ());
@@ -436,7 +408,7 @@ void loop() {
       Serial.println("MOVE");
     }
     
-    if(command =="RZS") {
+    if(servo =="RZS") {
       scanit=0;
       moveit=1;
       stepperZS.moveTo(int_posZS+stepperZS.currentPosition ());
@@ -445,7 +417,7 @@ void loop() {
     }
     // ---
 
-    if(command =="SP") {
+    if(servo =="SP") {
       scan_limit=int_posZ+stepperZ.currentPosition ();
       scanit=1;
       moveit=0;
@@ -453,7 +425,7 @@ void loop() {
             FAC=1;
     }
     
-    if(command =="SN") {
+    if(servo =="SN") {
       scan_limit=-int_posF+stepperF.currentPosition ();
       scanit=1;
       moveit=0;
@@ -461,7 +433,7 @@ void loop() {
       FAC=-1;
     }
 
-    if(command =="SPF") {
+    if(servo =="SPF") {
       scan_limitF=int_posF+stepperF.currentPosition ();
       scanit=1;
       moveit=0;
@@ -470,7 +442,7 @@ void loop() {
          
     }
     
-    if(command =="SNF") {
+    if(servo =="SNF") {
       scan_limitF=-int_posF+stepperF.currentPosition ();
       scanit=1;
       moveit=0;
@@ -478,7 +450,7 @@ void loop() {
       FAC=-1;
     }
 
-    if(command =="S") {
+    if(servo =="S") {
       scanit=0;
       moveit=1;
       stepperZ.moveTo(stepperZ.currentPosition ());
@@ -501,7 +473,7 @@ void loop() {
       digitalWrite(inPin,LOW);
       delay(1500); 
 
-    if(Serial.available()==0 && command =="SP" || Serial.available()==0 && command =="SN") {   
+    if(Serial.available()==0 && servo =="SP" || Serial.available()==0 && servo =="SN") {   
       stepperZ.runToNewPosition(stepperZ.currentPosition ()+(FAC)*micron_per_scan);
       val =0;         
       Serial.print("Pos: ");
@@ -509,7 +481,7 @@ void loop() {
       Serial.println(" micron");    
     } 
 
-    if(Serial.available()==0 && command =="SPF" || Serial.available()==0 && command =="SNF") {   
+    if(Serial.available()==0 && servo =="SPF" || Serial.available()==0 && servo =="SNF") {   
       stepperF.runToNewPosition(stepperF.currentPosition ()+(FAC)*micron_per_scanF);
       val =0;         
       Serial.print("Pos: ");
@@ -525,7 +497,7 @@ void loop() {
     
   }
 
-if(command =="SP") {
+if(servo =="SP") {
   if ((stepperZ.currentPosition () > scan_limit) && scanit==1) {
       Serial.println("scheisse!");    
       Serial.print("Pos: ");
@@ -544,7 +516,7 @@ Serial.println(scan_limit);
     }
 }
 
-if(command =="SN") {
+if(servo =="SN") {
   if ((stepperZ.currentPosition () < scan_limit) && scanit==1) {
       Serial.println("scheisse!");
       Serial.print("Pos: ");
@@ -563,7 +535,7 @@ Serial.println(scan_limit);
     }
 }
 
-if(command =="SPF") {
+if(servo =="SPF") {
   if ((stepperF.currentPosition () > scan_limitF) && scanit==1) {
       Serial.println("scheisse!");    
       Serial.print("Pos: ");
@@ -582,7 +554,7 @@ Serial.println(scan_limitF);
     }
 }
 
-if(command =="SNF") {
+if(servo =="SNF") {
   if ((stepperF.currentPosition () < scan_limitF) && scanit==1) {
       Serial.println("scheisse!");    
       Serial.print("Pos: ");
@@ -607,7 +579,7 @@ Serial.println(scan_limitF);
   if(moveit==1) {
    
     if (stepperX.distanceToGo() != 0) {    
-      // stepperX.run();                            // Move Stepper into position    
+      stepperX.run();                            // Move Stepper into position    
      // Serial.println("RunX");
     }
 
@@ -628,7 +600,7 @@ Serial.println(scan_limitF);
     }
   
     if (stepperY.distanceToGo() != 0) {    
-      // stepperY.run();                            // Move Stepper into position    
+      stepperY.run();                            // Move Stepper into position    
       //Serial.println("RunY");
     }
 
@@ -650,7 +622,7 @@ Serial.println(scan_limitF);
     }
     
     if (stepperZ.distanceToGo() != 0) {    
-      // stepperZ.run();                            // Move Stepper into position    
+      stepperZ.run();                            // Move Stepper into position    
       //Serial.println("RunZ");
     }
 
@@ -674,7 +646,7 @@ Serial.println(scan_limitF);
 
 
    if (stepperF.distanceToGo() != 0) {    
-      // stepperF.run();                            // Move Stepper into position    
+      stepperF.run();                            // Move Stepper into position    
       //Serial.println("RunZ");
     }
 
@@ -698,7 +670,7 @@ Serial.println(scan_limitF);
 
   // New --------------------- Sensor movement
     if (stepperXS.distanceToGo() != 0) {    
-      // stepperXS.run();                            // Move Stepper into position
+      stepperXS.run();                            // Move Stepper into position
     }
 
     // If move is completed display message on Serial Monitor
@@ -718,7 +690,7 @@ Serial.println(scan_limitF);
     }
   
     if (stepperYS.distanceToGo() != 0) {    
-      // stepperYS.run();                            // Move Stepper into position    
+      stepperYS.run();                            // Move Stepper into position    
       //Serial.println("RunY");
     }
 
@@ -740,7 +712,7 @@ Serial.println(scan_limitF);
     }
     
     if (stepperZS.distanceToGo() != 0) {    
-      // stepperZS.run();                            // Move Stepper into position    
+      stepperZS.run();                            // Move Stepper into position    
       //Serial.println("RunZ");
     }
 
@@ -761,29 +733,5 @@ Serial.println(scan_limitF);
       moveit=0;
     }
     
-  }
-
-  // new - Testing endswitch sensors | endswitches are connected to 5v
-  if(digitalRead(sensor_x_home)==HIGH) {
-    scanit=0;
-    moveit=1;
-    stepperZ.moveTo(stepperZ.currentPosition ());
-    stepperX.moveTo(stepperX.currentPosition ());
-    stepperY.moveTo(stepperY.currentPosition ());
-    stepperF.moveTo(stepperF.currentPosition ());
-    move_finishedX=0;
-    move_finishedY=0;
-    move_finishedZ=0;
-    move_finishedF=0;
-    Serial.println("STOP");
-    scan_limit=0;
-  }
-}
-
-void run_motors(){  // if this line works, the variable moveit can be safely removed
-  for(int i = 0; i < sizeof(motors_array); i++){
-    if (motors_array[i].distanceToGo() != 0){
-      motors_array[i].run();
-    }
   }
 }
