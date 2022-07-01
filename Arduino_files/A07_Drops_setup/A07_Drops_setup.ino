@@ -474,10 +474,10 @@ void loop() {
 
 
   if(scanit==1 && Serial.available()==0) {  
-      digitalWrite(inPin,HIGH) ;     // read the input pin
-      delay(10); 
-      digitalWrite(inPin,LOW);
-      delay(1500); 
+    digitalWrite(inPin,HIGH) ;     // read the input pin
+    delay(10); 
+    digitalWrite(inPin,LOW);
+    delay(1500); 
 
     if(Serial.available()==0 && command =="SP" || Serial.available()==0 && command =="SN") {   
       stepperZ.runToNewPosition(stepperZ.currentPosition ()+(FAC)*micron_per_scan);
@@ -493,18 +493,11 @@ void loop() {
       Serial.print("Pos: ");
       Serial.print(stepperF.currentPosition ()/cfcF);
       Serial.println(" micron");    
-    } 
-    
-
-//Serial.print("scan_limit: ");
-//Serial.print(scan_limit);
-//Serial.print("stepperZ.currentPosition ()");
-//Serial.print(stepperZ.currentPosition ());
-    
+    }     
   }
 
-if(command =="SP") {
-  if ((stepperZ.currentPosition () > scan_limit) && scanit==1) {
+  if(command =="SP") {
+    if ((stepperZ.currentPosition () > scan_limit) && scanit==1) {
       Serial.println("scheisse!");    
       Serial.print("Pos: ");
       Serial.print(stepperZ.currentPosition ()/cfcZ);
@@ -514,16 +507,15 @@ if(command =="SP") {
       scanit=0;
       help=0;
       scan_limit=0;
-Serial.print("help: ");
-Serial.println(help);
-Serial.print("scan_limit: ");
-Serial.println(scan_limit);
-      
+      Serial.print("help: ");
+      Serial.println(help);
+      Serial.print("scan_limit: ");
+      Serial.println(scan_limit);
     }
-}
+  }
 
-if(command =="SN") {
-  if ((stepperZ.currentPosition () < scan_limit) && scanit==1) {
+  if(command =="SN") {
+    if ((stepperZ.currentPosition () < scan_limit) && scanit==1) {
       Serial.println("scheisse!");
       Serial.print("Pos: ");
       Serial.print(stepperZ.currentPosition ()/cfcZ);
@@ -533,16 +525,15 @@ if(command =="SN") {
       scanit=0;
       help=0;
       scan_limit=0;
-Serial.print("help: ");
-Serial.println(help);
-Serial.print("scan_limit: ");
-Serial.println(scan_limit);
-      
+      Serial.print("help: ");
+      Serial.println(help);
+      Serial.print("scan_limit: ");
+      Serial.println(scan_limit);
     }
-}
+  }
 
-if(command =="SPF") {
-  if ((stepperF.currentPosition () > scan_limitF) && scanit==1) {
+  if(command =="SPF") {
+    if ((stepperF.currentPosition () > scan_limitF) && scanit==1) {
       Serial.println("scheisse!");    
       Serial.print("Pos: ");
       Serial.print(stepperF.currentPosition ()/cfcF);
@@ -552,16 +543,15 @@ if(command =="SPF") {
       scanit=0;
       help=0;
       scan_limitF=0;
-Serial.print("help: ");
-Serial.println(help);
-Serial.print("scan_limit: ");
-Serial.println(scan_limitF);
-      
+      Serial.print("help: ");
+      Serial.println(help);
+      Serial.print("scan_limit: ");
+      Serial.println(scan_limitF);
     }
-}
+  }
 
-if(command =="SNF") {
-  if ((stepperF.currentPosition () < scan_limitF) && scanit==1) {
+  if(command =="SNF") {
+    if ((stepperF.currentPosition () < scan_limitF) && scanit==1) {
       Serial.println("scheisse!");    
       Serial.print("Pos: ");
       Serial.print(stepperF.currentPosition ()/cfcF);
@@ -571,19 +561,14 @@ if(command =="SNF") {
       scanit=0;
       help=0;
       scan_limitF=0;
-Serial.print("help: ");
-Serial.println(help);
-Serial.print("scan_limit: ");
-Serial.println(scan_limitF);
-      
+      Serial.print("help: ");
+      Serial.println(help);
+      Serial.print("scan_limit: ");
+      Serial.println(scan_limitF);
     }
-}
+  }
 
-
-  
-
-  if(moveit==1) {
-   
+  if(moveit==1) { // a command to move the motors was received
     if (stepperX.distanceToGo() != 0) {    
       // stepperX.run();                            // Move Stepper into position    
      // Serial.println("RunX");

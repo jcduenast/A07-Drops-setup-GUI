@@ -115,7 +115,7 @@ void loop(){
     arg = Serial.readStringUntil('&');      // gets the desired position
     Serial.println("command:"+command+"/end");
     Serial.println("arg:"+arg+"/end");
-    move_to(cmd, pos)
+    move_to(command, arg.toFloat());
   }
 }
 
@@ -123,9 +123,15 @@ void move_to(String cmd, float pos){
   if(cmd="RXS"){
     stepperXS.moveTo(pos);
   }
+  if(cmd="MXS"){
+    stepperXS.moveTo(pos + stepperXS.currentPosition());
+  }
+  if(command =="S"){
+    stepperZ.moveTo(stepperXS.currentPosition ());
+    Serial.println("STOP");
+  }
 }
 
 void getPosition(){
   
 }
-// omg puedo editar desde la web :o

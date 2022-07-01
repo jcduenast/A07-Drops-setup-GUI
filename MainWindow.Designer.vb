@@ -109,7 +109,7 @@ Partial Class MainWindow
         Me.cmbBox_Ports.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cmbBox_Ports.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
         Me.cmbBox_Ports.FormattingEnabled = True
-        Me.cmbBox_Ports.Location = New System.Drawing.Point(1059, 26)
+        Me.cmbBox_Ports.Location = New System.Drawing.Point(993, 16)
         Me.cmbBox_Ports.Name = "cmbBox_Ports"
         Me.cmbBox_Ports.Size = New System.Drawing.Size(121, 28)
         Me.cmbBox_Ports.TabIndex = 0
@@ -118,7 +118,7 @@ Partial Class MainWindow
         '
         Me.lblCOMPort.AutoSize = True
         Me.lblCOMPort.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
-        Me.lblCOMPort.Location = New System.Drawing.Point(971, 29)
+        Me.lblCOMPort.Location = New System.Drawing.Point(905, 19)
         Me.lblCOMPort.Name = "lblCOMPort"
         Me.lblCOMPort.Size = New System.Drawing.Size(82, 20)
         Me.lblCOMPort.TabIndex = 1
@@ -128,7 +128,7 @@ Partial Class MainWindow
         '
         Me.lblBaudRate.AutoSize = True
         Me.lblBaudRate.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
-        Me.lblBaudRate.Location = New System.Drawing.Point(974, 68)
+        Me.lblBaudRate.Location = New System.Drawing.Point(908, 58)
         Me.lblBaudRate.Name = "lblBaudRate"
         Me.lblBaudRate.Size = New System.Drawing.Size(79, 20)
         Me.lblBaudRate.TabIndex = 3
@@ -140,7 +140,7 @@ Partial Class MainWindow
         Me.cmbBox_Baudrate.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
         Me.cmbBox_Baudrate.FormattingEnabled = True
         Me.cmbBox_Baudrate.Items.AddRange(New Object() {"9600", "115200"})
-        Me.cmbBox_Baudrate.Location = New System.Drawing.Point(1059, 62)
+        Me.cmbBox_Baudrate.Location = New System.Drawing.Point(993, 52)
         Me.cmbBox_Baudrate.Name = "cmbBox_Baudrate"
         Me.cmbBox_Baudrate.Size = New System.Drawing.Size(121, 28)
         Me.cmbBox_Baudrate.TabIndex = 2
@@ -148,7 +148,7 @@ Partial Class MainWindow
         'btnConnectPort
         '
         Me.btnConnectPort.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
-        Me.btnConnectPort.Location = New System.Drawing.Point(1202, 24)
+        Me.btnConnectPort.Location = New System.Drawing.Point(1136, 14)
         Me.btnConnectPort.Name = "btnConnectPort"
         Me.btnConnectPort.Size = New System.Drawing.Size(121, 30)
         Me.btnConnectPort.TabIndex = 4
@@ -159,7 +159,7 @@ Partial Class MainWindow
         '
         Me.lblDataReceived.AutoSize = True
         Me.lblDataReceived.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
-        Me.lblDataReceived.Location = New System.Drawing.Point(942, 505)
+        Me.lblDataReceived.Location = New System.Drawing.Point(882, 505)
         Me.lblDataReceived.Name = "lblDataReceived"
         Me.lblDataReceived.Size = New System.Drawing.Size(111, 20)
         Me.lblDataReceived.TabIndex = 6
@@ -168,7 +168,7 @@ Partial Class MainWindow
         'txtToSend
         '
         Me.txtToSend.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
-        Me.txtToSend.Location = New System.Drawing.Point(1064, 472)
+        Me.txtToSend.Location = New System.Drawing.Point(1004, 472)
         Me.txtToSend.Name = "txtToSend"
         Me.txtToSend.Size = New System.Drawing.Size(121, 26)
         Me.txtToSend.TabIndex = 7
@@ -177,7 +177,7 @@ Partial Class MainWindow
         '
         Me.lblDataToSend.AutoSize = True
         Me.lblDataToSend.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
-        Me.lblDataToSend.Location = New System.Drawing.Point(942, 475)
+        Me.lblDataToSend.Location = New System.Drawing.Point(882, 475)
         Me.lblDataToSend.Name = "lblDataToSend"
         Me.lblDataToSend.Size = New System.Drawing.Size(105, 20)
         Me.lblDataToSend.TabIndex = 8
@@ -186,7 +186,7 @@ Partial Class MainWindow
         'btnSendData
         '
         Me.btnSendData.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
-        Me.btnSendData.Location = New System.Drawing.Point(1191, 472)
+        Me.btnSendData.Location = New System.Drawing.Point(1131, 472)
         Me.btnSendData.Name = "btnSendData"
         Me.btnSendData.Size = New System.Drawing.Size(121, 30)
         Me.btnSendData.TabIndex = 9
@@ -199,7 +199,7 @@ Partial Class MainWindow
         'btnDisconnect
         '
         Me.btnDisconnect.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
-        Me.btnDisconnect.Location = New System.Drawing.Point(1202, 60)
+        Me.btnDisconnect.Location = New System.Drawing.Point(1136, 50)
         Me.btnDisconnect.Name = "btnDisconnect"
         Me.btnDisconnect.Size = New System.Drawing.Size(121, 30)
         Me.btnDisconnect.TabIndex = 10
@@ -208,16 +208,16 @@ Partial Class MainWindow
         '
         'txtSerialInput
         '
-        Me.txtSerialInput.Location = New System.Drawing.Point(935, 528)
+        Me.txtSerialInput.Location = New System.Drawing.Point(875, 528)
         Me.txtSerialInput.Name = "txtSerialInput"
-        Me.txtSerialInput.Size = New System.Drawing.Size(415, 186)
+        Me.txtSerialInput.Size = New System.Drawing.Size(420, 186)
         Me.txtSerialInput.TabIndex = 27
         Me.txtSerialInput.Text = ""
         '
         'txtSYMove
         '
         Me.txtSYMove.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
-        Me.txtSYMove.Location = New System.Drawing.Point(21, 238)
+        Me.txtSYMove.Location = New System.Drawing.Point(8, 238)
         Me.txtSYMove.Name = "txtSYMove"
         Me.txtSYMove.Size = New System.Drawing.Size(80, 26)
         Me.txtSYMove.TabIndex = 80
@@ -225,7 +225,7 @@ Partial Class MainWindow
         'btnSXHome
         '
         Me.btnSXHome.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
-        Me.btnSXHome.Location = New System.Drawing.Point(106, 403)
+        Me.btnSXHome.Location = New System.Drawing.Point(93, 403)
         Me.btnSXHome.Name = "btnSXHome"
         Me.btnSXHome.Size = New System.Drawing.Size(250, 50)
         Me.btnSXHome.TabIndex = 79
@@ -235,7 +235,7 @@ Partial Class MainWindow
         'txtSXMove
         '
         Me.txtSXMove.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
-        Me.txtSXMove.Location = New System.Drawing.Point(191, 370)
+        Me.txtSXMove.Location = New System.Drawing.Point(178, 370)
         Me.txtSXMove.Name = "txtSXMove"
         Me.txtSXMove.Size = New System.Drawing.Size(80, 26)
         Me.txtSXMove.TabIndex = 78
@@ -243,7 +243,7 @@ Partial Class MainWindow
         'btnSXLeft
         '
         Me.btnSXLeft.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
-        Me.btnSXLeft.Location = New System.Drawing.Point(106, 368)
+        Me.btnSXLeft.Location = New System.Drawing.Point(93, 368)
         Me.btnSXLeft.Name = "btnSXLeft"
         Me.btnSXLeft.Size = New System.Drawing.Size(80, 30)
         Me.btnSXLeft.TabIndex = 77
@@ -253,7 +253,7 @@ Partial Class MainWindow
         'btnSXRight
         '
         Me.btnSXRight.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
-        Me.btnSXRight.Location = New System.Drawing.Point(276, 368)
+        Me.btnSXRight.Location = New System.Drawing.Point(263, 368)
         Me.btnSXRight.Name = "btnSXRight"
         Me.btnSXRight.Size = New System.Drawing.Size(80, 30)
         Me.btnSXRight.TabIndex = 76
@@ -263,7 +263,7 @@ Partial Class MainWindow
         'btnSYHome
         '
         Me.btnSYHome.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
-        Me.btnSYHome.Location = New System.Drawing.Point(21, 303)
+        Me.btnSYHome.Location = New System.Drawing.Point(8, 303)
         Me.btnSYHome.Name = "btnSYHome"
         Me.btnSYHome.Size = New System.Drawing.Size(80, 60)
         Me.btnSYHome.TabIndex = 75
@@ -273,7 +273,7 @@ Partial Class MainWindow
         'btnSZHome
         '
         Me.btnSZHome.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
-        Me.btnSZHome.Location = New System.Drawing.Point(361, 303)
+        Me.btnSZHome.Location = New System.Drawing.Point(348, 303)
         Me.btnSZHome.Name = "btnSZHome"
         Me.btnSZHome.Size = New System.Drawing.Size(80, 60)
         Me.btnSZHome.TabIndex = 74
@@ -283,7 +283,7 @@ Partial Class MainWindow
         'btnSYBackward
         '
         Me.btnSYBackward.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
-        Me.btnSYBackward.Location = New System.Drawing.Point(21, 268)
+        Me.btnSYBackward.Location = New System.Drawing.Point(8, 268)
         Me.btnSYBackward.Name = "btnSYBackward"
         Me.btnSYBackward.Size = New System.Drawing.Size(80, 30)
         Me.btnSYBackward.TabIndex = 73
@@ -293,7 +293,7 @@ Partial Class MainWindow
         'btnSYForward
         '
         Me.btnSYForward.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
-        Me.btnSYForward.Location = New System.Drawing.Point(21, 203)
+        Me.btnSYForward.Location = New System.Drawing.Point(8, 203)
         Me.btnSYForward.Name = "btnSYForward"
         Me.btnSYForward.Size = New System.Drawing.Size(80, 30)
         Me.btnSYForward.TabIndex = 72
@@ -303,7 +303,7 @@ Partial Class MainWindow
         'txtSZMove
         '
         Me.txtSZMove.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
-        Me.txtSZMove.Location = New System.Drawing.Point(361, 238)
+        Me.txtSZMove.Location = New System.Drawing.Point(348, 238)
         Me.txtSZMove.Name = "txtSZMove"
         Me.txtSZMove.Size = New System.Drawing.Size(80, 26)
         Me.txtSZMove.TabIndex = 71
@@ -311,7 +311,7 @@ Partial Class MainWindow
         'btnSZDown
         '
         Me.btnSZDown.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
-        Me.btnSZDown.Location = New System.Drawing.Point(361, 268)
+        Me.btnSZDown.Location = New System.Drawing.Point(348, 268)
         Me.btnSZDown.Name = "btnSZDown"
         Me.btnSZDown.Size = New System.Drawing.Size(80, 30)
         Me.btnSZDown.TabIndex = 70
@@ -321,7 +321,7 @@ Partial Class MainWindow
         'btnSZUp
         '
         Me.btnSZUp.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
-        Me.btnSZUp.Location = New System.Drawing.Point(361, 203)
+        Me.btnSZUp.Location = New System.Drawing.Point(348, 203)
         Me.btnSZUp.Name = "btnSZUp"
         Me.btnSZUp.Size = New System.Drawing.Size(80, 30)
         Me.btnSZUp.TabIndex = 69
@@ -331,7 +331,7 @@ Partial Class MainWindow
         'btnSXYZHome
         '
         Me.btnSXYZHome.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
-        Me.btnSXYZHome.Location = New System.Drawing.Point(21, 368)
+        Me.btnSXYZHome.Location = New System.Drawing.Point(8, 368)
         Me.btnSXYZHome.Name = "btnSXYZHome"
         Me.btnSXYZHome.Size = New System.Drawing.Size(80, 85)
         Me.btnSXYZHome.TabIndex = 82
@@ -342,7 +342,7 @@ Partial Class MainWindow
         '
         Me.lblSX.AutoSize = True
         Me.lblSX.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.lblSX.Location = New System.Drawing.Point(362, 387)
+        Me.lblSX.Location = New System.Drawing.Point(349, 387)
         Me.lblSX.Name = "lblSX"
         Me.lblSX.Size = New System.Drawing.Size(75, 18)
         Me.lblSX.TabIndex = 83
@@ -352,7 +352,7 @@ Partial Class MainWindow
         '
         Me.lblSY.AutoSize = True
         Me.lblSY.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.lblSY.Location = New System.Drawing.Point(362, 408)
+        Me.lblSY.Location = New System.Drawing.Point(349, 408)
         Me.lblSY.Name = "lblSY"
         Me.lblSY.Size = New System.Drawing.Size(74, 18)
         Me.lblSY.TabIndex = 84
@@ -362,7 +362,7 @@ Partial Class MainWindow
         '
         Me.lblSZ.AutoSize = True
         Me.lblSZ.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.lblSZ.Location = New System.Drawing.Point(362, 429)
+        Me.lblSZ.Location = New System.Drawing.Point(349, 429)
         Me.lblSZ.Name = "lblSZ"
         Me.lblSZ.Size = New System.Drawing.Size(74, 18)
         Me.lblSZ.TabIndex = 84
@@ -372,7 +372,7 @@ Partial Class MainWindow
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.Label4.Location = New System.Drawing.Point(362, 368)
+        Me.Label4.Location = New System.Drawing.Point(349, 368)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(74, 18)
         Me.Label4.TabIndex = 85
@@ -382,7 +382,7 @@ Partial Class MainWindow
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.Label1.Location = New System.Drawing.Point(818, 635)
+        Me.Label1.Location = New System.Drawing.Point(777, 635)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(74, 18)
         Me.Label1.TabIndex = 103
@@ -392,7 +392,7 @@ Partial Class MainWindow
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.Label2.Location = New System.Drawing.Point(818, 696)
+        Me.Label2.Location = New System.Drawing.Point(777, 696)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(74, 18)
         Me.Label2.TabIndex = 102
@@ -402,7 +402,7 @@ Partial Class MainWindow
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.Label3.Location = New System.Drawing.Point(818, 675)
+        Me.Label3.Location = New System.Drawing.Point(777, 675)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(74, 18)
         Me.Label3.TabIndex = 101
@@ -412,7 +412,7 @@ Partial Class MainWindow
         '
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.Label5.Location = New System.Drawing.Point(818, 654)
+        Me.Label5.Location = New System.Drawing.Point(777, 654)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(75, 18)
         Me.Label5.TabIndex = 100
@@ -421,7 +421,7 @@ Partial Class MainWindow
         'btnCXYZHome
         '
         Me.btnCXYZHome.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
-        Me.btnCXYZHome.Location = New System.Drawing.Point(477, 635)
+        Me.btnCXYZHome.Location = New System.Drawing.Point(436, 635)
         Me.btnCXYZHome.Name = "btnCXYZHome"
         Me.btnCXYZHome.Size = New System.Drawing.Size(80, 85)
         Me.btnCXYZHome.TabIndex = 99
@@ -431,7 +431,7 @@ Partial Class MainWindow
         'txtCYMove
         '
         Me.txtCYMove.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
-        Me.txtCYMove.Location = New System.Drawing.Point(477, 505)
+        Me.txtCYMove.Location = New System.Drawing.Point(436, 505)
         Me.txtCYMove.Name = "txtCYMove"
         Me.txtCYMove.Size = New System.Drawing.Size(80, 26)
         Me.txtCYMove.TabIndex = 97
@@ -439,7 +439,7 @@ Partial Class MainWindow
         'btnCXHome
         '
         Me.btnCXHome.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
-        Me.btnCXHome.Location = New System.Drawing.Point(562, 670)
+        Me.btnCXHome.Location = New System.Drawing.Point(521, 670)
         Me.btnCXHome.Name = "btnCXHome"
         Me.btnCXHome.Size = New System.Drawing.Size(250, 50)
         Me.btnCXHome.TabIndex = 96
@@ -449,7 +449,7 @@ Partial Class MainWindow
         'txtCXMove
         '
         Me.txtCXMove.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
-        Me.txtCXMove.Location = New System.Drawing.Point(647, 637)
+        Me.txtCXMove.Location = New System.Drawing.Point(606, 637)
         Me.txtCXMove.Name = "txtCXMove"
         Me.txtCXMove.Size = New System.Drawing.Size(80, 26)
         Me.txtCXMove.TabIndex = 95
@@ -457,7 +457,7 @@ Partial Class MainWindow
         'btnCXLeft
         '
         Me.btnCXLeft.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
-        Me.btnCXLeft.Location = New System.Drawing.Point(562, 635)
+        Me.btnCXLeft.Location = New System.Drawing.Point(521, 635)
         Me.btnCXLeft.Name = "btnCXLeft"
         Me.btnCXLeft.Size = New System.Drawing.Size(80, 30)
         Me.btnCXLeft.TabIndex = 94
@@ -467,7 +467,7 @@ Partial Class MainWindow
         'btnCXRight
         '
         Me.btnCXRight.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
-        Me.btnCXRight.Location = New System.Drawing.Point(732, 635)
+        Me.btnCXRight.Location = New System.Drawing.Point(691, 635)
         Me.btnCXRight.Name = "btnCXRight"
         Me.btnCXRight.Size = New System.Drawing.Size(80, 30)
         Me.btnCXRight.TabIndex = 93
@@ -477,7 +477,7 @@ Partial Class MainWindow
         'btnCYHome
         '
         Me.btnCYHome.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
-        Me.btnCYHome.Location = New System.Drawing.Point(477, 570)
+        Me.btnCYHome.Location = New System.Drawing.Point(436, 570)
         Me.btnCYHome.Name = "btnCYHome"
         Me.btnCYHome.Size = New System.Drawing.Size(80, 60)
         Me.btnCYHome.TabIndex = 92
@@ -487,7 +487,7 @@ Partial Class MainWindow
         'btnCZHome
         '
         Me.btnCZHome.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
-        Me.btnCZHome.Location = New System.Drawing.Point(817, 570)
+        Me.btnCZHome.Location = New System.Drawing.Point(776, 570)
         Me.btnCZHome.Name = "btnCZHome"
         Me.btnCZHome.Size = New System.Drawing.Size(80, 60)
         Me.btnCZHome.TabIndex = 91
@@ -497,7 +497,7 @@ Partial Class MainWindow
         'btnCYBackward
         '
         Me.btnCYBackward.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
-        Me.btnCYBackward.Location = New System.Drawing.Point(477, 535)
+        Me.btnCYBackward.Location = New System.Drawing.Point(436, 535)
         Me.btnCYBackward.Name = "btnCYBackward"
         Me.btnCYBackward.Size = New System.Drawing.Size(80, 30)
         Me.btnCYBackward.TabIndex = 90
@@ -507,7 +507,7 @@ Partial Class MainWindow
         'btnCYForward
         '
         Me.btnCYForward.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
-        Me.btnCYForward.Location = New System.Drawing.Point(477, 470)
+        Me.btnCYForward.Location = New System.Drawing.Point(436, 470)
         Me.btnCYForward.Name = "btnCYForward"
         Me.btnCYForward.Size = New System.Drawing.Size(80, 30)
         Me.btnCYForward.TabIndex = 89
@@ -517,7 +517,7 @@ Partial Class MainWindow
         'txtCZMove
         '
         Me.txtCZMove.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
-        Me.txtCZMove.Location = New System.Drawing.Point(817, 505)
+        Me.txtCZMove.Location = New System.Drawing.Point(776, 505)
         Me.txtCZMove.Name = "txtCZMove"
         Me.txtCZMove.Size = New System.Drawing.Size(80, 26)
         Me.txtCZMove.TabIndex = 88
@@ -525,7 +525,7 @@ Partial Class MainWindow
         'btnCZDown
         '
         Me.btnCZDown.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
-        Me.btnCZDown.Location = New System.Drawing.Point(817, 535)
+        Me.btnCZDown.Location = New System.Drawing.Point(776, 535)
         Me.btnCZDown.Name = "btnCZDown"
         Me.btnCZDown.Size = New System.Drawing.Size(80, 30)
         Me.btnCZDown.TabIndex = 87
@@ -535,7 +535,7 @@ Partial Class MainWindow
         'btnCZUp
         '
         Me.btnCZUp.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
-        Me.btnCZUp.Location = New System.Drawing.Point(817, 470)
+        Me.btnCZUp.Location = New System.Drawing.Point(776, 470)
         Me.btnCZUp.Name = "btnCZUp"
         Me.btnCZUp.Size = New System.Drawing.Size(80, 30)
         Me.btnCZUp.TabIndex = 86
@@ -546,7 +546,7 @@ Partial Class MainWindow
         '
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.Label6.Location = New System.Drawing.Point(1276, 368)
+        Me.Label6.Location = New System.Drawing.Point(1216, 368)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(74, 18)
         Me.Label6.TabIndex = 121
@@ -556,7 +556,7 @@ Partial Class MainWindow
         '
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.Label7.Location = New System.Drawing.Point(1276, 429)
+        Me.Label7.Location = New System.Drawing.Point(1216, 429)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(74, 18)
         Me.Label7.TabIndex = 120
@@ -566,7 +566,7 @@ Partial Class MainWindow
         '
         Me.Label8.AutoSize = True
         Me.Label8.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.Label8.Location = New System.Drawing.Point(1276, 408)
+        Me.Label8.Location = New System.Drawing.Point(1216, 408)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(74, 18)
         Me.Label8.TabIndex = 119
@@ -576,7 +576,7 @@ Partial Class MainWindow
         '
         Me.Label9.AutoSize = True
         Me.Label9.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.Label9.Location = New System.Drawing.Point(1276, 387)
+        Me.Label9.Location = New System.Drawing.Point(1216, 387)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(75, 18)
         Me.Label9.TabIndex = 118
@@ -585,7 +585,7 @@ Partial Class MainWindow
         'btnWXYZHome
         '
         Me.btnWXYZHome.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
-        Me.btnWXYZHome.Location = New System.Drawing.Point(935, 368)
+        Me.btnWXYZHome.Location = New System.Drawing.Point(875, 368)
         Me.btnWXYZHome.Name = "btnWXYZHome"
         Me.btnWXYZHome.Size = New System.Drawing.Size(80, 85)
         Me.btnWXYZHome.TabIndex = 117
@@ -595,7 +595,7 @@ Partial Class MainWindow
         'txtWYMove
         '
         Me.txtWYMove.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
-        Me.txtWYMove.Location = New System.Drawing.Point(935, 238)
+        Me.txtWYMove.Location = New System.Drawing.Point(875, 238)
         Me.txtWYMove.Name = "txtWYMove"
         Me.txtWYMove.Size = New System.Drawing.Size(80, 26)
         Me.txtWYMove.TabIndex = 115
@@ -603,7 +603,7 @@ Partial Class MainWindow
         'btnWXHome
         '
         Me.btnWXHome.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
-        Me.btnWXHome.Location = New System.Drawing.Point(1020, 403)
+        Me.btnWXHome.Location = New System.Drawing.Point(960, 403)
         Me.btnWXHome.Name = "btnWXHome"
         Me.btnWXHome.Size = New System.Drawing.Size(250, 50)
         Me.btnWXHome.TabIndex = 114
@@ -613,7 +613,7 @@ Partial Class MainWindow
         'txtWXMove
         '
         Me.txtWXMove.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
-        Me.txtWXMove.Location = New System.Drawing.Point(1105, 370)
+        Me.txtWXMove.Location = New System.Drawing.Point(1045, 370)
         Me.txtWXMove.Name = "txtWXMove"
         Me.txtWXMove.Size = New System.Drawing.Size(80, 26)
         Me.txtWXMove.TabIndex = 113
@@ -621,7 +621,7 @@ Partial Class MainWindow
         'btnWXLeft
         '
         Me.btnWXLeft.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
-        Me.btnWXLeft.Location = New System.Drawing.Point(1020, 368)
+        Me.btnWXLeft.Location = New System.Drawing.Point(960, 368)
         Me.btnWXLeft.Name = "btnWXLeft"
         Me.btnWXLeft.Size = New System.Drawing.Size(80, 30)
         Me.btnWXLeft.TabIndex = 112
@@ -631,7 +631,7 @@ Partial Class MainWindow
         'btnWXRight
         '
         Me.btnWXRight.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
-        Me.btnWXRight.Location = New System.Drawing.Point(1190, 368)
+        Me.btnWXRight.Location = New System.Drawing.Point(1130, 368)
         Me.btnWXRight.Name = "btnWXRight"
         Me.btnWXRight.Size = New System.Drawing.Size(80, 30)
         Me.btnWXRight.TabIndex = 111
@@ -641,7 +641,7 @@ Partial Class MainWindow
         'btnWYHome
         '
         Me.btnWYHome.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
-        Me.btnWYHome.Location = New System.Drawing.Point(935, 303)
+        Me.btnWYHome.Location = New System.Drawing.Point(875, 303)
         Me.btnWYHome.Name = "btnWYHome"
         Me.btnWYHome.Size = New System.Drawing.Size(80, 60)
         Me.btnWYHome.TabIndex = 110
@@ -651,7 +651,7 @@ Partial Class MainWindow
         'btnWZHome
         '
         Me.btnWZHome.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
-        Me.btnWZHome.Location = New System.Drawing.Point(1275, 303)
+        Me.btnWZHome.Location = New System.Drawing.Point(1215, 303)
         Me.btnWZHome.Name = "btnWZHome"
         Me.btnWZHome.Size = New System.Drawing.Size(80, 60)
         Me.btnWZHome.TabIndex = 109
@@ -661,7 +661,7 @@ Partial Class MainWindow
         'btnWYBackward
         '
         Me.btnWYBackward.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
-        Me.btnWYBackward.Location = New System.Drawing.Point(935, 268)
+        Me.btnWYBackward.Location = New System.Drawing.Point(875, 268)
         Me.btnWYBackward.Name = "btnWYBackward"
         Me.btnWYBackward.Size = New System.Drawing.Size(80, 30)
         Me.btnWYBackward.TabIndex = 108
@@ -671,7 +671,7 @@ Partial Class MainWindow
         'btnWYForward
         '
         Me.btnWYForward.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
-        Me.btnWYForward.Location = New System.Drawing.Point(935, 203)
+        Me.btnWYForward.Location = New System.Drawing.Point(875, 203)
         Me.btnWYForward.Name = "btnWYForward"
         Me.btnWYForward.Size = New System.Drawing.Size(80, 30)
         Me.btnWYForward.TabIndex = 107
@@ -681,7 +681,7 @@ Partial Class MainWindow
         'txtWZMove
         '
         Me.txtWZMove.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
-        Me.txtWZMove.Location = New System.Drawing.Point(1275, 238)
+        Me.txtWZMove.Location = New System.Drawing.Point(1215, 238)
         Me.txtWZMove.Name = "txtWZMove"
         Me.txtWZMove.Size = New System.Drawing.Size(80, 26)
         Me.txtWZMove.TabIndex = 106
@@ -689,7 +689,7 @@ Partial Class MainWindow
         'btnWZDown
         '
         Me.btnWZDown.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
-        Me.btnWZDown.Location = New System.Drawing.Point(1275, 268)
+        Me.btnWZDown.Location = New System.Drawing.Point(1215, 268)
         Me.btnWZDown.Name = "btnWZDown"
         Me.btnWZDown.Size = New System.Drawing.Size(80, 30)
         Me.btnWZDown.TabIndex = 105
@@ -699,7 +699,7 @@ Partial Class MainWindow
         'btnWZUp
         '
         Me.btnWZUp.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
-        Me.btnWZUp.Location = New System.Drawing.Point(1275, 203)
+        Me.btnWZUp.Location = New System.Drawing.Point(1215, 203)
         Me.btnWZUp.Name = "btnWZUp"
         Me.btnWZUp.Size = New System.Drawing.Size(80, 30)
         Me.btnWZUp.TabIndex = 104
@@ -710,7 +710,7 @@ Partial Class MainWindow
         '
         Me.Label10.AutoSize = True
         Me.Label10.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.Label10.Location = New System.Drawing.Point(643, 172)
+        Me.Label10.Location = New System.Drawing.Point(602, 172)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(74, 18)
         Me.Label10.TabIndex = 139
@@ -720,7 +720,7 @@ Partial Class MainWindow
         '
         Me.Label11.AutoSize = True
         Me.Label11.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.Label11.Location = New System.Drawing.Point(729, 172)
+        Me.Label11.Location = New System.Drawing.Point(688, 172)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(74, 18)
         Me.Label11.TabIndex = 138
@@ -729,7 +729,7 @@ Partial Class MainWindow
         'btnDZHome
         '
         Me.btnDZHome.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
-        Me.btnDZHome.Location = New System.Drawing.Point(732, 109)
+        Me.btnDZHome.Location = New System.Drawing.Point(691, 109)
         Me.btnDZHome.Name = "btnDZHome"
         Me.btnDZHome.Size = New System.Drawing.Size(80, 60)
         Me.btnDZHome.TabIndex = 127
@@ -739,7 +739,7 @@ Partial Class MainWindow
         'txtDZMove
         '
         Me.txtDZMove.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
-        Me.txtDZMove.Location = New System.Drawing.Point(732, 44)
+        Me.txtDZMove.Location = New System.Drawing.Point(691, 44)
         Me.txtDZMove.Name = "txtDZMove"
         Me.txtDZMove.Size = New System.Drawing.Size(80, 26)
         Me.txtDZMove.TabIndex = 124
@@ -747,7 +747,7 @@ Partial Class MainWindow
         'btnDZDown
         '
         Me.btnDZDown.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
-        Me.btnDZDown.Location = New System.Drawing.Point(732, 74)
+        Me.btnDZDown.Location = New System.Drawing.Point(691, 74)
         Me.btnDZDown.Name = "btnDZDown"
         Me.btnDZDown.Size = New System.Drawing.Size(80, 30)
         Me.btnDZDown.TabIndex = 123
@@ -757,7 +757,7 @@ Partial Class MainWindow
         'btnDZUp
         '
         Me.btnDZUp.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
-        Me.btnDZUp.Location = New System.Drawing.Point(732, 9)
+        Me.btnDZUp.Location = New System.Drawing.Point(691, 9)
         Me.btnDZUp.Name = "btnDZUp"
         Me.btnDZUp.Size = New System.Drawing.Size(80, 30)
         Me.btnDZUp.TabIndex = 122
@@ -768,7 +768,7 @@ Partial Class MainWindow
         '
         Me.PictureBox4.Image = Global.Drops_Mechanism_GUI.My.Resources.Resources.XYZ
         Me.PictureBox4.InitialImage = Global.Drops_Mechanism_GUI.My.Resources.Resource1.XYZ
-        Me.PictureBox4.Location = New System.Drawing.Point(562, 268)
+        Me.PictureBox4.Location = New System.Drawing.Point(521, 268)
         Me.PictureBox4.Name = "PictureBox4"
         Me.PictureBox4.Size = New System.Drawing.Size(250, 106)
         Me.PictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
@@ -779,7 +779,7 @@ Partial Class MainWindow
         '
         Me.PictureBox3.Image = Global.Drops_Mechanism_GUI.My.Resources.Resource1.drops_generator
         Me.PictureBox3.InitialImage = Global.Drops_Mechanism_GUI.My.Resources.Resource1.XYZ
-        Me.PictureBox3.Location = New System.Drawing.Point(562, 9)
+        Me.PictureBox3.Location = New System.Drawing.Point(521, 9)
         Me.PictureBox3.Name = "PictureBox3"
         Me.PictureBox3.Size = New System.Drawing.Size(164, 160)
         Me.PictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
@@ -790,7 +790,7 @@ Partial Class MainWindow
         '
         Me.PictureBox2.Image = Global.Drops_Mechanism_GUI.My.Resources.Resource1.wave_generator
         Me.PictureBox2.InitialImage = Global.Drops_Mechanism_GUI.My.Resources.Resource1.XYZ
-        Me.PictureBox2.Location = New System.Drawing.Point(1020, 203)
+        Me.PictureBox2.Location = New System.Drawing.Point(960, 203)
         Me.PictureBox2.Name = "PictureBox2"
         Me.PictureBox2.Size = New System.Drawing.Size(250, 160)
         Me.PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
@@ -801,7 +801,7 @@ Partial Class MainWindow
         '
         Me.PictureBox1.Image = Global.Drops_Mechanism_GUI.My.Resources.Resource1.laser_camera
         Me.PictureBox1.InitialImage = Global.Drops_Mechanism_GUI.My.Resources.Resource1.XYZ
-        Me.PictureBox1.Location = New System.Drawing.Point(562, 470)
+        Me.PictureBox1.Location = New System.Drawing.Point(521, 470)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(250, 160)
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
@@ -812,7 +812,7 @@ Partial Class MainWindow
         '
         Me.PictureBox5.Image = Global.Drops_Mechanism_GUI.My.Resources.Resource1.cofocal_sensor
         Me.PictureBox5.InitialImage = Global.Drops_Mechanism_GUI.My.Resources.Resource1.XYZ
-        Me.PictureBox5.Location = New System.Drawing.Point(106, 203)
+        Me.PictureBox5.Location = New System.Drawing.Point(93, 203)
         Me.PictureBox5.Name = "PictureBox5"
         Me.PictureBox5.Size = New System.Drawing.Size(250, 160)
         Me.PictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
@@ -823,7 +823,7 @@ Partial Class MainWindow
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1589, 736)
+        Me.ClientSize = New System.Drawing.Size(1312, 736)
         Me.Controls.Add(Me.PictureBox4)
         Me.Controls.Add(Me.Label10)
         Me.Controls.Add(Me.Label11)
