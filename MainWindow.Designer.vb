@@ -28,7 +28,6 @@ Partial Class MainWindow
         Me.lblBaudRate = New System.Windows.Forms.Label()
         Me.cmbBox_Baudrate = New System.Windows.Forms.ComboBox()
         Me.btnConnectPort = New System.Windows.Forms.Button()
-        Me.txtReceived = New System.Windows.Forms.TextBox()
         Me.lblDataReceived = New System.Windows.Forms.Label()
         Me.txtToSend = New System.Windows.Forms.TextBox()
         Me.lblDataToSend = New System.Windows.Forms.Label()
@@ -110,7 +109,7 @@ Partial Class MainWindow
         Me.cmbBox_Ports.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cmbBox_Ports.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
         Me.cmbBox_Ports.FormattingEnabled = True
-        Me.cmbBox_Ports.Location = New System.Drawing.Point(1456, 25)
+        Me.cmbBox_Ports.Location = New System.Drawing.Point(1059, 26)
         Me.cmbBox_Ports.Name = "cmbBox_Ports"
         Me.cmbBox_Ports.Size = New System.Drawing.Size(121, 28)
         Me.cmbBox_Ports.TabIndex = 0
@@ -119,7 +118,7 @@ Partial Class MainWindow
         '
         Me.lblCOMPort.AutoSize = True
         Me.lblCOMPort.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
-        Me.lblCOMPort.Location = New System.Drawing.Point(1456, 2)
+        Me.lblCOMPort.Location = New System.Drawing.Point(971, 29)
         Me.lblCOMPort.Name = "lblCOMPort"
         Me.lblCOMPort.Size = New System.Drawing.Size(82, 20)
         Me.lblCOMPort.TabIndex = 1
@@ -129,7 +128,7 @@ Partial Class MainWindow
         '
         Me.lblBaudRate.AutoSize = True
         Me.lblBaudRate.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
-        Me.lblBaudRate.Location = New System.Drawing.Point(1456, 64)
+        Me.lblBaudRate.Location = New System.Drawing.Point(974, 68)
         Me.lblBaudRate.Name = "lblBaudRate"
         Me.lblBaudRate.Size = New System.Drawing.Size(79, 20)
         Me.lblBaudRate.TabIndex = 3
@@ -141,7 +140,7 @@ Partial Class MainWindow
         Me.cmbBox_Baudrate.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
         Me.cmbBox_Baudrate.FormattingEnabled = True
         Me.cmbBox_Baudrate.Items.AddRange(New Object() {"9600", "115200"})
-        Me.cmbBox_Baudrate.Location = New System.Drawing.Point(1456, 87)
+        Me.cmbBox_Baudrate.Location = New System.Drawing.Point(1059, 62)
         Me.cmbBox_Baudrate.Name = "cmbBox_Baudrate"
         Me.cmbBox_Baudrate.Size = New System.Drawing.Size(121, 28)
         Me.cmbBox_Baudrate.TabIndex = 2
@@ -149,28 +148,18 @@ Partial Class MainWindow
         'btnConnectPort
         '
         Me.btnConnectPort.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
-        Me.btnConnectPort.Location = New System.Drawing.Point(1456, 127)
+        Me.btnConnectPort.Location = New System.Drawing.Point(1202, 24)
         Me.btnConnectPort.Name = "btnConnectPort"
         Me.btnConnectPort.Size = New System.Drawing.Size(121, 30)
         Me.btnConnectPort.TabIndex = 4
         Me.btnConnectPort.Text = "Connect"
         Me.btnConnectPort.UseVisualStyleBackColor = True
         '
-        'txtReceived
-        '
-        Me.txtReceived.Enabled = False
-        Me.txtReceived.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
-        Me.txtReceived.Location = New System.Drawing.Point(1456, 337)
-        Me.txtReceived.Name = "txtReceived"
-        Me.txtReceived.Size = New System.Drawing.Size(121, 26)
-        Me.txtReceived.TabIndex = 5
-        Me.txtReceived.Text = "Not in use"
-        '
         'lblDataReceived
         '
         Me.lblDataReceived.AutoSize = True
         Me.lblDataReceived.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
-        Me.lblDataReceived.Location = New System.Drawing.Point(1459, 314)
+        Me.lblDataReceived.Location = New System.Drawing.Point(942, 505)
         Me.lblDataReceived.Name = "lblDataReceived"
         Me.lblDataReceived.Size = New System.Drawing.Size(111, 20)
         Me.lblDataReceived.TabIndex = 6
@@ -179,7 +168,7 @@ Partial Class MainWindow
         'txtToSend
         '
         Me.txtToSend.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
-        Me.txtToSend.Location = New System.Drawing.Point(1456, 233)
+        Me.txtToSend.Location = New System.Drawing.Point(1064, 472)
         Me.txtToSend.Name = "txtToSend"
         Me.txtToSend.Size = New System.Drawing.Size(121, 26)
         Me.txtToSend.TabIndex = 7
@@ -188,7 +177,7 @@ Partial Class MainWindow
         '
         Me.lblDataToSend.AutoSize = True
         Me.lblDataToSend.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
-        Me.lblDataToSend.Location = New System.Drawing.Point(1456, 210)
+        Me.lblDataToSend.Location = New System.Drawing.Point(942, 475)
         Me.lblDataToSend.Name = "lblDataToSend"
         Me.lblDataToSend.Size = New System.Drawing.Size(105, 20)
         Me.lblDataToSend.TabIndex = 8
@@ -197,7 +186,7 @@ Partial Class MainWindow
         'btnSendData
         '
         Me.btnSendData.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
-        Me.btnSendData.Location = New System.Drawing.Point(1456, 265)
+        Me.btnSendData.Location = New System.Drawing.Point(1191, 472)
         Me.btnSendData.Name = "btnSendData"
         Me.btnSendData.Size = New System.Drawing.Size(121, 30)
         Me.btnSendData.TabIndex = 9
@@ -210,7 +199,7 @@ Partial Class MainWindow
         'btnDisconnect
         '
         Me.btnDisconnect.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
-        Me.btnDisconnect.Location = New System.Drawing.Point(1456, 163)
+        Me.btnDisconnect.Location = New System.Drawing.Point(1202, 60)
         Me.btnDisconnect.Name = "btnDisconnect"
         Me.btnDisconnect.Size = New System.Drawing.Size(121, 30)
         Me.btnDisconnect.TabIndex = 10
@@ -219,9 +208,9 @@ Partial Class MainWindow
         '
         'txtSerialInput
         '
-        Me.txtSerialInput.Location = New System.Drawing.Point(1456, 373)
+        Me.txtSerialInput.Location = New System.Drawing.Point(935, 528)
         Me.txtSerialInput.Name = "txtSerialInput"
-        Me.txtSerialInput.Size = New System.Drawing.Size(121, 332)
+        Me.txtSerialInput.Size = New System.Drawing.Size(415, 186)
         Me.txtSerialInput.TabIndex = 27
         Me.txtSerialInput.Text = ""
         '
@@ -903,7 +892,6 @@ Partial Class MainWindow
         Me.Controls.Add(Me.lblDataToSend)
         Me.Controls.Add(Me.txtToSend)
         Me.Controls.Add(Me.lblDataReceived)
-        Me.Controls.Add(Me.txtReceived)
         Me.Controls.Add(Me.btnConnectPort)
         Me.Controls.Add(Me.lblBaudRate)
         Me.Controls.Add(Me.cmbBox_Baudrate)
@@ -926,7 +914,6 @@ Partial Class MainWindow
     Friend WithEvents lblBaudRate As Label
     Friend WithEvents cmbBox_Baudrate As ComboBox
     Friend WithEvents btnConnectPort As Button
-    Friend WithEvents txtReceived As TextBox
     Friend WithEvents lblDataReceived As Label
     Friend WithEvents txtToSend As TextBox
     Friend WithEvents lblDataToSend As Label
