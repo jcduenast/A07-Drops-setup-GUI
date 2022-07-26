@@ -34,18 +34,18 @@ const int sensor_z_end  = 27;
 String command;
 String arg;
 
-AccelStepper stepperX(1, camera_X_step, camera_X_dir);  // 1 = Easy Driver interface, 2 STEP, 3 DIR
-AccelStepper stepperY(1, camera_Y_step, camera_Y_dir);  // 1 = Easy Driver interface, 6 STEP, 7 DIR
-AccelStepper stepperZ(1, camera_Z_step, camera_Z_dir);  // 1 = Easy Driver interface, 4 STEP, 5 DIR
-AccelStepper stepperF(1, drops_Z_step, drops_Z_dir);    // 1 = Easy Driver interface, 8 STEP, 9 DIR
+// AccelStepper motor(interface, pin1, pin2, ...)
+// AccelStepper::DRIVER -> pin1: step, pin2: direction
+AccelStepper stepperCX(AccelStepper::DRIVER, camera_X_step, camera_X_dir);  // 1 = Easy Driver interface, 2 STEP, 3 DIR
+AccelStepper stepperCY(AccelStepper::DRIVER, camera_Y_step, camera_Y_dir);  // 1 = Easy Driver interface, 6 STEP, 7 DIR
+AccelStepper stepperCZ(AccelStepper::DRIVER, camera_Z_step, camera_Z_dir);  // 1 = Easy Driver interface, 4 STEP, 5 DIR
+AccelStepper stepperDZ(AccelStepper::DRIVER, drops_Z_step, drops_Z_dir);     // 1 = Easy Driver interface, 8 STEP, 9 DIR
+AccelStepper stepperSX(AccelStepper::DRIVER, sensor_X_step, sensor_X_dir);  // 1 = Easy Driver interface, 24 STEP, 25 DIR
+AccelStepper stepperSY(AccelStepper::DRIVER, sensor_Y_step, sensor_Y_dir);  // 1 = Easy Driver interface, 27 STEP, 28 DIR
+AccelStepper stepperSZ(AccelStepper::DRIVER, sensor_Z_step, sensor_Z_dir);  // 1 = Easy Driver interface, 30 STEP, 31 DIR
 
-// new
-AccelStepper stepperXS(1, sensor_X_step, sensor_X_dir);  // 1 = Easy Driver interface, 24 STEP, 25 DIR
-AccelStepper stepperYS(1, sensor_Y_step, sensor_Y_dir);  // 1 = Easy Driver interface, 27 STEP, 28 DIR
-AccelStepper stepperZS(1, sensor_Z_step, sensor_Z_dir);  // 1 = Easy Driver interface, 30 STEP, 31 DIR
-//
 
-AccelStepper motors_array[] = {stepperX, stepperY, stepperZ, stepperF, stepperXS, stepperYS, stepperZS};
+AccelStepper motors_array[] = {stepperCX, stepperCY, stepperCZ, stepperDZ, stepperSX, stepperSY, stepperSZ};
 
 void setup() {
   Serial.begin(9600);               // Start the Serial monitor with speed of 9600 Bauds    
@@ -60,52 +60,51 @@ void setup() {
   pinMode(sensor_z_end, INPUT);
 
   // Steppermotors pin configuration
-  pinMode(camera_X_step, OUTPUT);   // X-Axis
+  // apparently, the pinMode and digitalWrite are not necesary
+  pinMode(camera_X_step, OUTPUT);
   pinMode(camera_X_dir, OUTPUT);
   digitalWrite(camera_X_step, LOW);
   digitalWrite(camera_X_dir, LOW);
-  pinMode(camera_Y_step, OUTPUT);   // Y-Axis
+  pinMode(camera_Y_step, OUTPUT);
   pinMode(camera_Y_dir, OUTPUT);
   digitalWrite(camera_Y_step, LOW);
   digitalWrite(camera_Y_dir, LOW);
-  pinMode(camera_Z_step, OUTPUT);   // Z-Axis
+  pinMode(camera_Z_step, OUTPUT);
   pinMode(camera_Z_dir, OUTPUT);
   digitalWrite(camera_Z_step, LOW);
   digitalWrite(camera_Z_dir, LOW);
-  pinMode(drops_Z_step, OUTPUT);     // F-Axis
+  pinMode(drops_Z_step, OUTPUT);
   pinMode(drops_Z_dir, OUTPUT);
   digitalWrite(drops_Z_step, LOW);
   digitalWrite(drops_Z_dir, LOW);
-  pinMode(sensor_X_step, OUTPUT);   // new XS-Axis
+  pinMode(sensor_X_step, OUTPUT);
   pinMode(sensor_X_dir, OUTPUT);
   digitalWrite(sensor_X_step, LOW);
   digitalWrite(sensor_X_dir, LOW);
-  pinMode(sensor_Y_step, OUTPUT);   // new YS-Axis
+  pinMode(sensor_Y_step, OUTPUT);
   pinMode(sensor_Y_dir, OUTPUT);
   digitalWrite(sensor_Y_step, LOW);
   digitalWrite(sensor_Y_dir, LOW);
-  pinMode(sensor_Z_step, OUTPUT);   // new ZS-Axis
+  pinMode(sensor_Z_step, OUTPUT);
   pinMode(sensor_Z_dir, OUTPUT);
   digitalWrite(sensor_Z_step, LOW);
   digitalWrite(sensor_Z_dir, LOW);
 
   // Stepper motors Speed setup
-  stepperX.setMaxSpeed(30000.0);      // Set Max Speed of Stepper (Faster for regular movements)
-  stepperX.setAcceleration(2000.0);   // Set Acceleration of Stepper
-  stepperY.setMaxSpeed(30000.0);      // Set Max Speed of Stepper (Faster for regular movements)
-  stepperY.setAcceleration(2000.0);   // Set Acceleration of Stepper*/
-  stepperZ.setMaxSpeed(30000.0);      // Set Max Speed of Stepper (Faster for regular movements)
-  stepperZ.setAcceleration(2000.0);   // Set Acceleration of Stepper
-  stepperF.setMaxSpeed(60000.0);      // Set Max Speed of Stepper (Faster for regular movements)
-  stepperF.setAcceleration(5000.0);   // Set Acceleration of Stepper
-
-  // new --------------------------
-  stepperXS.setMaxSpeed(30000.0);      // Set Max Speed of Stepper (Faster for regular movements)
-  stepperXS.setAcceleration(2000.0);   // Set Acceleration of Stepper
-  stepperYS.setMaxSpeed(30000.0);      // Set Max Speed of Stepper (Faster for regular movements)
-  stepperYS.setAcceleration(2000.0);   // Set Acceleration of Stepper*/
-  stepperZS.setMaxSpeed(30000.0);      // Set Max Speed of Stepper (Faster for regular movements)
-  stepperZS.setAcceleration(2000.0);   // Set Acceleration of Stepper*/
+  stepperCX.setMaxSpeed(30000.0);      // Set Max Speed of Stepper (Faster for regular movements)
+  stepperCX.setAcceleration(2000.0);   // Set Acceleration of Stepper
+  stepperCY.setMaxSpeed(30000.0);      // Set Max Speed of Stepper (Faster for regular movements)
+  stepperCY.setAcceleration(2000.0);   // Set Acceleration of Stepper
+  stepperCZ.setMaxSpeed(30000.0);      // Set Max Speed of Stepper (Faster for regular movements)
+  stepperCZ.setAcceleration(2000.0);   // Set Acceleration of Stepper
+  stepperDZ.setMaxSpeed(60000.0);      // Set Max Speed of Stepper (Faster for regular movements)
+  stepperDZ.setAcceleration(5000.0);   // Set Acceleration of Stepper
+  stepperSX.setMaxSpeed(30000.0);      // Set Max Speed of Stepper (Faster for regular movements)
+  stepperSX.setAcceleration(2000.0);   // Set Acceleration of Stepper
+  stepperSY.setMaxSpeed(30000.0);      // Set Max Speed of Stepper (Faster for regular movements)
+  stepperSY.setAcceleration(2000.0);   // Set Acceleration of Stepper
+  stepperSZ.setMaxSpeed(30000.0);      // Set Max Speed of Stepper (Faster for regular movements)
+  stepperSZ.setAcceleration(2000.0);   // Set Acceleration of Stepper
 }
 
 
@@ -121,13 +120,13 @@ void loop(){
 
 void move_to(String cmd, float pos){
   if(cmd="RXS"){
-    stepperXS.moveTo(pos);
+    stepperSX.moveTo(pos);
   }
   if(cmd="MXS"){
-    stepperXS.moveTo(pos + stepperXS.currentPosition());
+    stepperSX.moveTo(pos + stepperSX.currentPosition());
   }
   if(command =="S"){
-    stepperZ.moveTo(stepperXS.currentPosition ());
+    stepperSX.moveTo(stepperSX.currentPosition ());
     Serial.println("STOP");
   }
 }
