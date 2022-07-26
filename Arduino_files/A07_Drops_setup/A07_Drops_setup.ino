@@ -67,10 +67,9 @@ float cfcX=1.28;
 float cfcY=1.28;
 float cfcZ=3.2;
 float cfcF=6.4;
-float cfcXS=1;  // new
-float cfcYS=1;  // new
-float cfcZS=1;  // new
-
+float cfcXS=0.3759398;  // new
+float cfcYS=0.3759398;  // new
+float cfcZS=0.7462686;  // new
 float micron_per_scan=8;
 float micron_per_scanF=8;
 
@@ -473,7 +472,7 @@ void loop() {
   }
 
 
-  if(scanit==1 && Serial.available()==0) {  
+  if(scanit==1 && Serial.available()==0) {
     digitalWrite(inPin,HIGH) ;     // read the input pin
     delay(10); 
     digitalWrite(inPin,LOW);
