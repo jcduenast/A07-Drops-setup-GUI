@@ -44,10 +44,10 @@ float steps;
 const float um2st_SX = 0.3759398;
 const float um2st_SY = 0.3759398;
 const float um2st_SZ = 0.3759398;
-const float um2st_CX = 0.1;
-const float um2st_CY = 0.1;
-const float um2st_CZ = 0.1;
-const float um2st_DZ = 0.1;
+const float um2st_CX = 1.28;
+const float um2st_CY = 1.28;
+const float um2st_CZ = 3.2;
+const float um2st_DZ = 6.4;
 
 // AccelStepper motor(interface, pin1, pin2, ...)
 // AccelStepper::DRIVER -> pin1: step, pin2: direction
@@ -74,7 +74,7 @@ void setup() {
   pinMode(sensor_z_end, INPUT);
 
   // Steppermotors pin configuration
-  // apparently, the pinMode and digitalWrite are not necesary
+  // apparently, the pinMode and digitalWrite are not necesary // Comprobado! No hay que declarar esto
 //  pinMode(camera_X_step, OUTPUT);
 //  pinMode(camera_X_dir, OUTPUT);
 //  digitalWrite(camera_X_step, LOW);
@@ -111,8 +111,10 @@ void setup() {
   stepperCameraY.setAcceleration(2000.0);   // Set Acceleration of Stepper
   stepperCameraZ.setMaxSpeed(30000.0);      // Set Max Speed of Stepper (Faster for regular movements)
   stepperCameraZ.setAcceleration(2000.0);   // Set Acceleration of Stepper
+  
   stepperDropsZ.setMaxSpeed(60000.0);      // Set Max Speed of Stepper (Faster for regular movements)
   stepperDropsZ.setAcceleration(5000.0);   // Set Acceleration of Stepper
+  
   stepperSensorX.setMaxSpeed(30000.0);      // Set Max Speed of Stepper (Faster for regular movements)
   stepperSensorX.setAcceleration(2000.0);   // Set Acceleration of Stepper
   stepperSensorY.setMaxSpeed(30000.0);      // Set Max Speed of Stepper (Faster for regular movements)
@@ -130,6 +132,28 @@ void loop(){
   }
 
   if(command.charAt(0)=='M'){             // Absolute position, move to
+    if(command.charAt(1)=='C'){           // Camera will move
+      switch (command.charAt(2)){
+        case 'X':                         // Motor of the X axis of the camera will move
+          steps = arg.toFloat()*um2st_CX; // Conversion from um to steps
+          stepperCameraX.moveTo(steps);   // Command to move to absolute position
+          break;
+        case 'Y':
+          steps = arg.toFloat()*um2st_CY;
+          stepperCameraY.moveTo(steps);
+          break;
+        case 'Z':
+          steps = arg.toFloat()*um2st_CZ;
+          stepperCameraZ.moveTo(steps);
+          break;
+        default:
+          break;
+      }
+    }
+    if(command.charAt(1)=='D'){
+      steps = arg.toFloat()*um2st_DZ;     // Conversion from um to steps
+      stepperDropsZ.moveTo(steps);        // Command to move to absolute position
+    }
     if(command.charAt(1)=='S'){           // Sensor will move
       switch (command.charAt(2)){
         case 'X':                         // Motor of the X axis of the sensor will move
@@ -148,63 +172,76 @@ void loop(){
           break;
       }
     }
-
-//    if(command.charAt(1)=='C'){           // Camera will move
-//      switch (command.charAt(2)){
-//        case 'X':                         // Motor of the X axis of the camera will move
-//          steps = arg.toFloat()*um2st_CX; // Conversion from um to steps
-//          stepperCameraX.moveTo(steps);
-//          break;
-//        case 'Y':
-//          steps = arg.toFloat()*um2st_CY;
-//          stepperCameraY.moveTo(steps);
-//          break;
-//        case 'Z':
-//          steps = arg.toFloat()*um2st_CZ;
-//          stepperCameraZ.moveTo(steps);
-//          break;
-//        default:
-//          break;
-//      }
-//    }
-//
-//    if(command.charAt(1)=='D'){           // Drops will move
-//      switch (command.charAt(2)){
-//        case 'Z':                         // Motor of the Z axis of the Drops will move
-//          steps = arg.toFloat()*um2st_CZ; // Conversion from um to steps
-//          stepperCameraZ.moveTo(steps);
-//          break;
-//        default:
-//          break;
-//      }
-//    }
-    moving = true;
     command = "";
   }
-  
-//  if(command == "RSX"){
-//    float steps = arg.toFloat();
-//    stepperSensorX.move(steps);
-//    moving = true;
-//    command = "";
-//  }
-//
-//  if(command == "RCX"){
-//    float steps = arg.toFloat();
-//    stepperSensorX.move(steps);
-//    moving = true;
-//    command = "";
-//  }
-//  
-  if(stepperSensorX.run() or stepperSensorY.run() or stepperSensorZ.run()){
-    Serial.println("Sensor updating whut?");
+
+  if(command.charAt(0)=='R'){             // Absolute position, move to
+    if(command.charAt(1)=='C'){           // Camera will move
+      switch (command.charAt(2)){
+        case 'X':                         // Motor of the X axis of the camera will move
+          steps = arg.toFloat()*um2st_CX; // Conversion from um to steps
+          stepperCameraX.move(steps);   // Command to move to absolute position
+          break;
+        case 'Y':
+          steps = arg.toFloat()*um2st_CY;
+          stepperCameraY.move(steps);
+          break;
+        case 'Z':
+          steps = arg.toFloat()*um2st_CZ;
+          stepperCameraZ.move(steps);
+          break;
+        default:
+          break;
+      }
+    }    
+    if(command.charAt(1)=='D'){
+      steps = arg.toFloat()*um2st_DZ;     // Conversion from um to steps
+      stepperDropsZ.move(steps);        // Command to move to absolute position
+    }    
+    if(command.charAt(1)=='S'){           // Sensor will move
+      switch (command.charAt(2)){
+        case 'X':                         // Motor of the X axis of the sensor will move
+          steps = arg.toFloat()*um2st_SX; // Conversion from um to steps
+          stepperSensorX.move(steps);   // Command to move to absolute position
+          break;
+        case 'Y':
+          steps = arg.toFloat()*um2st_SY;
+          stepperSensorY.move(steps);
+          break;
+        case 'Z':
+          steps = arg.toFloat()*um2st_SZ;
+          stepperSensorZ.move(steps);
+          break;
+        default:
+          break;
+      }
+    }
+    command = "";
   }
 
-  if(stepperCameraX.run() | stepperCameraY.run() | stepperCameraZ.run()){
-    Serial.println("Camera updating");
+  if(command.charAt(0)=='S' or command.charAt(0)=='s'){  
+    // stepperSensorX.moveTo(stepperSensorX.currentPosition());
+    stepperSensorX.stop();
+    stepperSensorX.move(0);
   }
 
-  if(stepperDropsZ.run()){
-    Serial.println("Drops updating");
+  // Routines
+  if(command.charAt(0)=='G'){
+    if(command.charAt(1)=='S'){
+      stepperSensorX.runToNewPosition(1000);
+      stepperSensorZ.runToNewPosition(1000);
+      stepperSensorZ.runToNewPosition(0);
+      stepperSensorX.runToNewPosition(0);
+    }
+    command = "";
   }
+
+  // if there is nothing to do, stepper__.run() will do nothing and return 0
+  stepperCameraX.run();
+  stepperCameraY.run();
+  stepperCameraZ.run();
+  stepperDropsZ.run();  
+  stepperSensorX.run();
+  stepperSensorY.run();
+  stepperSensorZ.run(); 
 }
