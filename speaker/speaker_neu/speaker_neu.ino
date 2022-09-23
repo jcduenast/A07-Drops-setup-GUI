@@ -1,8 +1,9 @@
-int freq = 100;
+int freq = 90;
 int channel = 1;
 int resolution = 8;
-int duration = 50;
+int duration = 20; //50;
 int count = 1;
+int wave_delay = 0;
 int i;
 
 void setup() {
@@ -14,15 +15,7 @@ void setup() {
 
 void loop() {
   if (digitalRead(15)){
-    //turn speaker on
-    Serial.println("speaker is on");
-    ledcWriteTone(channel, freq);
-    delay(200);
-    ledcWrite(channel, 0);
-  }else{
-//    //turn speaker off
-//    ledcWrite(channel, 0);
-//    Serial.println("speaker is off");
+    run_sensor_function();
   }
   // Read and interpret serial input
   if (Serial.available() > 0) {
@@ -78,9 +71,37 @@ void loop() {
           count = param.toFloat();
           Serial.print("pulse count set to ");
           Serial.println(count);
-        }                      
+        } else if (cmd == "wave_delay"){
+          wave_delay = param.toFloat();
+          Serial.print("wave delay set to ");
+          Serial.println(wave_delay);
+        }
       }
     }
 //    delay(1000);
   }
+}
+
+void run_sensor_function(){
+  //turn speaker on
+  for(i=0; i<count; i++) {
+    delay(wave_delay);
+    ledcWriteTone(channel, freq);
+    delay(duration);
+    ledcWrite(channel,0);
+    delay(20);
+    Serial.print("pulsing for ");
+    Serial.println(duration);
+    Serial.print(count);
+    Serial.println(" times");
+    Serial.print("With a delay of ");
+    Serial.print(wave_delay);
+    Serial.println("ms");
+  }
+  
+//  //turn speaker on
+//  Serial.println("speaker is on");
+//  ledcWriteTone(channel, freq);
+//  delay(20);
+//  ledcWrite(channel, 0);
 }
