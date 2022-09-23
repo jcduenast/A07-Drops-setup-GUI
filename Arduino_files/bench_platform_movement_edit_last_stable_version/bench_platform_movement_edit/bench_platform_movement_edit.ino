@@ -1,5 +1,6 @@
 // Version adjusted by: Juan Duenas
 // sufix-S stands for Sensor
+// Old version, wave generator not included yet
 
 #include "AccelStepper.h" 
 

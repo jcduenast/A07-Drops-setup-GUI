@@ -466,7 +466,7 @@ void loop() {
       move_finishedY=0;
       move_finishedZ=0;
       move_finishedF=0;
-      Serial.println("STOP");
+      Serial.println("STOP-Test");
       scan_limit=0;
     }
   }
