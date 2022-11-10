@@ -1,5 +1,5 @@
+// Writen by Juan Duenas - e-mail: jcduenast@unal.edu.co
 // Date of start: 27.06.2022
-// Tested on:
 
 #include "AccelStepper.h" 
 
