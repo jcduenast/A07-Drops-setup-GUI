@@ -3,7 +3,7 @@ int channel = 1;
 int resolution = 8;
 int duration = 20; //50;
 int count = 1;
-int wave_delay = 0;
+int wave_delay = 80;
 int i;
 
 void setup() {

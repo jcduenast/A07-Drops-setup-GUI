@@ -1,11 +1,11 @@
 void setup() {
   Serial.begin(9600);
+  pinMode(2, INPUT);
+  pinMode(3, INPUT);
+  pinMode(4, INPUT);
+  pinMode(5, INPUT);
+  pinMode(6, INPUT);
   pinMode(7, INPUT);
-  pinMode(8, INPUT);
-  pinMode(9, INPUT);
-  pinMode(10, INPUT);
-  pinMode(11, INPUT);
-  pinMode(12, INPUT);
 }
 
 void loop() {
@@ -19,23 +19,22 @@ void loop() {
 //      receivedString =
 //    }
 //  }
+  if(digitalRead(2)){
+    Serial.println("2 data received");
+  }
+  if(digitalRead(3)){
+    Serial.println("3 data received");
+  }
+  if(digitalRead(4)){
+    Serial.println("4 data received");
+  }
+  if(digitalRead(5)){
+    Serial.println("5 data received");
+  }
+  if(digitalRead(6)){
+    Serial.println("6 data received");
+  }
   if(digitalRead(7)){
     Serial.println("7 data received");
-  }
-  
-  if(digitalRead(8)){
-    Serial.println("8 data received");
-  }
-  if(digitalRead(9)){
-    Serial.println("9 data received");
-  }
-  if(digitalRead(10)){
-    Serial.println("10 data received");
-  }
-  if(digitalRead(11)){
-    Serial.println("11 data received");
-  }
-  if(digitalRead(12)){
-    Serial.println("12 data received");
   }
 }
