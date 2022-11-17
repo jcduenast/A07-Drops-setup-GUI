@@ -113,6 +113,9 @@ const int YWmin = 30;
 const int YWmax = 32;
 const int ZWmin = 34;
 const int ZWmax = 36;
+
+bool end_stop_activated =  false;
+bool endswitch_state[12] = {false} ; // [Sensor wave, X Y Z, min max], initialization unnecesary but made explicit
 // -----------------------------------
 
 
@@ -571,49 +574,181 @@ void loop() {
   }
   // --------------------- End of while(Serial) -----------------------------
 
+  // --------------------- Endswitch stop logic -----------------------------
   if(digitalRead(XSmin)){
-    Serial.println("XSmin");
-    stepperXS.moveTo(stepperXS.currentPosition ());
-    move_finishedXS=0;
+    if(!endswitch_state[0]){      // checks if is the first time entering the loop
+      stepperXS.setSpeed(0.0);    // stops the motor
+      stepperXS.moveTo(stepperXS.currentPosition());
+      endswitch_state[0] = true;  // states that the motor has been stopped
+      Serial.println("XSmin reached");
+    }else{
+      if(stepperXS.targetPosition()-stepperXS.currentPosition()<0){   // if it wants to go further back
+        stepperXS.setSpeed(0.0);                                      // do not allow it
+        stepperXS.moveTo(stepperXS.currentPosition ());
+      }
+    }
+  }else if(digitalRead(XSmax)){
+    if(!endswitch_state[1]){      // checks if is the first time entering the loop
+      stepperXS.setSpeed(0.0);    // stops the motor
+      stepperXS.moveTo(stepperXS.currentPosition());
+      endswitch_state[1] = true;  // states that the motor has been stopped
+      Serial.println("XSmax reached");
+    }else{
+      if(stepperXS.targetPosition()-stepperXS.currentPosition()>0){   // if it wants to go further forward
+        stepperXS.setSpeed(0.0);                                      // do not allow it
+        stepperXS.moveTo(stepperXS.currentPosition ());
+      }
+    }
+  }else{
+    endswitch_state[0] = false;
+    endswitch_state[1] = false;
   }
-  if(digitalRead(XSmax)){
-    Serial.println("XSmax");
-    stepperXS.moveTo(stepperXS.currentPosition ());
-    move_finishedXS=0;
-  }
+  
   if(digitalRead(YSmin)){
-    Serial.println("YSmin");
-    stepperYS.moveTo(stepperYS.currentPosition ());
-    move_finishedYS=0;
+    if(!endswitch_state[2]){      // checks if is the first time entering the loop
+      stepperYS.setSpeed(0.0);    // stops the motor
+      stepperYS.moveTo(stepperYS.currentPosition());
+      endswitch_state[2] = true;  // states that the motor has been stopped
+      Serial.println("YSmin reached");
+    }else{
+      if(stepperYS.targetPosition()-stepperYS.currentPosition()<0){   // if it wants to go further back
+        stepperYS.setSpeed(0.0);                                      // do not allow it
+        stepperYS.moveTo(stepperYS.currentPosition ());
+      }
+    }
+  }else if(digitalRead(YSmax)){
+    if(!endswitch_state[3]){      // checks if is the first time entering the loop
+      stepperYS.setSpeed(0.0);    // stops the motor
+      stepperYS.moveTo(stepperYS.currentPosition());
+      endswitch_state[3] = true;  // states that the motor has been stopped
+      Serial.println("YSmax reached");
+    }else{
+      if(stepperYS.targetPosition()-stepperYS.currentPosition()>0){   // if it wants to go further forward
+        stepperYS.setSpeed(0.0);                                      // do not allow it
+        stepperYS.moveTo(stepperYS.currentPosition ());
+      }
+    }
+  }else{
+    endswitch_state[2] = false;
+    endswitch_state[3] = false;
   }
-  if(digitalRead(YSmax)){
-    Serial.println("YSmax");
-    stepperYS.moveTo(stepperYS.currentPosition ());
-    move_finishedYS=0;
+
+  if(digitalRead(ZSmin)){
+    if(!endswitch_state[4]){
+      stepperZS.setSpeed(0.0);    // stops the motor
+      stepperZS.moveTo(stepperZS.currentPosition());
+      endswitch_state[4] = true;  // states that the motor has been stopped
+      Serial.println("ZSmin reached");
+    }else{
+      if(stepperZS.targetPosition()-stepperZS.currentPosition()<0){   // if it wants to go further down
+        stepperZS.setSpeed(0.0);                                      // do not allow it
+        stepperZS.moveTo(stepperZS.currentPosition ());
+      }
+    }
+  }else if(digitalRead(ZSmax)){
+    if(!endswitch_state[5]){
+      stepperZS.setSpeed(0.0);    // stops the motor
+      stepperZS.moveTo(stepperZS.currentPosition());
+      endswitch_state[5] = true;  // states that the motor has been stopped
+      Serial.println("ZSmax reached");
+    }else{
+      if(stepperZS.targetPosition()-stepperZS.currentPosition()>0){   // if it wants to go further up
+        stepperZS.setSpeed(0.0);                                      // do not allow it
+        stepperZS.moveTo(stepperZS.currentPosition ());
+      }
+    }
+  }else{
+    endswitch_state[4] = false;
+    endswitch_state[5] = false;
   }
+  // -------- endswitch of wave generator -------
   if(digitalRead(XWmin)){
-    Serial.println("XWmin");
-    stepperXW.moveTo(stepperXW.currentPosition ());
-    move_finishedXW=0;
+    if(!endswitch_state[6]){      // checks if is the first time entering the loop
+      stepperXW.setSpeed(0.0);    // stops the motor
+      stepperXW.moveTo(stepperXW.currentPosition());
+      endswitch_state[6] = true;  // states that the motor has been stopped
+      Serial.println("XWmin reached");
+    }else{
+      if(stepperXW.targetPosition()-stepperXW.currentPosition()<0){   // if it wants to go further back
+        stepperXW.setSpeed(0.0);                                      // do not allow it
+        stepperXW.moveTo(stepperXW.currentPosition ());
+      }
+    }
+  }else if(digitalRead(XWmax)){
+    if(!endswitch_state[7]){      // checks if is the first time entering the loop
+      stepperXW.setSpeed(0.0);    // stops the motor
+      stepperXW.moveTo(stepperXW.currentPosition());
+      endswitch_state[7] = true;  // states that the motor has been stopped
+      Serial.println("XWmax reached");
+    }else{
+      if(stepperXW.targetPosition()-stepperXW.currentPosition()>0){   // if it wants to go further forward
+        stepperXW.setSpeed(0.0);                                      // do not allow it
+        stepperXW.moveTo(stepperXW.currentPosition ());
+      }
+    }
+  }else{
+    endswitch_state[6] = false;
+    endswitch_state[7] = false;
   }
-  if(digitalRead(XWmax)){
-    Serial.println("XWmax");
-    stepperXW.moveTo(stepperXW.currentPosition ());
-    move_finishedXW=0;
-  }
+  
   if(digitalRead(YWmin)){
-    Serial.println("YWmin");
-    //stepperYW.moveTo(stepperYW.currentPosition ());
-    //stepperYW.moveTo(stepperYW.currentPosition ());
-    //stepperYW.setSpeed(0.0);
-    // Serial.print(stepperYW.distanceToGo());
-    //move_finishedYW=0;
+    if(!endswitch_state[8]){      // checks if is the first time entering the loop
+      stepperYW.setSpeed(0.0);    // stops the motor
+      stepperYW.moveTo(stepperYW.currentPosition());
+      endswitch_state[8] = true;  // states that the motor has been stopped
+      Serial.println("YWmin reached");
+    }else{
+      if(stepperYW.targetPosition()-stepperYW.currentPosition()<0){   // if it wants to go further back
+        stepperYW.setSpeed(0.0);                          // do not allow it
+        stepperYW.moveTo(stepperYW.currentPosition ());
+      }
+    }
+  }else if(digitalRead(YWmax)){
+    if(!endswitch_state[9]){      // checks if is the first time entering the loop
+      stepperYW.setSpeed(0.0);    // stops the motor
+      stepperYW.moveTo(stepperYW.currentPosition());
+      endswitch_state[9] = true;  // states that the motor has been stopped
+      Serial.println("YWmax reached");
+    }else{
+      if(stepperYW.targetPosition()-stepperYW.currentPosition()>0){   // if it wants to go further forward
+        stepperYW.setSpeed(0.0);                                      // do not allow it
+        stepperYW.moveTo(stepperYW.currentPosition ());
+      }
+    }
+  }else{
+    endswitch_state[8] = false;
+    endswitch_state[9] = false;
   }
-  if(digitalRead(YWmax)){
-    Serial.println("YWmax");
-    stepperYW.moveTo(stepperYW.currentPosition ());
-    move_finishedYW=0;
+
+  if(digitalRead(ZWmin)){
+    if(!endswitch_state[10]){      // checks if is the first time entering the loop
+      stepperZW.setSpeed(0.0);    // stops the motor
+      stepperZW.moveTo(stepperZW.currentPosition());
+      endswitch_state[10] = true;  // states that the motor has been stopped
+      Serial.println("ZWmin reached");
+    }else{
+      if(stepperZW.targetPosition()-stepperZW.currentPosition()<0){   // if it wants to go further back
+        stepperZW.setSpeed(0.0);                          // do not allow it
+        stepperZW.moveTo(stepperZW.currentPosition ());
+      }
+    }
+  }else if(digitalRead(ZWmax)){
+    if(!endswitch_state[11]){      // checks if is the first time entering the loop
+      stepperZW.setSpeed(0.0);    // stops the motor
+      stepperZW.moveTo(stepperZW.currentPosition());
+      endswitch_state[11] = true;  // states that the motor has been stopped
+      Serial.println("YWmax reached");
+    }else{
+      if(stepperZW.targetPosition()-stepperZW.currentPosition()>0){   // if it wants to go further forward
+        stepperZW.setSpeed(0.0);                                      // do not allow it
+        stepperZW.moveTo(stepperZW.currentPosition ());
+      }
+    }
+  }else{
+    endswitch_state[10] = false;
+    endswitch_state[11] = false;
   }
+  // --------------------- Endswitch stop logic [END] -----------------------
 
   if(scanit==1 && Serial.available()==0) {  
     digitalWrite(inPin,HIGH) ;     // read the input pin
