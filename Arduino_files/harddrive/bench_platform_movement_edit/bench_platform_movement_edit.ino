@@ -1,4 +1,5 @@
 // Version adjusted by: Juan Duenas - e-mail: jcduenast@unal.edu.co
+// There are non-used functionalities in this version. A lighter version "clean" contains only used features
 // no-sufix means movement of camera setup
 // sufix-S stands for Sensor
 // sufix-W stands for Wave-Generator
@@ -85,7 +86,7 @@ int help=0;
 String servo;
 String pos;
 
-
+// these long variables are not used and will be deleted
 long TravelX;                     // Used to store the X value entered in the Serial Monitor
 long TravelY;                     // Used to store the Y value entered in the Serial Monitor
 long TravelZ;                     // Used to store the Z value entered in the Serial Monitor
@@ -221,7 +222,7 @@ void loop() {
 //  scan_limitF=int_posF+stepperF.currentPosition (); // stores the new final position ?
 
     if(servo =="XZ") {
-      stepperX.setCurrentPosition(0);                 // sends X to "home"
+      stepperX.setCurrentPosition(0);                 // sets X-position as "home"
       scanit=0;
       moveit=0;
       Serial.println("SET ZERO X");
@@ -750,7 +751,7 @@ void loop() {
   }
   // --------------------- Endswitch stop logic [END] -----------------------
 
-  if(scanit==1 && Serial.available()==0) {  
+  if(scanit==1 && Serial.available()==0) { 
     digitalWrite(inPin,HIGH) ;     // read the input pin
     delay(10); 
     digitalWrite(inPin,LOW);
