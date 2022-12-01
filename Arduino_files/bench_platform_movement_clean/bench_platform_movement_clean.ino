@@ -2,6 +2,10 @@
 // for SLA Project A07
 // A change of variable names and Serial coding is applied
 // for compatibility issues with the GUI, try the _edit version
+// New convention used for commands: 
+//    1. Type of movement (R|M):(Relative|Absolute)
+//    2. Element to move (C|S|W):(Camera system|cofocal Sensor|Wave generator)
+//    3. Axis/direction which the element should move on (X|Y|Z)
 
 #include "AccelStepper.h"
 
@@ -109,34 +113,41 @@ void loop(){
     cmd = Serial.readStringUntil(':');  // Slices the servo name out of the input
     val = Serial.readStringUntil('&');    // gets the desired position
     // try: if (cmd!=0) {data = Serial.read...}
-    Serial.println("1");
+    Serial.print("cmd ");
+    Serial.print(cmd);
+    Serial.print(" val ");
+    Serial.println(val);
 
     // Comando de asignar posición como cero iZ
 
     // Comandos de movimiento absoluto Mi
-    if (cmd[0] == "M"){
+    if (cmd[0] == 'M'){
       if (cmd == "MCX"){  stepperCX.moveTo(um2sCX*val.toFloat()); }
       if (cmd == "MCY"){  stepperCY.moveTo(um2sCY*val.toFloat()); }
-      else {              Serial.println("Command not supported");}
+      else {              Serial.println("Command for absolute movement not supported");}
       move_finished = false;
     }
     
     // Comandos de movimiento relativo Ri
-    if (cmd[0] == "R"){
+    else if (cmd[0] == 'R'){
+      Serial.println(cmd);
       if (cmd == "RCX"){  stepperCX.moveTo(um2sCX*val.toFloat()+stepperCX.currentPosition ());  }
       if (cmd == "RCY"){  stepperCY.moveTo(um2sCY*val.toFloat()+stepperCY.currentPosition ());  }
-      else {              Serial.println("Command not supported");                              }
+      else {              Serial.println("Command for relative movement not supported");        }
       move_finished = false;
     }
     
     // Comandos de SCAN | not included
 
     // Comando de parada S | in the future, wire directly to the power supply
-    if (cmd == "S"){
+    else if (cmd == "S"){
       stepperSX.setSpeed(0.0);    // stops the motor
-      stepperSX.moveTo(stepperSX.currentPosition());
+      stepperSX.moveTo(stepperCX.currentPosition());
       stepperSY.setSpeed(0.0);    // stops the motor
-      stepperSY.moveTo(stepperSX.currentPosition());
+      stepperSY.moveTo(stepperCX.currentPosition());
+    }
+    else {
+      Serial.println("Command not supported");
     }
   }
 
