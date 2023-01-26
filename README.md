@@ -6,4 +6,5 @@ This branch contains the first command notation used in this project:
 * Drops (vertical only): _F
 * Sensor: _XS, _YS, _ZS
 * Wave generator: _XW, _YW, _ZW
+
 being _ a placeholder for the commands "R" and "M" to move relative or absolutely rexpectively.
