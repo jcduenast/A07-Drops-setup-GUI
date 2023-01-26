@@ -1,29 +1,30 @@
 // Version adjusted by: Juan Duenas - e-mail: jcduenast@unal.edu.co
 // There are non-used functionalities in this version. A lighter version "clean" contains only used features
-// no-sufix means movement of camera setup
-// sufix-S stands for Sensor
-// sufix-W stands for Wave-Generator
+// prefix-C stands for Camera
+// prefix-D stands for Drops
+// prefix-S stands for Sensor
+// prefix-W stands for Wave-Generator
 // -> 6 additional motors added. No changes in the logic
 // -> Adding end of line sensors
 
-#include "AccelStepper.h" 
+#include "AccelStepper.h"
 
 #define home_switch5 40 // Not in use
 #define home_switch6 42 // Not in use
 
-AccelStepper stepperX(1, 2, 3);    // 1 = Easy Driver interface, 2 STEP, 3 DIR
-AccelStepper stepperY(1, 6, 7);    // 1 = Easy Driver interface, 6 STEP, 7 DIR
-AccelStepper stepperZ(1, 4, 5);    // 1 = Easy Driver interface, 4 STEP, 5 DIR
-AccelStepper stepperF(1, 8, 9);    // 1 = Easy Driver interface, 8 STEP, 9 DIR
+AccelStepper stepperCX(1, 2, 3);    // 1 = Easy Driver interface, 2 STEP, 3 DIR
+AccelStepper stepperCY(1, 6, 7);    // 1 = Easy Driver interface, 6 STEP, 7 DIR
+AccelStepper stepperCZ(1, 4, 5);    // 1 = Easy Driver interface, 4 STEP, 5 DIR
+AccelStepper stepperDZ(1, 8, 9);    // 1 = Easy Driver interface, 8 STEP, 9 DIR
 
 // new
-AccelStepper stepperXS(1, 14, 15);    // 1 = Easy Driver interface, 14 STEP, 15 DIR
-AccelStepper stepperYS(1, 16, 17);    // 1 = Easy Driver interface, 16 STEP, 17 DIR
-AccelStepper stepperZS(1, 18, 19);    // 1 = Easy Driver interface, 18 STEP, 19 DIR
+AccelStepper stepperSX(1, 14, 15);    // 1 = Easy Driver interface, 14 STEP, 15 DIR
+AccelStepper stepperSY(1, 16, 17);    // 1 = Easy Driver interface, 16 STEP, 17 DIR
+AccelStepper stepperSZ(1, 18, 19);    // 1 = Easy Driver interface, 18 STEP, 19 DIR
 
-AccelStepper stepperXW(1, 24, 25);    // 1 = Easy Driver interface, 24 STEP, 25 DIR
-AccelStepper stepperYW(1, 22, 23);    // 1 = Easy Driver interface, 22 STEP, 23 DIR
-AccelStepper stepperZW(1, 20, 21);    // 1 = Easy Driver interface, 20 STEP, 21 DIR
+AccelStepper stepperWX(1, 24, 25);    // 1 = Easy Driver interface, 24 STEP, 25 DIR
+AccelStepper stepperWY(1, 22, 23);    // 1 = Easy Driver interface, 22 STEP, 23 DIR
+AccelStepper stepperWZ(1, 20, 21);    // 1 = Easy Driver interface, 20 STEP, 21 DIR
 //
 
                                    
@@ -33,87 +34,87 @@ int val = 0;                       // variable to store the read value
 int valsum =0;
 int scanit=0;
 int moveit=0;
-int move_finishedX=1;
-int move_finishedY=1;
-int move_finishedZ=1;
-int move_finishedF=1;
-int move_finishedXS=1;  // new
-int move_finishedYS=1;  // new
-int move_finishedZS=1;  // new
-int move_finishedXW=1;  // new
-int move_finishedYW=1;  // new
-int move_finishedZW=1;  // new
-int FAC=1;
+int move_finishedCX=1;
+int move_finishedCY=1;
+int move_finishedCZ=1;
+int move_finishedDZ=1;
+int move_finishedSX=1;  // new
+int move_finishedSY=1;  // new
+int move_finishedSZ=1;  // new
+int move_finishedWX=1;  // new
+int move_finishedWY=1;  // new
+int move_finishedWZ=1;  // new
+int DZAC=1;
 int N_pic=1;
 // steps(eingegeben)/micrometer(gemessen)
-float cfcX=1.28;
-float cfcY=1.28;
-//float cfcZ=1/0.78;
-//float cfcZ=100000/78000;
-//float cfcZ=1.28205;
-//float cfcZ=0.645161;
-float cfcZ=3.2;
-//float cfcZ=1;
-float cfcF=6.4;
-const float cfcXS=0.3759398;  // new
-const float cfcYS=0.3759398;  // new
-const float cfcZS=0.7462686;  // new
-const float cfcXW=0.3759398;  // new
-const float cfcYW=0.3759398;  // new
-const float cfcZW=0.7462686;  // new
+float cfcCX=1.28;
+float cfcCY=1.28;
+//float cfcCZ=1/0.78;
+//float cfcCZ=100000/78000;
+//float cfcCZ=1.28205;
+//float cfcCZ=0.645161;
+float cfcCZ=3.2;
+//float cfcCZ=1;
+float cfcDZ=6.4;
+const float cfcSX=0.3759398;  // new
+const float cfcSY=0.3759398;  // new
+const float cfcSZ=0.7462686;  // new
+const float cfcWX=0.3759398;  // new
+const float cfcWY=0.3759398;  // new
+const float cfcWZ=0.7462686;  // new
 
 float micron_per_scan=8;
-float micron_per_scanF=8;
+float micron_per_scanDZ=8;
 
-float int_posX=0;
-float int_posY=0;
-float int_posZ=0;
-float int_posZsc=0; // What is sc? Scan?
-float int_posF=0;
-float int_posFsc=0; // What is sc? Scan?
-float int_posXS=0;  // new
-float int_posYS=0;  // new
-float int_posZS=0;  // new
-float int_posXW=0;  // new
-float int_posYW=0;  // new
-float int_posZW=0;  // new
+float int_posCX=0;
+float int_posCY=0;
+float int_posCZ=0;
+float int_posCZsc=0; // What is sc? Scan?
+float int_posDZ=0;
+float int_posDZsc=0; // What is sc? Scan?
+float int_posSX=0;  // new
+float int_posSY=0;  // new
+float int_posSZ=0;  // new
+float int_posWX=0;  // new
+float int_posWY=0;  // new
+float int_posWZ=0;  // new
 float scan_ende=0;
 float scan_limit=0;
-float scan_endeF=0; // why independent?
-float scan_limitF=0;// why independent?
+float scan_endeDZ=0; // why independent?
+float scan_limitDZ=0;// why independent?
 int help=0;
 
 String servo;
 String pos;
 
 // these long variables are not used and will be deleted
-long TravelX;                     // Used to store the X value entered in the Serial Monitor
-long TravelY;                     // Used to store the Y value entered in the Serial Monitor
-long TravelZ;                     // Used to store the Z value entered in the Serial Monitor
-long TravelF;                     // Used to store the Z value entered in the Serial Monitor
-long TravelXS;                    // Used to store the XS value entered in the Serial Monitor (new)
-long TravelYS;                    // Used to store the YS value entered in the Serial Monitor (new)
-long TravelZS;                    // Used to store the ZS value entered in the Serial Monitor (new)
-long TravelXW;                    // Used to store the XS value entered in the Serial Monitor (new)
-long TravelYW;                    // Used to store the YS value entered in the Serial Monitor (new)
-long TravelZW;                    // Used to store the ZS value entered in the Serial Monitor (new)
+long TravelCX;                     // Used to store the CX value entered in the Serial Monitor
+long TravelCY;                     // Used to store the CY value entered in the Serial Monitor
+long TravelCZ;                     // Used to store the CZ value entered in the Serial Monitor
+long TravelDZ;                     // Used to store the Z value entered in the Serial Monitor
+long TravelSX;                    // Used to store the SX value entered in the Serial Monitor (new)
+long TravelSY;                    // Used to store the SY value entered in the Serial Monitor (new)
+long TravelSZ;                    // Used to store the SZ value entered in the Serial Monitor (new)
+long TravelWX;                    // Used to store the WX value entered in the Serial Monitor (new)
+long TravelWY;                    // Used to store the WY value entered in the Serial Monitor (new)
+long TravelWZ;                    // Used to store the WZ value entered in the Serial Monitor (new)
 int move_finished1=1;             // Used to check if move is completed - What does 1 or 0 means?
 long initial_homing1=-1;          // Used to Home Stepper at startup
 
 // ------- Endswitch setup -----------
-const int XSmin = 27;
-const int XSmax = 29;
-const int YSmin = 31;
-const int YSmax = 33;
-const int ZSmin = 35;
-const int ZSmax = 37;
+const int SXmin = 27;
+const int SXmax = 29;
+const int SYmin = 31;
+const int SYmax = 33;
+const int SZmin = 35;
+const int SZmax = 37;
 
-const int XWmin = 26;
-const int XWmax = 28;
-const int YWmin = 30;
-const int YWmax = 32;
-const int ZWmin = 34;
-const int ZWmax = 36;
+const int WXmin = 26;
+const int WXmax = 28;
+const int WYmin = 30;
+const int WYmax = 32;
+const int WZmin = 34;
+const int WZmax = 36;
 
 bool end_stop_activated =  false;
 bool endswitch_state[12] = {false} ; // [Sensor wave, X Y Z, min max], initialization unnecesary but made explicit
@@ -136,19 +137,19 @@ void setup() {
   pinMode(7, OUTPUT);
   digitalWrite(7, LOW);
   digitalWrite(6, LOW);
-  pinMode(8, OUTPUT);     // F-Axis
+  pinMode(8, OUTPUT);     // DZ-Axis
   pinMode(9, OUTPUT);
   digitalWrite(8, LOW);
   digitalWrite(9, LOW);
-  pinMode(14, OUTPUT);   // new XS-Axis
+  pinMode(14, OUTPUT);   // new SX-Axis
   pinMode(15, OUTPUT);
   digitalWrite(14, LOW);
   digitalWrite(15, LOW);
-  pinMode(16, OUTPUT);   // new YS-Axis
+  pinMode(16, OUTPUT);   // new SY-Axis
   pinMode(17, OUTPUT);
   digitalWrite(16, LOW);
   digitalWrite(17, LOW);
-  pinMode(18, OUTPUT);   // new ZS-Axis
+  pinMode(18, OUTPUT);   // new SZ-Axis
   pinMode(19, OUTPUT);
   digitalWrite(18, LOW);
   digitalWrite(19, LOW);
@@ -163,36 +164,36 @@ void setup() {
   digitalWrite(62, LOW);
 
   // Sensor inputs
-  pinMode(XSmin, INPUT);
-  pinMode(XSmax, INPUT);
-  pinMode(YSmin, INPUT);
-  pinMode(YSmax, INPUT);
-  pinMode(ZSmin, INPUT);
-  pinMode(ZSmax, INPUT);
+  pinMode(SXmin, INPUT);
+  pinMode(SXmax, INPUT);
+  pinMode(SYmin, INPUT);
+  pinMode(SYmax, INPUT);
+  pinMode(SZmin, INPUT);
+  pinMode(SZmax, INPUT);
 
   
-  stepperX.setMaxSpeed(30000.0);        // Set Max Speed of Stepper (Faster for regular movements)
-  stepperX.setAcceleration(2000.0);     // Set Acceleration of Stepper
-  stepperY.setMaxSpeed(30000.0);        // Set Max Speed of Stepper (Faster for regular movements)
-  stepperY.setAcceleration(2000.0);     // Set Acceleration of Stepper
-  stepperZ.setMaxSpeed(30000.0);        // Set Max Speed of Stepper (Faster for regular movements)
-  stepperZ.setAcceleration(2000.0);     // Set Acceleration of Stepper
-  stepperF.setMaxSpeed(60000.0);        // Set Max Speed of Stepper (Faster for regular movements)
-  stepperF.setAcceleration(5000.0);     // Set Acceleration of Stepper
+  stepperCX.setMaxSpeed(30000.0);        // Set Max Speed of Stepper (Faster for regular movements)
+  stepperCX.setAcceleration(2000.0);     // Set Acceleration of Stepper
+  stepperCY.setMaxSpeed(30000.0);        // Set Max Speed of Stepper (Faster for regular movements)
+  stepperCY.setAcceleration(2000.0);     // Set Acceleration of Stepper
+  stepperCZ.setMaxSpeed(30000.0);        // Set Max Speed of Stepper (Faster for regular movements)
+  stepperCZ.setAcceleration(2000.0);     // Set Acceleration of Stepper
+  stepperDZ.setMaxSpeed(60000.0);        // Set Max Speed of Stepper (Faster for regular movements)
+  stepperDZ.setAcceleration(5000.0);     // Set Acceleration of Stepper
 
   // new --------------------------
-  stepperXS.setMaxSpeed(30000.0);       // Set Max Speed of Stepper (Faster for regular movements)
-  stepperXS.setAcceleration(1000.0);    // Set Acceleration of Stepper
-  stepperYS.setMaxSpeed(30000.0);       // Set Max Speed of Stepper (Faster for regular movements)
-  stepperYS.setAcceleration(1000.0);    // Set Acceleration of Stepper
-  stepperZS.setMaxSpeed(10000.0);       // Set Max Speed of Stepper (Faster for regular movements)
-  stepperZS.setAcceleration(1000.0);    // Set Acceleration of Stepper
-  stepperXW.setMaxSpeed(30000.0);       // Set Max Speed of Stepper (Faster for regular movements)
-  stepperXW.setAcceleration(1000.0);    // Set Acceleration of Stepper
-  stepperYW.setMaxSpeed(30000.0);       // Set Max Speed of Stepper (Faster for regular movements)
-  stepperYW.setAcceleration(1000.0);    // Set Acceleration of Stepper
-  stepperZW.setMaxSpeed(10000.0);       // Set Max Speed of Stepper (Faster for regular movements)
-  stepperZW.setAcceleration(1000.0);    // Set Acceleration of Stepper
+  stepperSX.setMaxSpeed(30000.0);       // Set Max Speed of Stepper (Faster for regular movements)
+  stepperSX.setAcceleration(1000.0);    // Set Acceleration of Stepper
+  stepperSY.setMaxSpeed(30000.0);       // Set Max Speed of Stepper (Faster for regular movements)
+  stepperSY.setAcceleration(1000.0);    // Set Acceleration of Stepper
+  stepperSZ.setMaxSpeed(10000.0);       // Set Max Speed of Stepper (Faster for regular movements)
+  stepperSZ.setAcceleration(1000.0);    // Set Acceleration of Stepper
+  stepperWX.setMaxSpeed(30000.0);       // Set Max Speed of Stepper (Faster for regular movements)
+  stepperWX.setAcceleration(1000.0);    // Set Acceleration of Stepper
+  stepperWY.setMaxSpeed(30000.0);       // Set Max Speed of Stepper (Faster for regular movements)
+  stepperWY.setAcceleration(1000.0);    // Set Acceleration of Stepper
+  stepperWZ.setMaxSpeed(10000.0);       // Set Max Speed of Stepper (Faster for regular movements)
+  stepperWZ.setAcceleration(1000.0);    // Set Acceleration of Stepper
   //
 
   
@@ -204,371 +205,335 @@ void loop() {
   
     servo = Serial.readStringUntil(':');  // Slices the servo name out of the input
     pos = Serial.readStringUntil('&');    // gets the desired position
-    int_posX=cfcX*pos.toFloat();
-    int_posY=cfcY*pos.toFloat();
-    int_posZ=cfcZ*pos.toFloat();
-    int_posF=cfcF*pos.toFloat();
-    int_posXS=cfcXS*pos.toFloat();       // new
-    int_posYS=cfcYS*pos.toFloat();       // new
-    int_posZS=cfcZS*pos.toFloat();       // new
-    int_posXW=cfcXW*pos.toFloat();       // new
-    int_posYW=cfcYW*pos.toFloat();       // new
-    int_posZW=cfcZW*pos.toFloat();       // new
+    int_posCX=cfcCX*pos.toFloat();
+    int_posCY=cfcCY*pos.toFloat();
+    int_posCZ=cfcCZ*pos.toFloat();
+    int_posDZ=cfcDZ*pos.toFloat();
+    int_posSX=cfcSX*pos.toFloat();       // new
+    int_posSY=cfcSY*pos.toFloat();       // new
+    int_posSZ=cfcSZ*pos.toFloat();       // new
+    int_posWX=cfcWX*pos.toFloat();       // new
+    int_posWY=cfcWY*pos.toFloat();       // new
+    int_posWZ=cfcWZ*pos.toFloat();       // new
     
     Serial.print("help=");
     Serial.println(help);
 
-//  scan_limit=int_posZ+stepperZ.currentPosition ();  // stores the new final position ?
-//  scan_limitF=int_posF+stepperF.currentPosition (); // stores the new final position ?
+//  scan_limit=int_posCZ+stepperCZ.currentPosition ();  // stores the new final position ?
+//  scan_limitF=int_posDZ+stepperDZ.currentPosition (); // stores the new final position ?
 
-    if(servo =="XZ") {
-      stepperX.setCurrentPosition(0);                 // sets X-position as "home"
+    if(servo =="CXZ") {
+      stepperCX.setCurrentPosition(0);                 // sets X-position as "home"
       scanit=0;
       moveit=0;
-      Serial.println("SET ZERO X");
+      Serial.println("SET ZERO CX");
       Serial.print("Pos:");
-      Serial.println(stepperX.currentPosition ());
+      Serial.println(stepperCX.currentPosition ());
       Serial.print("PosX: ");
-      Serial.print(stepperX.currentPosition ()/cfcX);   
+      Serial.print(stepperCX.currentPosition ()/cfcCX);   
       Serial.print("| PosY: ");
-      Serial.print(stepperY.currentPosition ()/cfcY);    
+      Serial.print(stepperCY.currentPosition ()/cfcCY);    
       Serial.print("| PosZ: ");
-      Serial.print(stepperZ.currentPosition ()/cfcZ);
+      Serial.print(stepperCZ.currentPosition ()/cfcCZ);
       Serial.print("| micron");
-      Serial.print("| PosF: ");
-      Serial.print(stepperF.currentPosition ()/cfcF);
+      Serial.print("| PosDZ: ");
+      Serial.print(stepperDZ.currentPosition ()/cfcDZ);
       Serial.println("| micron");
     }
 
-    if(servo =="YZ") {
-      stepperY.setCurrentPosition(0);
+    if(servo =="CYZ") {
+      stepperCY.setCurrentPosition(0);
       scanit=0;
       moveit=0;
-      Serial.println("SET ZERO Y");
+      Serial.println("SET ZERO CY");
       Serial.print("Pos:");
-      Serial.println(stepperY.currentPosition ());
-      Serial.print("PosX: ");
-      Serial.print(stepperX.currentPosition ()/cfcX);   
-      Serial.print("| PosY: ");
-      Serial.print(stepperY.currentPosition ()/cfcY);    
-      Serial.print("| PosZ: ");
-      Serial.print(stepperZ.currentPosition ()/cfcZ);
+      Serial.println(stepperCY.currentPosition ());
+      Serial.print("PosCX: ");
+      Serial.print(stepperCX.currentPosition ()/cfcCX);   
+      Serial.print("| PosCY: ");
+      Serial.print(stepperCY.currentPosition ()/cfcCY);    
+      Serial.print("| PosCZ: ");
+      Serial.print(stepperCZ.currentPosition ()/cfcCZ);
       Serial.print("| micron");
-      Serial.print("| PosF: ");
-      Serial.print(stepperF.currentPosition ()/cfcF);
+      Serial.print("| PosDZ: ");
+      Serial.print(stepperDZ.currentPosition ()/cfcDZ);
       Serial.println("| micron");
     }
     
-    if(servo =="ZZ") {
-      stepperZ.setCurrentPosition(0);
+    if(servo =="CZZ") {
+      stepperCZ.setCurrentPosition(0);
       scanit=0;
       moveit=0;
-      Serial.println("SET ZERO Z");
+      Serial.println("SET ZERO CZ");
       Serial.print("Pos:");
-      Serial.println(stepperZ.currentPosition ());
-      Serial.print("PosX: ");
-      Serial.print(stepperX.currentPosition ()/cfcX);   
-      Serial.print("| PosY: ");
-      Serial.print(stepperY.currentPosition ()/cfcY);    
-      Serial.print("| PosZ: ");
-      Serial.print(stepperZ.currentPosition ()/cfcZ);
+      Serial.println(stepperCZ.currentPosition ());
+      Serial.print("PosCX: ");
+      Serial.print(stepperCX.currentPosition ()/cfcCX);   
+      Serial.print("| PosCY: ");
+      Serial.print(stepperCY.currentPosition ()/cfcCY);    
+      Serial.print("| PosCZ: ");
+      Serial.print(stepperCZ.currentPosition ()/cfcCZ);
       Serial.print("| micron");
-      Serial.print("| PosF: ");
-      Serial.print(stepperF.currentPosition ()/cfcF);
+      Serial.print("| PosDZ: ");
+      Serial.print(stepperDZ.currentPosition ()/cfcDZ);
       Serial.println("| micron");
     }
 
-    if(servo =="FZ") {
-      stepperF.setCurrentPosition(0);
+    if(servo =="DZZ") {
+      stepperDZ.setCurrentPosition(0);
       scanit=0;
       moveit=0;
-      Serial.println("SET ZERO F");
-      Serial.print("Pos:");
-      Serial.println(stepperF.currentPosition ());
-      Serial.print("PosX: ");
-      Serial.print(stepperX.currentPosition ()/cfcX);   
-      Serial.print("| PosY: ");
-      Serial.print(stepperY.currentPosition ()/cfcY);    
-      Serial.print("| PosZ: ");
-      Serial.print(stepperZ.currentPosition ()/cfcZ);
-      Serial.print("| micron");
-      Serial.print("| PosF: ");
-      Serial.print(stepperF.currentPosition ()/cfcF);
+      Serial.println("SET ZERO DZ");
+      Serial.print("| PosDZ: ");
+      Serial.print(stepperDZ.currentPosition ()/cfcDZ);
       Serial.println("| micron");
     }
 
     // new -------------
-    if(servo =="XSZ") {
-      stepperXS.setCurrentPosition(0);                 // sends X to "home"
+    if(servo =="SXZ") {
+      stepperSX.setCurrentPosition(0);                 // sends X to "home"
       scanit=0;
       moveit=0;
-      Serial.println("SET ZERO XS");
-      Serial.print("Pos:");
-      Serial.println(stepperXS.currentPosition ());
-      Serial.print("PosX: ");
-      Serial.print(stepperXS.currentPosition ()/cfcX);   
-      Serial.print("| PosY: ");
-      Serial.print(stepperYS.currentPosition ()/cfcY);    
-      Serial.print("| PosZ: ");
-      Serial.print(stepperZS.currentPosition ()/cfcZ);
-      Serial.print("| micron");
+      Serial.println("SET ZERO SX");
     }
 
-    if(servo =="YSZ") {
-      stepperYS.setCurrentPosition(0);
+    if(servo =="SYZ") {
+      stepperSY.setCurrentPosition(0);
       scanit=0;
       moveit=0;
-      Serial.println("SET ZERO YS");
-      Serial.print("Pos:");
-      Serial.println(stepperYS.currentPosition ());
-      Serial.print("PosX: ");
-      Serial.print(stepperXS.currentPosition ()/cfcX);   
-      Serial.print("| PosY: ");
-      Serial.print(stepperYS.currentPosition ()/cfcY);    
-      Serial.print("| PosZ: ");
-      Serial.print(stepperZS.currentPosition ()/cfcZ);
-      Serial.print("| micron");
+      Serial.println("SET ZERO SY");
     }
     
-    if(servo =="ZSZ") {
-      stepperZS.setCurrentPosition(0);
+    if(servo =="SZZ") {
+      stepperSZ.setCurrentPosition(0);
       scanit=0;
       moveit=0;
-      Serial.println("SET ZERO ZS");
-      Serial.print("Pos:");
-      Serial.println(stepperZS.currentPosition ());
-      Serial.print("PosX: ");
-      Serial.print(stepperXS.currentPosition ()/cfcX);   
-      Serial.print("| PosY: ");
-      Serial.print(stepperYS.currentPosition ()/cfcY);    
-      Serial.print("| PosZ: ");
-      Serial.print(stepperZS.currentPosition ()/cfcZ);
-      Serial.print("| micron");
+      Serial.println("SET ZERO SZ");
     }
     // ---
     
     
-    if(servo =="MX") {
+    if(servo =="MCX") {
       scanit=0;
       moveit=1;
-      stepperX.moveTo(int_posX);
-      move_finishedX=0;
+      stepperCX.moveTo(int_posCX);
+      move_finishedCX=0;
       Serial.println("MOVE"); 
     }
     
     if(servo =="MY") {
       scanit=0;
       moveit=1;
-      stepperY.moveTo(int_posY);
-      move_finishedY=0;
+      stepperCY.moveTo(int_posCY);
+      move_finishedCY=0;
       Serial.println("MOVE"); 
     }
     
-    if(servo =="MZ") {
+    if(servo =="MCZ") {
       scanit=0;
       moveit=1;
-      stepperZ.moveTo(int_posZ);
-      move_finishedZ=0;
+      stepperCZ.moveTo(int_posCZ);
+      move_finishedCZ=0;
       Serial.println("MOVE"); 
     }
 
-    if(servo =="MF") {
+    if(servo =="MDZ") {
       scanit=0;
       moveit=1;
-      stepperF.moveTo(int_posF);
-      move_finishedF=0;
+      stepperDZ.moveTo(int_posDZ);
+      move_finishedDZ=0;
       Serial.println("MOVE"); 
     }
 
     // new -----------------
-    if(servo =="MXS") {
+    if(servo =="MSX") {
       scanit=0;
       moveit=1;
-      stepperXS.moveTo(int_posXS);
-      move_finishedXS=0;
+      stepperSX.moveTo(int_posSX);
+      move_finishedSX=0;
       Serial.println("MOVE"); 
     }
     
-    if(servo =="MYS") {
+    if(servo =="MSY") {
       scanit=0;
       moveit=1;
-      stepperYS.moveTo(int_posYS);
-      move_finishedYS=0;
+      stepperSY.moveTo(int_posSY);
+      move_finishedSY=0;
       Serial.println("MOVE"); 
     }
     
-    if(servo =="MZS") {
+    if(servo =="MSZ") {
       scanit=0;
       moveit=1;
-      stepperZS.moveTo(int_posZS);
-      move_finishedZS=0;
+      stepperSZ.moveTo(int_posSZ);
+      move_finishedSZ=0;
       Serial.println("MOVE"); 
     }
 
-    if(servo =="MXW") {
+    if(servo =="MWX") {
       scanit=0;
       moveit=1;
-      stepperXW.moveTo(int_posXW);
-      move_finishedXW=0;
+      stepperWX.moveTo(int_posWX);
+      move_finishedWX=0;
       Serial.println("MOVE"); 
     }
     
-    if(servo =="MYW") {
+    if(servo =="MWY") {
       scanit=0;
       moveit=1;
-      stepperYW.moveTo(int_posYW);
-      move_finishedYW=0;
+      stepperWY.moveTo(int_posWY);
+      move_finishedWY=0;
       Serial.println("MOVE"); 
     }
     
-    if(servo =="MZW") {
+    if(servo =="MWZ") {
       scanit=0;
       moveit=1;
-      stepperZW.moveTo(int_posZW);
-      move_finishedZW=0;
+      stepperWZ.moveTo(int_posWZ);
+      move_finishedWZ=0;
       Serial.println("MOVE"); 
     }
     // ---
 
-    if(servo =="RX") {
+    if(servo =="RCX") {
       scanit=0;
       moveit=1;
-      stepperX.moveTo(int_posX+stepperX.currentPosition ());
-      move_finishedX=0;
+      stepperCX.moveTo(int_posCX+stepperCX.currentPosition ());
+      move_finishedCX=0;
       Serial.println("MOVE");
     }
     
-    if(servo =="RY") {
+    if(servo =="RCY") {
       scanit=0;
       moveit=1;
-      stepperY.moveTo(int_posY+stepperY.currentPosition ());
-      move_finishedY=0;
+      stepperCY.moveTo(int_posCY+stepperCY.currentPosition ());
+      move_finishedCY=0;
       Serial.println("MOVE");
     }
     
-    if(servo =="RZ") {
+    if(servo =="RCZ") {
       scanit=0;
       moveit=1;
-      stepperZ.moveTo(int_posZ+stepperZ.currentPosition ());
-      move_finishedZ=0;
+      stepperCZ.moveTo(int_posCZ+stepperCZ.currentPosition ());
+      move_finishedCZ=0;
       Serial.println("MOVE");
     }
 
-      if(servo =="RF") {
+      if(servo =="RDZ") {
       scanit=0;
       moveit=1;
-      stepperF.moveTo(int_posF+stepperF.currentPosition ());
-      move_finishedF=0;
+      stepperDZ.moveTo(int_posDZ+stepperDZ.currentPosition ());
+      move_finishedDZ=0;
       Serial.println("MOVE");
     }
 
     // NEW ----------------------------
-    if(servo =="RXS") {
+    if(servo =="RSX") {
       scanit=0;
       moveit=1;
-      stepperXS.moveTo(int_posXS+stepperXS.currentPosition ());
-      move_finishedXS=0;
+      stepperSX.moveTo(int_posSX+stepperSX.currentPosition ());
+      move_finishedSX=0;
       Serial.println("MOVE");
     }
     
-    if(servo =="RYS") {
+    if(servo =="RSY") {
       scanit=0;
       moveit=1;
-      stepperYS.moveTo(int_posYS+stepperYS.currentPosition ());
-      move_finishedYS=0;
+      stepperSY.moveTo(int_posSY+stepperSY.currentPosition ());
+      move_finishedSY=0;
       Serial.println("MOVE");
     }
     
-    if(servo =="RZS") {
+    if(servo =="RSZ") {
       scanit=0;
       moveit=1;
-      stepperZS.moveTo(int_posZS+stepperZS.currentPosition ());
-      move_finishedZS=0;
+      stepperSZ.moveTo(int_posSZ+stepperSZ.currentPosition ());
+      move_finishedSZ=0;
       Serial.println("MOVE");
     }
 
-    if(servo =="RXW") {
+    if(servo =="RWX") {
       scanit=0;
       moveit=1;
-      stepperXW.moveTo(int_posXW+stepperXW.currentPosition ());
-      move_finishedXW=0;
+      stepperWX.moveTo(int_posWX+stepperWX.currentPosition ());
+      move_finishedWX=0;
       Serial.println("MOVE");
     }
     
-    if(servo =="RYW") {
+    if(servo =="RWY") {
       scanit=0;
       moveit=1;
-      stepperYW.moveTo(int_posYW+stepperYW.currentPosition ());
-      move_finishedYW=0;
+      stepperWY.moveTo(int_posWY+stepperWY.currentPosition ());
+      move_finishedWY=0;
       Serial.println("MOVE");
     }
     
-    if(servo =="RZW") {
+    if(servo =="RWZ") {
       scanit=0;
       moveit=1;
-      stepperZW.moveTo(int_posZW+stepperZW.currentPosition ());
-      move_finishedZW=0;
+      stepperWZ.moveTo(int_posWZ+stepperWZ.currentPosition ());
+      move_finishedWZ=0;
       Serial.println("MOVE");
     }
     // ---
 
     if(servo =="SP") {
-      scan_limit=int_posZ+stepperZ.currentPosition ();
+      scan_limit=int_posCZ+stepperCZ.currentPosition ();
       scanit=1;
       moveit=0;
       Serial.println("SCAN Mode-positive started");
-            FAC=1;
+            DZAC=1;
     }
     
     if(servo =="SN") {
-      scan_limit=-int_posZ+stepperZ.currentPosition ();
+      scan_limit=-int_posCZ+stepperCZ.currentPosition ();
       scanit=1;
       moveit=0;
       Serial.println("SCAN Mode-negative started");
-      FAC=-1;
+      DZAC=-1;
     }
 
-    if(servo =="SPF") {
-      scan_limitF=int_posF+stepperF.currentPosition ();
+    if(servo =="SPDZ") {
+      scan_limitDZ=int_posDZ+stepperDZ.currentPosition ();
       scanit=1;
       moveit=0;
-      Serial.println("SCAN Mode F-positive started");
-            FAC=1;
+      Serial.println("SCAN Mode DZ-positive started");
+            DZAC=1;
          
     }
     
-    if(servo =="SNF") {
-      scan_limitF=-int_posF+stepperF.currentPosition ();
+    if(servo =="SNDZ") {
+      scan_limitDZ=-int_posDZ+stepperDZ.currentPosition ();
       scanit=1;
       moveit=0;
-      Serial.println("SCAN Mode F-negative started");
-      FAC=-1;
+      Serial.println("SCAN Mode DZ-negative started");
+      DZAC=-1;
     }
 
     if(servo =="S") {
       scanit=0;
       moveit=1;
-//      stepperX.stop(); // smoother stop
-      stepperX.moveTo(stepperX.currentPosition ());   // Full inmediate stop
-      stepperY.moveTo(stepperY.currentPosition ());
-      stepperZ.moveTo(stepperZ.currentPosition ());
-      stepperF.moveTo(stepperF.currentPosition ());
-      stepperXS.moveTo(stepperXS.currentPosition ());
-      stepperYS.moveTo(stepperYS.currentPosition ());
-      stepperZS.moveTo(stepperZS.currentPosition ());
-      stepperXW.moveTo(stepperXW.currentPosition ());
-      stepperYW.moveTo(stepperYW.currentPosition ());
-      stepperZW.moveTo(stepperZW.currentPosition ());
-      move_finishedX=0;
-      move_finishedY=0;
-      move_finishedZ=0;
-      move_finishedF=0;
-      move_finishedXS=0;
-      move_finishedYS=0;
-      move_finishedZS=0;
-      move_finishedXW=0;
-      move_finishedYW=0;
-      move_finishedZW=0;
+//      stepperCX.stop(); // smoother stop
+      stepperCX.moveTo(stepperCX.currentPosition ());   // Full inmediate stop
+      stepperCY.moveTo(stepperCY.currentPosition ());
+      stepperCZ.moveTo(stepperCZ.currentPosition ());
+      stepperDZ.moveTo(stepperDZ.currentPosition ());
+      stepperSX.moveTo(stepperSX.currentPosition ());
+      stepperSY.moveTo(stepperSY.currentPosition ());
+      stepperSZ.moveTo(stepperSZ.currentPosition ());
+      stepperWX.moveTo(stepperWX.currentPosition ());
+      stepperWY.moveTo(stepperWY.currentPosition ());
+      stepperWZ.moveTo(stepperWZ.currentPosition ());
+      move_finishedCX=0;
+      move_finishedCY=0;
+      move_finishedCZ=0;
+      move_finishedDZ=0;
+      move_finishedSX=0;
+      move_finishedSY=0;
+      move_finishedSZ=0;
+      move_finishedWX=0;
+      move_finishedWY=0;
+      move_finishedWZ=0;
       Serial.println("STOP");
       scan_limit=0;
     }
@@ -576,28 +541,28 @@ void loop() {
   // --------------------- End of while(Serial) -----------------------------
 
   // --------------------- Endswitch stop logic -----------------------------
-  if(digitalRead(XSmin)){
+  if(digitalRead(SXmin)){
     if(!endswitch_state[0]){      // checks if is the first time entering the loop
-      stepperXS.setSpeed(0.0);    // stops the motor
-      stepperXS.moveTo(stepperXS.currentPosition());
+      stepperSX.setSpeed(0.0);    // stops the motor
+      stepperSX.moveTo(stepperSX.currentPosition());
       endswitch_state[0] = true;  // states that the motor has been stopped
-      Serial.println("XSmin reached");
+      Serial.println("SXmin reached");
     }else{
-      if(stepperXS.targetPosition()-stepperXS.currentPosition()<0){   // if it wants to go further back
-        stepperXS.setSpeed(0.0);                                      // do not allow it
-        stepperXS.moveTo(stepperXS.currentPosition ());
+      if(stepperSX.targetPosition()-stepperSX.currentPosition()<0){   // if it wants to go further back
+        stepperSX.setSpeed(0.0);                                      // do not allow it
+        stepperSX.moveTo(stepperSX.currentPosition ());
       }
     }
-  }else if(digitalRead(XSmax)){
+  }else if(digitalRead(SXmax)){
     if(!endswitch_state[1]){      // checks if is the first time entering the loop
-      stepperXS.setSpeed(0.0);    // stops the motor
-      stepperXS.moveTo(stepperXS.currentPosition());
+      stepperSX.setSpeed(0.0);    // stops the motor
+      stepperSX.moveTo(stepperSX.currentPosition());
       endswitch_state[1] = true;  // states that the motor has been stopped
-      Serial.println("XSmax reached");
+      Serial.println("SXmax reached");
     }else{
-      if(stepperXS.targetPosition()-stepperXS.currentPosition()>0){   // if it wants to go further forward
-        stepperXS.setSpeed(0.0);                                      // do not allow it
-        stepperXS.moveTo(stepperXS.currentPosition ());
+      if(stepperSX.targetPosition()-stepperSX.currentPosition()>0){   // if it wants to go further forward
+        stepperSX.setSpeed(0.0);                                      // do not allow it
+        stepperSX.moveTo(stepperSX.currentPosition ());
       }
     }
   }else{
@@ -605,28 +570,28 @@ void loop() {
     endswitch_state[1] = false;
   }
   
-  if(digitalRead(YSmin)){
+  if(digitalRead(SYmin)){
     if(!endswitch_state[2]){      // checks if is the first time entering the loop
-      stepperYS.setSpeed(0.0);    // stops the motor
-      stepperYS.moveTo(stepperYS.currentPosition());
+      stepperSY.setSpeed(0.0);    // stops the motor
+      stepperSY.moveTo(stepperSY.currentPosition());
       endswitch_state[2] = true;  // states that the motor has been stopped
-      Serial.println("YSmin reached");
+      Serial.println("SYmin reached");
     }else{
-      if(stepperYS.targetPosition()-stepperYS.currentPosition()<0){   // if it wants to go further back
-        stepperYS.setSpeed(0.0);                                      // do not allow it
-        stepperYS.moveTo(stepperYS.currentPosition ());
+      if(stepperSY.targetPosition()-stepperSY.currentPosition()<0){   // if it wants to go further back
+        stepperSY.setSpeed(0.0);                                      // do not allow it
+        stepperSY.moveTo(stepperSY.currentPosition ());
       }
     }
-  }else if(digitalRead(YSmax)){
+  }else if(digitalRead(SYmax)){
     if(!endswitch_state[3]){      // checks if is the first time entering the loop
-      stepperYS.setSpeed(0.0);    // stops the motor
-      stepperYS.moveTo(stepperYS.currentPosition());
+      stepperSY.setSpeed(0.0);    // stops the motor
+      stepperSY.moveTo(stepperSY.currentPosition());
       endswitch_state[3] = true;  // states that the motor has been stopped
-      Serial.println("YSmax reached");
+      Serial.println("SYmax reached");
     }else{
-      if(stepperYS.targetPosition()-stepperYS.currentPosition()>0){   // if it wants to go further forward
-        stepperYS.setSpeed(0.0);                                      // do not allow it
-        stepperYS.moveTo(stepperYS.currentPosition ());
+      if(stepperSY.targetPosition()-stepperSY.currentPosition()>0){   // if it wants to go further forward
+        stepperSY.setSpeed(0.0);                                      // do not allow it
+        stepperSY.moveTo(stepperSY.currentPosition ());
       }
     }
   }else{
@@ -634,28 +599,28 @@ void loop() {
     endswitch_state[3] = false;
   }
 
-  if(digitalRead(ZSmin)){
+  if(digitalRead(SZmin)){
     if(!endswitch_state[4]){
-      stepperZS.setSpeed(0.0);    // stops the motor
-      stepperZS.moveTo(stepperZS.currentPosition());
+      stepperSZ.setSpeed(0.0);    // stops the motor
+      stepperSZ.moveTo(stepperSZ.currentPosition());
       endswitch_state[4] = true;  // states that the motor has been stopped
-      Serial.println("ZSmin reached");
+      Serial.println("SZmin reached");
     }else{
-      if(stepperZS.targetPosition()-stepperZS.currentPosition()<0){   // if it wants to go further down
-        stepperZS.setSpeed(0.0);                                      // do not allow it
-        stepperZS.moveTo(stepperZS.currentPosition ());
+      if(stepperSZ.targetPosition()-stepperSZ.currentPosition()<0){   // if it wants to go further down
+        stepperSZ.setSpeed(0.0);                                      // do not allow it
+        stepperSZ.moveTo(stepperSZ.currentPosition ());
       }
     }
-  }else if(digitalRead(ZSmax)){
+  }else if(digitalRead(SZmax)){
     if(!endswitch_state[5]){
-      stepperZS.setSpeed(0.0);    // stops the motor
-      stepperZS.moveTo(stepperZS.currentPosition());
+      stepperSZ.setSpeed(0.0);    // stops the motor
+      stepperSZ.moveTo(stepperSZ.currentPosition());
       endswitch_state[5] = true;  // states that the motor has been stopped
-      Serial.println("ZSmax reached");
+      Serial.println("SZmax reached");
     }else{
-      if(stepperZS.targetPosition()-stepperZS.currentPosition()>0){   // if it wants to go further up
-        stepperZS.setSpeed(0.0);                                      // do not allow it
-        stepperZS.moveTo(stepperZS.currentPosition ());
+      if(stepperSZ.targetPosition()-stepperSZ.currentPosition()>0){   // if it wants to go further up
+        stepperSZ.setSpeed(0.0);                                      // do not allow it
+        stepperSZ.moveTo(stepperSZ.currentPosition ());
       }
     }
   }else{
@@ -663,28 +628,28 @@ void loop() {
     endswitch_state[5] = false;
   }
   // -------- endswitch of wave generator -------
-  if(digitalRead(XWmin)){
+  if(digitalRead(WXmin)){
     if(!endswitch_state[6]){      // checks if is the first time entering the loop
-      stepperXW.setSpeed(0.0);    // stops the motor
-      stepperXW.moveTo(stepperXW.currentPosition());
+      stepperWX.setSpeed(0.0);    // stops the motor
+      stepperWX.moveTo(stepperWX.currentPosition());
       endswitch_state[6] = true;  // states that the motor has been stopped
-      Serial.println("XWmin reached");
+      Serial.println("WXmin reached");
     }else{
-      if(stepperXW.targetPosition()-stepperXW.currentPosition()<0){   // if it wants to go further back
-        stepperXW.setSpeed(0.0);                                      // do not allow it
-        stepperXW.moveTo(stepperXW.currentPosition ());
+      if(stepperWX.targetPosition()-stepperWX.currentPosition()<0){   // if it wants to go further back
+        stepperWX.setSpeed(0.0);                                      // do not allow it
+        stepperWX.moveTo(stepperWX.currentPosition ());
       }
     }
-  }else if(digitalRead(XWmax)){
+  }else if(digitalRead(WXmax)){
     if(!endswitch_state[7]){      // checks if is the first time entering the loop
-      stepperXW.setSpeed(0.0);    // stops the motor
-      stepperXW.moveTo(stepperXW.currentPosition());
+      stepperWX.setSpeed(0.0);    // stops the motor
+      stepperWX.moveTo(stepperWX.currentPosition());
       endswitch_state[7] = true;  // states that the motor has been stopped
-      Serial.println("XWmax reached");
+      Serial.println("WXmax reached");
     }else{
-      if(stepperXW.targetPosition()-stepperXW.currentPosition()>0){   // if it wants to go further forward
-        stepperXW.setSpeed(0.0);                                      // do not allow it
-        stepperXW.moveTo(stepperXW.currentPosition ());
+      if(stepperWX.targetPosition()-stepperWX.currentPosition()>0){   // if it wants to go further forward
+        stepperWX.setSpeed(0.0);                                      // do not allow it
+        stepperWX.moveTo(stepperWX.currentPosition ());
       }
     }
   }else{
@@ -692,28 +657,28 @@ void loop() {
     endswitch_state[7] = false;
   }
   
-  if(digitalRead(YWmin)){
+  if(digitalRead(WYmin)){
     if(!endswitch_state[8]){      // checks if is the first time entering the loop
-      stepperYW.setSpeed(0.0);    // stops the motor
-      stepperYW.moveTo(stepperYW.currentPosition());
+      stepperWY.setSpeed(0.0);    // stops the motor
+      stepperWY.moveTo(stepperWY.currentPosition());
       endswitch_state[8] = true;  // states that the motor has been stopped
-      Serial.println("YWmin reached");
+      Serial.println("WYmin reached");
     }else{
-      if(stepperYW.targetPosition()-stepperYW.currentPosition()<0){   // if it wants to go further back
-        stepperYW.setSpeed(0.0);                          // do not allow it
-        stepperYW.moveTo(stepperYW.currentPosition ());
+      if(stepperWY.targetPosition()-stepperWY.currentPosition()<0){   // if it wants to go further back
+        stepperWY.setSpeed(0.0);                          // do not allow it
+        stepperWY.moveTo(stepperWY.currentPosition ());
       }
     }
-  }else if(digitalRead(YWmax)){
+  }else if(digitalRead(WYmax)){
     if(!endswitch_state[9]){      // checks if is the first time entering the loop
-      stepperYW.setSpeed(0.0);    // stops the motor
-      stepperYW.moveTo(stepperYW.currentPosition());
+      stepperWY.setSpeed(0.0);    // stops the motor
+      stepperWY.moveTo(stepperWY.currentPosition());
       endswitch_state[9] = true;  // states that the motor has been stopped
-      Serial.println("YWmax reached");
+      Serial.println("WYmax reached");
     }else{
-      if(stepperYW.targetPosition()-stepperYW.currentPosition()>0){   // if it wants to go further forward
-        stepperYW.setSpeed(0.0);                                      // do not allow it
-        stepperYW.moveTo(stepperYW.currentPosition ());
+      if(stepperWY.targetPosition()-stepperWY.currentPosition()>0){   // if it wants to go further forward
+        stepperWY.setSpeed(0.0);                                      // do not allow it
+        stepperWY.moveTo(stepperWY.currentPosition ());
       }
     }
   }else{
@@ -721,28 +686,28 @@ void loop() {
     endswitch_state[9] = false;
   }
 
-  if(digitalRead(ZWmin)){
+  if(digitalRead(WZmin)){
     if(!endswitch_state[10]){      // checks if is the first time entering the loop
-      stepperZW.setSpeed(0.0);    // stops the motor
-      stepperZW.moveTo(stepperZW.currentPosition());
+      stepperWZ.setSpeed(0.0);    // stops the motor
+      stepperWZ.moveTo(stepperWZ.currentPosition());
       endswitch_state[10] = true;  // states that the motor has been stopped
-      Serial.println("ZWmin reached");
+      Serial.println("WZmin reached");
     }else{
-      if(stepperZW.targetPosition()-stepperZW.currentPosition()<0){   // if it wants to go further back
-        stepperZW.setSpeed(0.0);                          // do not allow it
-        stepperZW.moveTo(stepperZW.currentPosition ());
+      if(stepperWZ.targetPosition()-stepperWZ.currentPosition()<0){   // if it wants to go further back
+        stepperWZ.setSpeed(0.0);                          // do not allow it
+        stepperWZ.moveTo(stepperWZ.currentPosition ());
       }
     }
-  }else if(digitalRead(ZWmax)){
+  }else if(digitalRead(WZmax)){
     if(!endswitch_state[11]){      // checks if is the first time entering the loop
-      stepperZW.setSpeed(0.0);    // stops the motor
-      stepperZW.moveTo(stepperZW.currentPosition());
+      stepperWZ.setSpeed(0.0);    // stops the motor
+      stepperWZ.moveTo(stepperWZ.currentPosition());
       endswitch_state[11] = true;  // states that the motor has been stopped
-      Serial.println("YWmax reached");
+      Serial.println("WYmax reached");
     }else{
-      if(stepperZW.targetPosition()-stepperZW.currentPosition()>0){   // if it wants to go further forward
-        stepperZW.setSpeed(0.0);                                      // do not allow it
-        stepperZW.moveTo(stepperZW.currentPosition ());
+      if(stepperWZ.targetPosition()-stepperWZ.currentPosition()>0){   // if it wants to go further forward
+        stepperWZ.setSpeed(0.0);                                      // do not allow it
+        stepperWZ.moveTo(stepperWZ.currentPosition ());
       }
     }
   }else{
@@ -759,35 +724,35 @@ void loop() {
     delay(125);
 
     if(Serial.available()==0 && servo =="SP" || Serial.available()==0 && servo =="SN") {   
-      stepperZ.runToNewPosition(stepperZ.currentPosition ()+(FAC)*micron_per_scan);
+      stepperCZ.runToNewPosition(stepperCZ.currentPosition ()+(DZAC)*micron_per_scan);
       val =0;         
       Serial.print("Pos: ");
-      Serial.print(stepperZ.currentPosition ()/cfcZ);
+      Serial.print(stepperCZ.currentPosition ()/cfcCZ);
       Serial.println(" micron");    
     }
 
-    if(Serial.available()==0 && servo =="SPF" || Serial.available()==0 && servo =="SNF") {   
-      stepperF.runToNewPosition(stepperF.currentPosition ()+(FAC)*micron_per_scanF);
+    if(Serial.available()==0 && servo =="SPDZ" || Serial.available()==0 && servo =="SNDZ") {   
+      stepperDZ.runToNewPosition(stepperDZ.currentPosition ()+(DZAC)*micron_per_scanDZ);
       val =0;         
       Serial.print("Pos: ");
-      Serial.print(stepperF.currentPosition ()/cfcF);
+      Serial.print(stepperDZ.currentPosition ()/cfcDZ);
       Serial.println(" micron");    
     }
     
 //Serial.print("scan_limit: ");
 //Serial.print(scan_limit);
-//Serial.print("stepperZ.currentPosition ()");
-//Serial.print(stepperZ.currentPosition ());
+//Serial.print("stepperCZ.currentPosition ()");
+//Serial.print(stepperCZ.currentPosition ());
     
   }
 
   if(servo =="SP") {
-    if ((stepperZ.currentPosition () > scan_limit) && scanit==1) {
+    if ((stepperCZ.currentPosition () > scan_limit) && scanit==1) {
       Serial.println("scheisse!");    
       Serial.print("Pos: ");
-      Serial.print(stepperZ.currentPosition ()/cfcZ);
+      Serial.print(stepperCZ.currentPosition ()/cfcCZ);
       Serial.println(" micron");
-      move_finishedZ=1;                           // Reset move variable
+      move_finishedCZ=1;                           // Reset move variable
       moveit=0;
       scanit=0;
       help=0;
@@ -800,12 +765,12 @@ void loop() {
   }
 
   if(servo =="SN") {
-    if ((stepperZ.currentPosition () < scan_limit) && scanit==1) {
+    if ((stepperCZ.currentPosition () < scan_limit) && scanit==1) {
       Serial.println("scheisse!");
       Serial.print("Pos: ");
-      Serial.print(stepperZ.currentPosition ()/cfcZ);
+      Serial.print(stepperCZ.currentPosition ()/cfcCZ);
       Serial.println(" micron");
-      move_finishedZ=1;                           // Reset move variable
+      move_finishedCZ=1;                           // Reset move variable
       moveit=0;
       scanit=0;
       help=0;
@@ -817,246 +782,168 @@ void loop() {
     }
   }
 
-  if(servo =="SPF") {
-    if ((stepperF.currentPosition () > scan_limitF) && scanit==1) {
+  if(servo =="SPDZ") {
+    if ((stepperDZ.currentPosition () > scan_limitDZ) && scanit==1) {
       Serial.println("scheisse!");    
       Serial.print("Pos: ");
-      Serial.print(stepperF.currentPosition ()/cfcF);
+      Serial.print(stepperDZ.currentPosition ()/cfcDZ);
       Serial.println(" micron");
-      move_finishedF=1;                           // Reset move variable
+      move_finishedDZ=1;                           // Reset move variable
       moveit=0;
       scanit=0;
       help=0;
-      scan_limitF=0;
+      scan_limitDZ=0;
       Serial.print("help: ");
       Serial.println(help);
       Serial.print("scan_limit: ");
-      Serial.println(scan_limitF);
+      Serial.println(scan_limitDZ);
     }
   }
 
-  if(servo =="SNF") {
-    if ((stepperF.currentPosition () < scan_limitF) && scanit==1) {
+  if(servo =="SNDZ") {
+    if ((stepperDZ.currentPosition () < scan_limitDZ) && scanit==1) {
       Serial.println("scheisse!");    
       Serial.print("Pos: ");
-      Serial.print(stepperF.currentPosition ()/cfcF);
+      Serial.print(stepperDZ.currentPosition ()/cfcDZ);
       Serial.println(" micron");
-      move_finishedF=1;                           // Reset move variable
+      move_finishedDZ=1;                           // Reset move variable
       moveit=0;
       scanit=0;
       help=0;
-      scan_limitF=0;
+      scan_limitDZ=0;
       Serial.print("help: ");
       Serial.println(help);
       Serial.print("scan_limit: ");
-      Serial.println(scan_limitF);
+      Serial.println(scan_limitDZ);
     }
   }
 
   if(moveit==1) {
-    if (stepperX.distanceToGo() != 0) {    
-      stepperX.run();                            // Move Stepper into position    
-     // Serial.println("RunX");
+    if (stepperCX.distanceToGo() != 0) {    
+      stepperCX.run();                            // Move Stepper into position    
+     // Serial.println("RunCX");
     }
 
     // If move is completed display message on Serial Monitor
-    if ((move_finishedX == 0) && (stepperX.distanceToGo() == 0)) {
-      Serial.print("PosX: ");
-      Serial.print(stepperX.currentPosition ()/cfcX);   
+    if ((move_finishedCX == 0) && (stepperCX.distanceToGo() == 0)) {
+      Serial.print("PosCX: ");
+      Serial.print(stepperCX.currentPosition ()/cfcCX);   
       Serial.print("| PosY: ");
-      Serial.print(stepperY.currentPosition ()/cfcY);    
-      Serial.print("| PosZ: ");
-      Serial.print(stepperZ.currentPosition ()/cfcZ);
+      Serial.print(stepperCY.currentPosition ()/cfcCY);    
+      Serial.print("| PosCZ: ");
+      Serial.print(stepperCZ.currentPosition ()/cfcCZ);
       Serial.print("| micron");
-      Serial.print("| PosF: ");
-      Serial.print(stepperF.currentPosition ()/cfcF);
+      Serial.print("| PosDZ: ");
+      Serial.print(stepperDZ.currentPosition ()/cfcDZ);
       Serial.println("| micron");
-      move_finishedX=1;                           // Reset move variable
+      move_finishedCX=1;                           // Reset move variable
       moveit=0;
     }
   
-    if (stepperY.distanceToGo() != 0) {    
-      stepperY.run();                            // Move Stepper into position    
-      //Serial.println("RunY");
+    if (stepperCY.distanceToGo() != 0) {    
+      stepperCY.run();                            // Move Stepper into position    
+      //Serial.println("RunCY");
     }
 
     // If move is completed display message on Serial Monitor
-    if ((move_finishedY == 0) && (stepperY.distanceToGo() == 0)) {
+    if ((move_finishedCY == 0) && (stepperCY.distanceToGo() == 0)) {
       Serial.println("COMPLETED!");    
-      Serial.print("PosX: ");
-      Serial.print(stepperX.currentPosition ()/cfcX);   
-      Serial.print("| PosY: ");
-      Serial.print(stepperY.currentPosition ()/cfcY);    
-      Serial.print("| PosZ: ");
-      Serial.print(stepperZ.currentPosition ()/cfcZ);
-      Serial.print("| micron");
-      Serial.print("| PosF: ");
-      Serial.print(stepperF.currentPosition ()/cfcF);
-      Serial.println("| micron");
-      move_finishedY=1;                           // Reset move variable
+      move_finishedCY=1;                           // Reset move variable
       moveit=0;
     }
     
-    if (stepperZ.distanceToGo() != 0) {    
-      stepperZ.run();                            // Move Stepper into position    
-      //Serial.println("RunZ");
+    if (stepperCZ.distanceToGo() != 0) {    
+      stepperCZ.run();                            // Move Stepper into position    
+      //Serial.println("RunCZ");
     }
 
     // If move is completed display message on Serial Monitor
-    if ((move_finishedZ == 0) && (stepperZ.distanceToGo() == 0)) {
+    if ((move_finishedCZ == 0) && (stepperCZ.distanceToGo() == 0)) {
       Serial.println("COMPLETED!");
-      Serial.print("PosX: ");
-      Serial.print(stepperX.currentPosition ()/cfcX);   
-      Serial.print("| PosY: ");
-      Serial.print(stepperY.currentPosition ()/cfcY);    
-      Serial.print("| PosZ: ");
-      Serial.print(stepperZ.currentPosition ()/cfcZ);
-      Serial.print("| micron");
-      Serial.print("| PosF: ");
-      Serial.print(stepperF.currentPosition ()/cfcF);
-      Serial.println("| micron");
-      move_finishedZ=1;                           // Reset move variable
+      move_finishedCZ=1;                           // Reset move variable
       moveit=0;
     }
 
-   if (stepperF.distanceToGo() != 0) {    
-      stepperF.run();                            // Move Stepper into position    
-      //Serial.println("RunZ");
+   if (stepperDZ.distanceToGo() != 0) {    
+      stepperDZ.run();                            // Move Stepper into position    
+      //Serial.println("RunCZ");
     }
 
     // If move is completed display message on Serial Monitor
-    if ((move_finishedF == 0) && (stepperF.distanceToGo() == 0)) {
+    if ((move_finishedDZ == 0) && (stepperDZ.distanceToGo() == 0)) {
       Serial.println("COMPLETED!");
-      Serial.print("PosX: ");
-      Serial.print(stepperX.currentPosition ()/cfcX);   
-      Serial.print("| PosY: ");
-      Serial.print(stepperY.currentPosition ()/cfcY);    
-      Serial.print("| PosZ: ");
-      Serial.print(stepperZ.currentPosition ()/cfcZ);
-      Serial.print("| micron");
-      Serial.print("| PosF: ");
-      Serial.print(stepperF.currentPosition ()/cfcF);
-      Serial.println("| micron");
-      move_finishedF=1;                           // Reset move variable
+      move_finishedDZ=1;                           // Reset move variable
       moveit=0;
     }
 
   // New --------------------- Sensor movement
-    if (stepperXS.distanceToGo() != 0) {    
-      stepperXS.run();                            // Move Stepper into position
+    if (stepperSX.distanceToGo() != 0) {    
+      stepperSX.run();                            // Move Stepper into position
     }
 
     // If move is completed display message on Serial Monitor
-    if ((move_finishedXS == 0) && (stepperXS.distanceToGo() == 0)) {
-      Serial.print("PosX: ");
-      Serial.print(stepperX.currentPosition ()/cfcX);   
-      Serial.print("| PosY: ");
-      Serial.print(stepperY.currentPosition ()/cfcY);    
-      Serial.print("| PosZ: ");
-      Serial.print(stepperZ.currentPosition ()/cfcZ);
-      Serial.print("| micron");
-      Serial.print("| PosF: ");
-      Serial.print(stepperF.currentPosition ()/cfcF);
+    if ((move_finishedSX == 0) && (stepperSX.distanceToGo() == 0)) {
+      Serial.print("| PosDZ: ");
+      Serial.print(stepperDZ.currentPosition ()/cfcDZ);
       Serial.println("| micron");
-      move_finishedXS=1;                           // Reset move variable
+      move_finishedSX=1;                           // Reset move variable
       moveit=0;
     }
   
-    if (stepperYS.distanceToGo() != 0) {    
-      stepperYS.run();                            // Move Stepper into position    
+    if (stepperSY.distanceToGo() != 0) {    
+      stepperSY.run();                            // Move Stepper into position    
       //Serial.println("RunY");
     }
 
     // If move is completed display message on Serial Monitor
-    if ((move_finishedYS == 0) && (stepperYS.distanceToGo() == 0)) {
+    if ((move_finishedSY == 0) && (stepperSY.distanceToGo() == 0)) {
       Serial.println("COMPLETED!");    
-      Serial.print("PosX: ");
-      Serial.print(stepperX.currentPosition ()/cfcX);   
-      Serial.print("| PosY: ");
-      Serial.print(stepperY.currentPosition ()/cfcY);    
-      Serial.print("| PosZ: ");
-      Serial.print(stepperZ.currentPosition ()/cfcZ);
-      Serial.print("| micron");
-      Serial.print("| PosF: ");
-      Serial.print(stepperF.currentPosition ()/cfcF);
-      Serial.println("| micron");
-      move_finishedYS=1;                           // Reset move variable
+      move_finishedSY=1;                           // Reset move variable
       moveit=0;
     }
     
-    if (stepperZS.distanceToGo() != 0) {    
-      stepperZS.run();                            // Move Stepper into position    
+    if (stepperSZ.distanceToGo() != 0) {    
+      stepperSZ.run();                            // Move Stepper into position    
       //Serial.println("RunZ");
     }
 
     // If move is completed display message on Serial Monitor
-    if ((move_finishedZS == 0) && (stepperZS.distanceToGo() == 0)) {
+    if ((move_finishedSZ == 0) && (stepperSZ.distanceToGo() == 0)) {
       Serial.println("COMPLETED!");
-      Serial.print("PosX: ");
-      Serial.print(stepperX.currentPosition ()/cfcX);   
-      Serial.print("| PosY: ");
-      Serial.print(stepperY.currentPosition ()/cfcY);    
-      Serial.print("| PosZ: ");
-      Serial.print(stepperZ.currentPosition ()/cfcZ);
-      Serial.print("| micron");
-      Serial.print("| PosF: ");
-      Serial.print(stepperF.currentPosition ()/cfcF);
-      Serial.println("| micron");
-      move_finishedZS=1;                           // Reset move variable
+      move_finishedSZ=1;                           // Reset move variable
       moveit=0;
     }
 
     // New --------------------- Wave generator movement
-    if (stepperXW.distanceToGo() != 0) {    
-      stepperXW.run();                            // Move Stepper into position
+    if (stepperWX.distanceToGo() != 0) {    
+      stepperWX.run();                            // Move Stepper into position
     }
 
     // If move is completed display message on Serial Monitor
-    if ((move_finishedXW == 0) && (stepperXW.distanceToGo() == 0)) {
-      Serial.print("PosX: ");
-      Serial.print(stepperXW.currentPosition ()/cfcX);   
-      Serial.print("| PosY: ");
-      Serial.print(stepperYW.currentPosition ()/cfcY);    
-      Serial.print("| PosZ: ");
-      Serial.print(stepperZW.currentPosition ()/cfcZ);
-      Serial.println("| micron");
-      move_finishedXW=1;                           // Reset move variable
+    if ((move_finishedWX == 0) && (stepperWX.distanceToGo() == 0)) {
+      move_finishedWX=1;                           // Reset move variable
       moveit=0;
     }
   
-    if (stepperYW.distanceToGo() != 0) {    
-      stepperYW.run();                            // Move Stepper into position
+    if (stepperWY.distanceToGo() != 0) {    
+      stepperWY.run();                            // Move Stepper into position
     }
 
     // If move is completed display message on Serial Monitor
-    if ((move_finishedYW == 0) && (stepperYW.distanceToGo() == 0)) {
+    if ((move_finishedWY == 0) && (stepperWY.distanceToGo() == 0)) {
       Serial.println("COMPLETED!");    
-      Serial.print("PosX: ");
-      Serial.print(stepperXW.currentPosition ()/cfcX);   
-      Serial.print("| PosY: ");
-      Serial.print(stepperYW.currentPosition ()/cfcY);    
-      Serial.print("| PosZ: ");
-      Serial.print(stepperZW.currentPosition ()/cfcZ);
-      Serial.println("| micron");
-      move_finishedYW=1;                           // Reset move variable
+      move_finishedWY=1;                           // Reset move variable
       moveit=0;
     }
     
-    if (stepperZW.distanceToGo() != 0) {    
-      stepperZW.run();                            // Move Stepper into position    
+    if (stepperWZ.distanceToGo() != 0) {    
+      stepperWZ.run();                            // Move Stepper into position    
     }
 
     // If move is completed display message on Serial Monitor
-    if ((move_finishedZW == 0) && (stepperZW.distanceToGo() == 0)) {
+    if ((move_finishedWZ == 0) && (stepperWZ.distanceToGo() == 0)) {
       Serial.println("COMPLETED!");
-      Serial.print("PosX: ");
-      Serial.print(stepperXW.currentPosition ()/cfcX);   
-      Serial.print("| PosY: ");
-      Serial.print(stepperYW.currentPosition ()/cfcY);    
-      Serial.print("| PosZ: ");
-      Serial.print(stepperZW.currentPosition ()/cfcZ);
-      Serial.println("| micron");
-      move_finishedZW=1;                           // Reset move variable
+      move_finishedWZ=1;                           // Reset move variable
       moveit=0;
     }    
   }

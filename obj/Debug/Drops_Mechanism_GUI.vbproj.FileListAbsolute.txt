@@ -26,3 +26,17 @@ C:\Users\he71xopo\Downloads\A07-Drops-setup-GUI-main_repo\A07-Drops-setup-GUI-ma
 C:\Users\he71xopo\Downloads\A07-Drops-setup-GUI-main_repo\A07-Drops-setup-GUI-main\obj\Debug\Drops_Mechanism_GUI.exe
 C:\Users\he71xopo\Downloads\A07-Drops-setup-GUI-main_repo\A07-Drops-setup-GUI-main\obj\Debug\Drops_Mechanism_GUI.xml
 C:\Users\he71xopo\Downloads\A07-Drops-setup-GUI-main_repo\A07-Drops-setup-GUI-main\obj\Debug\Drops_Mechanism_GUI.pdb
+C:\Users\jd27lefe\Documents\GitHub\A07-Drops-setup-GUI\bin\Debug\Drops_Mechanism_GUI.exe.config
+C:\Users\jd27lefe\Documents\GitHub\A07-Drops-setup-GUI\bin\Debug\Drops_Mechanism_GUI.exe
+C:\Users\jd27lefe\Documents\GitHub\A07-Drops-setup-GUI\bin\Debug\Drops_Mechanism_GUI.pdb
+C:\Users\jd27lefe\Documents\GitHub\A07-Drops-setup-GUI\bin\Debug\Drops_Mechanism_GUI.xml
+C:\Users\jd27lefe\Documents\GitHub\A07-Drops-setup-GUI\obj\Debug\Drops_Mechanism_GUI.vbproj.AssemblyReference.cache
+C:\Users\jd27lefe\Documents\GitHub\A07-Drops-setup-GUI\obj\Debug\Drops_Mechanism_GUI.vbproj.SuggestedBindingRedirects.cache
+C:\Users\jd27lefe\Documents\GitHub\A07-Drops-setup-GUI\obj\Debug\Drops_Mechanism_GUI.MainWindow.resources
+C:\Users\jd27lefe\Documents\GitHub\A07-Drops-setup-GUI\obj\Debug\Drops_Mechanism_GUI.Resources.resources
+C:\Users\jd27lefe\Documents\GitHub\A07-Drops-setup-GUI\obj\Debug\Drops_Mechanism_GUI.Resource1.resources
+C:\Users\jd27lefe\Documents\GitHub\A07-Drops-setup-GUI\obj\Debug\Drops_Mechanism_GUI.vbproj.GenerateResource.cache
+C:\Users\jd27lefe\Documents\GitHub\A07-Drops-setup-GUI\obj\Debug\Drops_Mechanism_GUI.vbproj.CoreCompileInputs.cache
+C:\Users\jd27lefe\Documents\GitHub\A07-Drops-setup-GUI\obj\Debug\Drops_Mechanism_GUI.exe
+C:\Users\jd27lefe\Documents\GitHub\A07-Drops-setup-GUI\obj\Debug\Drops_Mechanism_GUI.xml
+C:\Users\jd27lefe\Documents\GitHub\A07-Drops-setup-GUI\obj\Debug\Drops_Mechanism_GUI.pdb
