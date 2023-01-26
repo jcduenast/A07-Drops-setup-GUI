@@ -159,29 +159,29 @@ Public Class MainWindow
     'Start of routines related to the controll of the sensor
     Private Sub btnSXRight_Click(sender As Object, e As EventArgs) Handles btnSXRight.Click
         'Send the command to move to the right the amount especified in the box
-        SerialPort1.WriteLine("RXS: -" + txtSXMove.Text)
+        SerialPort1.WriteLine("RSX: -" + txtSXMove.Text)
     End Sub
 
     Private Sub btnSXLeft_Click(sender As Object, e As EventArgs) Handles btnSXLeft.Click
-        SerialPort1.WriteLine("RXS: " + txtSXMove.Text)
+        SerialPort1.WriteLine("RSX: " + txtSXMove.Text)
     End Sub
 
     Private Sub btnSYForward_Click(sender As Object, e As EventArgs) Handles btnSYForward.Click
         'Send the command to move to forward the amount especified in the box
-        SerialPort1.WriteLine("RYS: -" + txtSYMove.Text)
+        SerialPort1.WriteLine("RSY: -" + txtSYMove.Text)
     End Sub
 
     Private Sub btnSYBackward_Click(sender As Object, e As EventArgs) Handles btnSYBackward.Click
-        SerialPort1.WriteLine("RYS: " + txtSYMove.Text)
+        SerialPort1.WriteLine("RSY: " + txtSYMove.Text)
     End Sub
 
     Private Sub btnSZUp_Click(sender As Object, e As EventArgs) Handles btnSZUp.Click
         'Send the command to move up the amount especified in the box
-        SerialPort1.WriteLine("RZS: " + txtSZMove.Text)
+        SerialPort1.WriteLine("RSZ: " + txtSZMove.Text)
     End Sub
 
     Private Sub btnSZDown_Click(sender As Object, e As EventArgs) Handles btnSZDown.Click
-        SerialPort1.WriteLine("RZS: -" + txtSZMove.Text)
+        SerialPort1.WriteLine("RSZ: -" + txtSZMove.Text)
     End Sub
 
     Private Sub btnSXHome_Click(sender As Object, e As EventArgs) Handles btnSXHome.Click
@@ -211,40 +211,40 @@ Public Class MainWindow
     End Sub
 
     Private Sub btnDZUp_Click(sender As Object, e As EventArgs) Handles btnDZUp.Click
-        SerialPort1.WriteLine("RF: -" + txtDZMove.Text)
+        SerialPort1.WriteLine("RD: -" + txtDZMove.Text)
     End Sub
 
     Private Sub btnDZDown_Click(sender As Object, e As EventArgs) Handles btnDZDown.Click
-        SerialPort1.WriteLine("RF: " + txtDZMove.Text)
+        SerialPort1.WriteLine("RD: " + txtDZMove.Text)
     End Sub
 
     Private Sub btnDZHome_Click(sender As Object, e As EventArgs) Handles btnDZHome.Click
-        SerialPort1.WriteLine("FH")
+        SerialPort1.WriteLine("DH")
     End Sub
 
     'buttons of the (C)amera/LED
     Private Sub btnCXRight_Click(sender As Object, e As EventArgs) Handles btnCXRight.Click
-        SerialPort1.WriteLine("RX: " + txtCXMove.Text)
+        SerialPort1.WriteLine("RCX: " + txtCXMove.Text)
     End Sub
 
     Private Sub btnCXLeft_Click(sender As Object, e As EventArgs) Handles btnCXLeft.Click
-        SerialPort1.WriteLine("RX: -" + txtCXMove.Text)
+        SerialPort1.WriteLine("RCX: -" + txtCXMove.Text)
     End Sub
 
     Private Sub btnCYForward_Click(sender As Object, e As EventArgs) Handles btnCYForward.Click
-        SerialPort1.WriteLine("RY: -" + txtCYMove.Text)
+        SerialPort1.WriteLine("RCY: -" + txtCYMove.Text)
     End Sub
 
     Private Sub btnCYBackward_Click(sender As Object, e As EventArgs) Handles btnCYBackward.Click
-        SerialPort1.WriteLine("RY: " + txtCYMove.Text)
+        SerialPort1.WriteLine("RCY: " + txtCYMove.Text)
     End Sub
 
     Private Sub btnCZUp_Click(sender As Object, e As EventArgs) Handles btnCZUp.Click
-        SerialPort1.WriteLine("RZ: -" + txtCZMove.Text)
+        SerialPort1.WriteLine("RCZ: -" + txtCZMove.Text)
     End Sub
 
     Private Sub btnCZDown_Click(sender As Object, e As EventArgs) Handles btnCZDown.Click
-        SerialPort1.WriteLine("RZ: " + txtCZMove.Text)
+        SerialPort1.WriteLine("RCZ: " + txtCZMove.Text)
     End Sub
 
     Private Sub btnCXHome_Click(sender As Object, e As EventArgs) Handles btnCXHome.Click
@@ -264,27 +264,27 @@ Public Class MainWindow
     End Sub
 
     Private Sub btnWXRight_Click(sender As Object, e As EventArgs) Handles btnWXRight.Click
-        SerialPort1.WriteLine("RXW: -" + txtWXMove.Text)
+        SerialPort1.WriteLine("RWX: -" + txtWXMove.Text)
     End Sub
 
     Private Sub btnWXLeft_Click(sender As Object, e As EventArgs) Handles btnWXLeft.Click
-        SerialPort1.WriteLine("RXW: " + txtWXMove.Text)
+        SerialPort1.WriteLine("RWX: " + txtWXMove.Text)
     End Sub
 
     Private Sub btnWYForward_Click(sender As Object, e As EventArgs) Handles btnWYForward.Click
-        SerialPort1.WriteLine("RYW: " + txtWYMove.Text)
+        SerialPort1.WriteLine("RWY: " + txtWYMove.Text)
     End Sub
 
     Private Sub btnWYBackward_Click(sender As Object, e As EventArgs) Handles btnWYBackward.Click
-        SerialPort1.WriteLine("RYW: -" + txtWYMove.Text)
+        SerialPort1.WriteLine("RWY: -" + txtWYMove.Text)
     End Sub
 
     Private Sub btnWZUp_Click(sender As Object, e As EventArgs) Handles btnWZUp.Click
-        SerialPort1.WriteLine("RZW: " + txtWZMove.Text)
+        SerialPort1.WriteLine("RWZ: " + txtWZMove.Text)
     End Sub
 
     Private Sub btnWZDown_Click(sender As Object, e As EventArgs) Handles btnWZDown.Click
-        SerialPort1.WriteLine("RZW: -" + txtWZMove.Text)
+        SerialPort1.WriteLine("RWZ: -" + txtWZMove.Text)
     End Sub
 
     Private Sub btnWXHome_Click(sender As Object, e As EventArgs) Handles btnWXHome.Click
