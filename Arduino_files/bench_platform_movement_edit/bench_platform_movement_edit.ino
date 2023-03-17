@@ -178,8 +178,8 @@ void setup() {
   stepperCY.setAcceleration(2000.0);     // Set Acceleration of Stepper
   stepperCZ.setMaxSpeed(30000.0);        // Set Max Speed of Stepper (Faster for regular movements)
   stepperCZ.setAcceleration(2000.0);     // Set Acceleration of Stepper
-  stepperDZ.setMaxSpeed(60000.0);        // Set Max Speed of Stepper (Faster for regular movements)
-  stepperDZ.setAcceleration(5000.0);     // Set Acceleration of Stepper
+  stepperDZ.setMaxSpeed(30000.0);        // Set Max Speed of Stepper (Faster for regular movements)
+  stepperDZ.setAcceleration(1000.0);     // Set Acceleration of Stepper
 
   // new --------------------------
   stepperSX.setMaxSpeed(30000.0);       // Set Max Speed of Stepper (Faster for regular movements)
