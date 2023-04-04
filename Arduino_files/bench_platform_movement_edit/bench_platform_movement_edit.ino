@@ -49,12 +49,7 @@ int N_pic=1;
 // steps(eingegeben)/micrometer(gemessen)
 float cfcCX=1.28;
 float cfcCY=1.28;
-//float cfcCZ=1/0.78;
-//float cfcCZ=100000/78000;
-//float cfcCZ=1.28205;
-//float cfcCZ=0.645161;
 float cfcCZ=3.2;
-//float cfcCZ=1;
 float cfcDZ=6.4;
 const float cfcSX=0.3759398;  // new
 const float cfcSY=0.3759398;  // new
@@ -321,7 +316,7 @@ void loop() {
       Serial.println("MOVE"); 
     }
     
-    if(servo =="MY") {
+    if(servo =="MCY") {
       scanit=0;
       moveit=1;
       stepperCY.moveTo(int_posCY);

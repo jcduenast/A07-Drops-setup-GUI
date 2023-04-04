@@ -1,0 +1,960 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.1.2 (b8e25be833, 2022-02-05)"
+   sodipodi:docname="GUI.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="1.476275"
+     inkscape:cx="257.74331"
+     inkscape:cy="532.42114"
+     inkscape:window-width="1920"
+     inkscape:window-height="1057"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1"
+     inkscape:snap-bbox="true"
+     inkscape:snap-bbox-edge-midpoints="true"
+     inkscape:bbox-nodes="true"
+     inkscape:bbox-paths="false"
+     inkscape:snap-bbox-midpoints="true"
+     inkscape:snap-object-midpoints="true"
+     inkscape:object-paths="true"
+     inkscape:snap-smooth-nodes="true"
+     inkscape:snap-intersection-paths="true"
+     inkscape:snap-midpoints="true"
+     inkscape:snap-nodes="true"
+     inkscape:snap-global="true" />
+  <defs
+     id="defs2">
+    <marker
+       style="overflow:visible;"
+       id="Arrow1Mend"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="Arrow1Mend"
+       inkscape:isstock="true">
+      <path
+         transform="scale(0.4) rotate(180) translate(10,0)"
+         style="fill-rule:evenodd;fill:context-stroke;stroke:context-stroke;stroke-width:1.0pt;"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         id="path13567" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="DotM"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="DotM"
+       inkscape:isstock="true">
+      <path
+         transform="scale(0.4) translate(7.4, 1)"
+         style="fill-rule:evenodd;fill:context-stroke;stroke:context-stroke;stroke-width:1.0pt"
+         d="M -2.5,-1.0 C -2.5,1.7600000 -4.7400000,4.0 -7.5,4.0 C -10.260000,4.0 -12.5,1.7600000 -12.5,-1.0 C -12.5,-3.7600000 -10.260000,-6.0 -7.5,-6.0 C -4.7400000,-6.0 -2.5,-3.7600000 -2.5,-1.0 z "
+         id="path13622" />
+    </marker>
+    <marker
+       style="overflow:visible;"
+       id="Arrow1Lend"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lend"
+       inkscape:isstock="true">
+      <path
+         transform="scale(0.8) rotate(180) translate(12.5,0)"
+         style="fill-rule:evenodd;fill:context-stroke;stroke:context-stroke;stroke-width:1.0pt;"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         id="path13561" />
+    </marker>
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient13421">
+      <stop
+         style="stop-color:#00ff00;stop-opacity:1;"
+         offset="0"
+         id="stop13417" />
+      <stop
+         style="stop-color:#00ff00;stop-opacity:0;"
+         offset="1"
+         id="stop13419" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient2991">
+      <stop
+         style="stop-color:#d4aa00;stop-opacity:1;"
+         offset="0"
+         id="stop2987" />
+      <stop
+         style="stop-color:#d4aa00;stop-opacity:0;"
+         offset="1"
+         id="stop2989" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient2506">
+      <stop
+         style="stop-color:#999999;stop-opacity:1;"
+         offset="0"
+         id="stop2502" />
+      <stop
+         style="stop-color:#999999;stop-opacity:0;"
+         offset="1"
+         id="stop2504" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient2506"
+       id="linearGradient2510"
+       x1="39.130409"
+       y1="25.919809"
+       x2="45.237713"
+       y2="25.919809"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(6.2728265,-1.4456162)" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient2991"
+       id="linearGradient2993"
+       x1="40.709669"
+       y1="11.71284"
+       x2="43.658448"
+       y2="11.71284"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(6.2728265,-1.4456162)" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient13421"
+       id="linearGradient13423"
+       x1="42.82239"
+       y1="171.65143"
+       x2="46.832557"
+       y2="171.65143"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(-2.8779673,0.98939924)" />
+    <marker
+       style="overflow:visible"
+       id="DotM-8"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="DotM"
+       inkscape:isstock="true">
+      <path
+         transform="matrix(0.4,0,0,0.4,2.96,0.4)"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:1pt"
+         d="m -2.5,-1 c 0,2.76 -2.24,5 -5,5 -2.76,0 -5,-2.24 -5,-5 0,-2.76 2.24,-5 5,-5 2.76,0 5,2.24 5,5 z"
+         id="path13622-1" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="Arrow1Mend-1"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Mend"
+       inkscape:isstock="true">
+      <path
+         transform="matrix(-0.4,0,0,-0.4,-4,0)"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:1pt"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path13567-5" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="DotM-7"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="DotM"
+       inkscape:isstock="true">
+      <path
+         transform="matrix(0.4,0,0,0.4,2.96,0.4)"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:1pt"
+         d="m -2.5,-1 c 0,2.76 -2.24,5 -5,5 -2.76,0 -5,-2.24 -5,-5 0,-2.76 2.24,-5 5,-5 2.76,0 5,2.24 5,5 z"
+         id="path13622-6" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="Arrow1Mend-7"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Mend"
+       inkscape:isstock="true">
+      <path
+         transform="matrix(-0.4,0,0,-0.4,-4,0)"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:1pt"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path13567-9" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="DotM-2"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="DotM"
+       inkscape:isstock="true">
+      <path
+         transform="matrix(0.4,0,0,0.4,2.96,0.4)"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:1pt"
+         d="m -2.5,-1 c 0,2.76 -2.24,5 -5,5 -2.76,0 -5,-2.24 -5,-5 0,-2.76 2.24,-5 5,-5 2.76,0 5,2.24 5,5 z"
+         id="path13622-62" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="Arrow1Mend-2"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Mend"
+       inkscape:isstock="true">
+      <path
+         transform="matrix(-0.4,0,0,-0.4,-4,0)"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:1pt"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path13567-2" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="DotM-8-1"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="DotM"
+       inkscape:isstock="true">
+      <path
+         transform="matrix(0.4,0,0,0.4,2.96,0.4)"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:1pt"
+         d="m -2.5,-1 c 0,2.76 -2.24,5 -5,5 -2.76,0 -5,-2.24 -5,-5 0,-2.76 2.24,-5 5,-5 2.76,0 5,2.24 5,5 z"
+         id="path13622-1-2" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="Arrow1Mend-1-5"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Mend"
+       inkscape:isstock="true">
+      <path
+         transform="matrix(-0.4,0,0,-0.4,-4,0)"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:1pt"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path13567-5-4" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="DotM-7-9"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="DotM"
+       inkscape:isstock="true">
+      <path
+         transform="matrix(0.4,0,0,0.4,2.96,0.4)"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:1pt"
+         d="m -2.5,-1 c 0,2.76 -2.24,5 -5,5 -2.76,0 -5,-2.24 -5,-5 0,-2.76 2.24,-5 5,-5 2.76,0 5,2.24 5,5 z"
+         id="path13622-6-1" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="Arrow1Mend-7-4"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Mend"
+       inkscape:isstock="true">
+      <path
+         transform="matrix(-0.4,0,0,-0.4,-4,0)"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:1pt"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path13567-9-5" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="DotM-5"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="DotM"
+       inkscape:isstock="true">
+      <path
+         transform="matrix(0.4,0,0,0.4,2.96,0.4)"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:1pt"
+         d="m -2.5,-1 c 0,2.76 -2.24,5 -5,5 -2.76,0 -5,-2.24 -5,-5 0,-2.76 2.24,-5 5,-5 2.76,0 5,2.24 5,5 z"
+         id="path13622-8" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="Arrow1Mend-24"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Mend"
+       inkscape:isstock="true">
+      <path
+         transform="matrix(-0.4,0,0,-0.4,-4,0)"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:1pt"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path13567-6" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="DotM-8-6"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="DotM"
+       inkscape:isstock="true">
+      <path
+         transform="matrix(0.4,0,0,0.4,2.96,0.4)"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:1pt"
+         d="m -2.5,-1 c 0,2.76 -2.24,5 -5,5 -2.76,0 -5,-2.24 -5,-5 0,-2.76 2.24,-5 5,-5 2.76,0 5,2.24 5,5 z"
+         id="path13622-1-8" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="Arrow1Mend-1-0"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Mend"
+       inkscape:isstock="true">
+      <path
+         transform="matrix(-0.4,0,0,-0.4,-4,0)"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:1pt"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path13567-5-9" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="DotM-7-1"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="DotM"
+       inkscape:isstock="true">
+      <path
+         transform="matrix(0.4,0,0,0.4,2.96,0.4)"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:1pt"
+         d="m -2.5,-1 c 0,2.76 -2.24,5 -5,5 -2.76,0 -5,-2.24 -5,-5 0,-2.76 2.24,-5 5,-5 2.76,0 5,2.24 5,5 z"
+         id="path13622-6-7" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="Arrow1Mend-7-1"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Mend"
+       inkscape:isstock="true">
+      <path
+         transform="matrix(-0.4,0,0,-0.4,-4,0)"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:1pt"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path13567-9-8" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="DotM-5-8"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="DotM"
+       inkscape:isstock="true">
+      <path
+         transform="matrix(0.4,0,0,0.4,2.96,0.4)"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:1pt"
+         d="m -2.5,-1 c 0,2.76 -2.24,5 -5,5 -2.76,0 -5,-2.24 -5,-5 0,-2.76 2.24,-5 5,-5 2.76,0 5,2.24 5,5 z"
+         id="path13622-8-8" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="Arrow1Mend-24-6"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Mend"
+       inkscape:isstock="true">
+      <path
+         transform="matrix(-0.4,0,0,-0.4,-4,0)"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:1pt"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path13567-6-2" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="DotM-8-6-7"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="DotM"
+       inkscape:isstock="true">
+      <path
+         transform="matrix(0.4,0,0,0.4,2.96,0.4)"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:1pt"
+         d="m -2.5,-1 c 0,2.76 -2.24,5 -5,5 -2.76,0 -5,-2.24 -5,-5 0,-2.76 2.24,-5 5,-5 2.76,0 5,2.24 5,5 z"
+         id="path13622-1-8-2" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="Arrow1Mend-1-0-4"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Mend"
+       inkscape:isstock="true">
+      <path
+         transform="matrix(-0.4,0,0,-0.4,-4,0)"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:1pt"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path13567-5-9-4" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="DotM-7-1-1"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="DotM"
+       inkscape:isstock="true">
+      <path
+         transform="matrix(0.4,0,0,0.4,2.96,0.4)"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:1pt"
+         d="m -2.5,-1 c 0,2.76 -2.24,5 -5,5 -2.76,0 -5,-2.24 -5,-5 0,-2.76 2.24,-5 5,-5 2.76,0 5,2.24 5,5 z"
+         id="path13622-6-7-8" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="Arrow1Mend-7-1-2"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Mend"
+       inkscape:isstock="true">
+      <path
+         transform="matrix(-0.4,0,0,-0.4,-4,0)"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:1pt"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path13567-9-8-1" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="DotM-5-3"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="DotM"
+       inkscape:isstock="true">
+      <path
+         transform="matrix(0.4,0,0,0.4,2.96,0.4)"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:1pt"
+         d="m -2.5,-1 c 0,2.76 -2.24,5 -5,5 -2.76,0 -5,-2.24 -5,-5 0,-2.76 2.24,-5 5,-5 2.76,0 5,2.24 5,5 z"
+         id="path13622-8-6" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="Arrow1Mend-24-8"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Mend"
+       inkscape:isstock="true">
+      <path
+         transform="matrix(-0.4,0,0,-0.4,-4,0)"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:1pt"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path13567-6-4" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="DotM-8-6-6"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="DotM"
+       inkscape:isstock="true">
+      <path
+         transform="matrix(0.4,0,0,0.4,2.96,0.4)"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:1pt"
+         d="m -2.5,-1 c 0,2.76 -2.24,5 -5,5 -2.76,0 -5,-2.24 -5,-5 0,-2.76 2.24,-5 5,-5 2.76,0 5,2.24 5,5 z"
+         id="path13622-1-8-7" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="Arrow1Mend-1-0-5"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Mend"
+       inkscape:isstock="true">
+      <path
+         transform="matrix(-0.4,0,0,-0.4,-4,0)"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:1pt"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path13567-5-9-7" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="DotM-7-1-8"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="DotM"
+       inkscape:isstock="true">
+      <path
+         transform="matrix(0.4,0,0,0.4,2.96,0.4)"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:1pt"
+         d="m -2.5,-1 c 0,2.76 -2.24,5 -5,5 -2.76,0 -5,-2.24 -5,-5 0,-2.76 2.24,-5 5,-5 2.76,0 5,2.24 5,5 z"
+         id="path13622-6-7-7" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="Arrow1Mend-7-1-0"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Mend"
+       inkscape:isstock="true">
+      <path
+         transform="matrix(-0.4,0,0,-0.4,-4,0)"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:1pt"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path13567-9-8-3" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="DotM-5-6"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="DotM"
+       inkscape:isstock="true">
+      <path
+         transform="matrix(0.4,0,0,0.4,2.96,0.4)"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:1pt"
+         d="m -2.5,-1 c 0,2.76 -2.24,5 -5,5 -2.76,0 -5,-2.24 -5,-5 0,-2.76 2.24,-5 5,-5 2.76,0 5,2.24 5,5 z"
+         id="path13622-8-88" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="Arrow1Mend-24-4"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Mend"
+       inkscape:isstock="true">
+      <path
+         transform="matrix(-0.4,0,0,-0.4,-4,0)"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:1pt"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path13567-6-48" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="DotM-8-6-5"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="DotM"
+       inkscape:isstock="true">
+      <path
+         transform="matrix(0.4,0,0,0.4,2.96,0.4)"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:1pt"
+         d="m -2.5,-1 c 0,2.76 -2.24,5 -5,5 -2.76,0 -5,-2.24 -5,-5 0,-2.76 2.24,-5 5,-5 2.76,0 5,2.24 5,5 z"
+         id="path13622-1-8-4" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="Arrow1Mend-1-0-6"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Mend"
+       inkscape:isstock="true">
+      <path
+         transform="matrix(-0.4,0,0,-0.4,-4,0)"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:1pt"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path13567-5-9-1" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="DotM-7-1-81"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="DotM"
+       inkscape:isstock="true">
+      <path
+         transform="matrix(0.4,0,0,0.4,2.96,0.4)"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:1pt"
+         d="m -2.5,-1 c 0,2.76 -2.24,5 -5,5 -2.76,0 -5,-2.24 -5,-5 0,-2.76 2.24,-5 5,-5 2.76,0 5,2.24 5,5 z"
+         id="path13622-6-7-2" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="Arrow1Mend-7-1-8"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Mend"
+       inkscape:isstock="true">
+      <path
+         transform="matrix(-0.4,0,0,-0.4,-4,0)"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:1pt"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path13567-9-8-7" />
+    </marker>
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <rect
+       style="fill:#ffffff;stroke:#000000;stroke-width:0.178557"
+       id="rect850-0"
+       width="43.213108"
+       height="42.154778"
+       x="14.329615"
+       y="55.576782"
+       inkscape:export-filename="C:\Users\juanc\HESSENBOX-DA\Drops_Mechanism_GUI\A07-Drops-setup-GUI\imgs\drops_generator.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <rect
+       style="fill:#ffffff;stroke:#000000;stroke-width:0.220435"
+       id="rect850"
+       width="65.9254"
+       height="42.1129"
+       x="6.5264082"
+       y="5.5396113"
+       inkscape:export-filename="C:\Users\juanc\HESSENBOX-DA\Drops_Mechanism_GUI\A07-Drops-setup-GUI\imgs\cofocal_sensor.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <rect
+       style="fill:#ffffff;stroke:#000000;stroke-width:0.220435"
+       id="rect850-3"
+       width="65.9254"
+       height="42.1129"
+       x="7.1817241"
+       y="154.43233"
+       inkscape:export-filename="C:\Users\juanc\HESSENBOX-DA\Drops_Mechanism_GUI\A07-Drops-setup-GUI\imgs\laser_camera.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <rect
+       style="fill:#ffffff;stroke:#000000;stroke-width:0.220435"
+       id="rect850-1"
+       width="65.9254"
+       height="42.1129"
+       x="6.7623291"
+       y="105.27937"
+       inkscape:export-filename="C:\Users\juanc\HESSENBOX-DA\Drops_Mechanism_GUI\A07-Drops-setup-GUI\imgs\wave_generator.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <g
+       id="g15925"
+       inkscape:export-filename="C:\Users\juanc\HESSENBOX-DA\Drops_Mechanism_GUI\A07-Drops-setup-GUI\imgs\cofocal_sensor.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96">
+      <path
+         style="fill:#800080;fill-opacity:0.5;stroke:none;stroke-width:0.292324px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m 45.503235,37.373819 2.953651,3.34711 2.953652,-3.34711 z"
+         id="path3311"
+         sodipodi:nodetypes="cccc"
+         inkscape:export-filename="C:\Users\juanc\HESSENBOX-DA\Drops_Mechanism_GUI\A07-Drops-setup-GUI\imgs\cofocal_sensor.png"
+         inkscape:export-xdpi="96"
+         inkscape:export-ydpi="96" />
+      <path
+         style="fill:#800080;fill-opacity:0.5;stroke:none;stroke-width:0.292324px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m 51.410538,44.068039 -2.953651,-3.34711 -2.953652,3.34711 z"
+         id="path3311-9"
+         sodipodi:nodetypes="cccc"
+         inkscape:export-filename="C:\Users\juanc\HESSENBOX-DA\Drops_Mechanism_GUI\A07-Drops-setup-GUI\imgs\cofocal_sensor.png"
+         inkscape:export-xdpi="96"
+         inkscape:export-ydpi="96" />
+      <rect
+         style="fill:url(#linearGradient2510);fill-opacity:1;stroke:#000000;stroke-width:0.2"
+         id="rect1582"
+         width="5.9073048"
+         height="25.799248"
+         x="45.503231"
+         y="11.574569"
+         inkscape:export-filename="C:\Users\juanc\HESSENBOX-DA\Drops_Mechanism_GUI\A07-Drops-setup-GUI\imgs\cofocal_sensor.png"
+         inkscape:export-xdpi="96"
+         inkscape:export-ydpi="96" />
+      <path
+         id="rect1580"
+         style="fill:#f2f2f2;stroke:#000000;stroke-width:0.176865"
+         d="m 44.315983,18.193495 v 3.628202 H 18.637447 v 5.304586 h 25.678536 v 3.628202 h 8.281665 v -12.56099 z"
+         inkscape:export-filename="C:\Users\juanc\HESSENBOX-DA\Drops_Mechanism_GUI\A07-Drops-setup-GUI\imgs\cofocal_sensor.png"
+         inkscape:export-xdpi="96"
+         inkscape:export-ydpi="96" />
+      <rect
+         style="mix-blend-mode:multiply;fill:url(#linearGradient2993);fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.2"
+         id="rect2534"
+         width="2.7487788"
+         height="2.6146922"
+         x="47.082493"
+         y="8.959877"
+         inkscape:export-filename="C:\Users\juanc\HESSENBOX-DA\Drops_Mechanism_GUI\A07-Drops-setup-GUI\imgs\cofocal_sensor.png"
+         inkscape:export-xdpi="96"
+         inkscape:export-ydpi="96" />
+    </g>
+    <g
+       id="g15918"
+       inkscape:export-filename="C:\Users\juanc\HESSENBOX-DA\Drops_Mechanism_GUI\A07-Drops-setup-GUI\imgs\drops_generator.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96">
+      <rect
+         style="fill:#f2f2f2;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.2"
+         id="rect5358"
+         width="32.072063"
+         height="9.9500685"
+         x="19.900137"
+         y="71.679138" />
+      <circle
+         style="fill:#999999;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.2"
+         id="path4656"
+         cx="24.875174"
+         cy="76.654175"
+         r="2.2883301" />
+      <circle
+         style="fill:#999999;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.2"
+         id="path4656-3"
+         cx="47.096352"
+         cy="76.554977"
+         r="2.2883301" />
+      <rect
+         style="fill:#999999;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.2"
+         id="rect6026"
+         width="2.5434082"
+         height="3.8929718"
+         x="34.664463"
+         y="67.786163" />
+      <rect
+         style="fill:#999999;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.2"
+         id="rect6245"
+         width="0.91758227"
+         height="2.3199437"
+         x="35.477375"
+         y="65.466225" />
+      <path
+         style="fill:#ff00ff;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m 35.936168,81.629204 v 9.663181 c -0.48777,1.159003 -1.194922,2.168168 -1.390816,2.844818 -0.545346,1.883717 1.088634,2.581506 2.016266,1.971461 0.886245,-0.582828 0.629179,-1.561536 0.15682,-2.621146 l -0.78227,-2.195133"
+         id="path6362"
+         sodipodi:nodetypes="ccsscc" />
+      <rect
+         style="fill:#ff00ff;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.2"
+         id="rect10152"
+         width="0.48232868"
+         height="8.6277151"
+         x="35.695"
+         y="56.838509" />
+    </g>
+    <g
+       id="g15909"
+       transform="translate(3.4217163,-0.88711163)"
+       inkscape:export-filename="C:\Users\juanc\HESSENBOX-DA\Drops_Mechanism_GUI\A07-Drops-setup-GUI\imgs\wave_generator.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96">
+      <rect
+         style="fill:#f9f9f9;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.2"
+         id="rect13037"
+         width="30.73208"
+         height="8.04737"
+         x="31.184721"
+         y="115.90426" />
+      <path
+         style="fill:#b3b3b3;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m 24.943504,139.63976 -3e-6,-5.18453 4.999466,-4.99947 10.206783,0.23547 -13.560021,-13.56001 0.235477,10.20678 -4.998759,5.00017 -0.0014,8.3016 z"
+         id="path12713" />
+      <rect
+         style="fill:#f9f9f9;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.2"
+         id="rect12915"
+         width="3.9321289"
+         height="19.040857"
+         x="-63.315392"
+         y="100.91894"
+         transform="rotate(-45)" />
+    </g>
+    <g
+       id="g14747">
+      <path
+         style="fill:none;stroke:#0000ff;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Mend);marker-start:url(#DotM)"
+         d="M 85.542907,48.410949 V 36.625037"
+         id="path13556" />
+      <path
+         style="fill:#00ff00;stroke:#00ff00;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#DotM-8);marker-end:url(#Arrow1Mend-1)"
+         d="m 85.542907,48.410949 8.333899,-8.333898"
+         id="path13556-4" />
+      <path
+         style="fill:none;stroke:#ff0000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#DotM-7);marker-end:url(#Arrow1Mend-7)"
+         d="M 85.542907,48.410949 H 97.328815"
+         id="path13556-43" />
+    </g>
+    <g
+       id="g14747-2"
+       transform="translate(-75.246076,-4.5288613)"
+       inkscape:export-filename="C:\Users\juanc\HESSENBOX-DA\Drops_Mechanism_GUI\A07-Drops-setup-GUI\imgs\cofocal_sensor.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96">
+      <path
+         style="fill:none;stroke:#0000ff;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#DotM-5);marker-end:url(#Arrow1Mend-24)"
+         d="M 85.542907,48.410949 V 36.625037"
+         id="path13556-3" />
+      <path
+         style="fill:#00ff00;stroke:#00ff00;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#DotM-8-6);marker-end:url(#Arrow1Mend-1-0)"
+         d="m 85.542907,48.410949 8.333899,-8.333898"
+         id="path13556-4-7" />
+      <path
+         style="fill:none;stroke:#ff0000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#DotM-7-1);marker-end:url(#Arrow1Mend-7-1)"
+         d="M 85.542907,48.410949 H 97.328815"
+         id="path13556-43-9" />
+    </g>
+    <path
+       style="fill:none;stroke:#0000ff;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#DotM-5-8);marker-end:url(#Arrow1Mend-24-6)"
+       d="M 18.100037,93.961144 V 82.175232"
+       id="path13556-3-1"
+       inkscape:export-filename="C:\Users\juanc\HESSENBOX-DA\Drops_Mechanism_GUI\A07-Drops-setup-GUI\imgs\drops_generator.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <g
+       id="g14747-2-78"
+       transform="translate(-75.010155,95.210917)"
+       inkscape:export-filename="C:\Users\juanc\HESSENBOX-DA\Drops_Mechanism_GUI\A07-Drops-setup-GUI\imgs\wave_generator.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96">
+      <path
+         style="fill:none;stroke:#0000ff;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#DotM-5-3);marker-end:url(#Arrow1Mend-24-8)"
+         d="M 85.542907,48.410949 V 36.625037"
+         id="path13556-3-3" />
+      <path
+         style="fill:#00ff00;stroke:#00ff00;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#DotM-8-6-6);marker-end:url(#Arrow1Mend-1-0-5)"
+         d="m 85.542907,48.410949 8.333899,-8.333898"
+         id="path13556-4-7-3" />
+      <path
+         style="fill:none;stroke:#ff0000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#DotM-7-1-8);marker-end:url(#Arrow1Mend-7-1-0)"
+         d="M 85.542907,48.410949 H 97.328815"
+         id="path13556-43-9-5" />
+    </g>
+    <g
+       id="g14747-2-8"
+       transform="translate(-74.590761,144.36387)"
+       inkscape:export-filename="C:\Users\juanc\HESSENBOX-DA\Drops_Mechanism_GUI\A07-Drops-setup-GUI\imgs\laser_camera.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96">
+      <path
+         style="fill:none;stroke:#0000ff;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#DotM-5-6);marker-end:url(#Arrow1Mend-24-4)"
+         d="M 85.542907,48.410949 V 36.625037"
+         id="path13556-3-9" />
+      <path
+         style="fill:#00ff00;stroke:#00ff00;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#DotM-8-6-5);marker-end:url(#Arrow1Mend-1-0-6)"
+         d="m 85.542907,48.410949 8.333899,-8.333898"
+         id="path13556-4-7-9" />
+      <path
+         style="fill:none;stroke:#ff0000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#DotM-7-1-81);marker-end:url(#Arrow1Mend-7-1-8)"
+         d="M 85.542907,48.410949 H 97.328815"
+         id="path13556-43-9-56" />
+    </g>
+    <g
+       id="g15937"
+       inkscape:export-filename="C:\Users\juanc\HESSENBOX-DA\Drops_Mechanism_GUI\A07-Drops-setup-GUI\imgs\laser_camera.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96">
+      <rect
+         style="fill:#333333;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.2"
+         id="rect13163"
+         width="6.0039907"
+         height="4.4805903"
+         x="34.264462"
+         y="160.46841" />
+      <rect
+         style="fill:#333333;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.2"
+         id="rect13165"
+         width="2.5987425"
+         height="4.8838391"
+         x="35.967083"
+         y="164.94901" />
+      <rect
+         style="fill:#333333;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.2"
+         id="rect13167"
+         width="5.5559354"
+         height="5.5559354"
+         x="34.488487"
+         y="169.83284" />
+      <rect
+         style="fill:#333333;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.2"
+         id="rect13169"
+         width="2.777966"
+         height="6.6760802"
+         x="35.877472"
+         y="175.38878" />
+      <rect
+         style="fill:#f9f9f9;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.2"
+         id="rect13193"
+         width="6.4968586"
+         height="8.4683208"
+         x="34.018024"
+         y="182.06487" />
+      <rect
+         style="mix-blend-mode:normal;fill:url(#linearGradient13423);fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.2"
+         id="rect13315"
+         width="3.8101671"
+         height="2.4195187"
+         x="40.044422"
+         y="171.43106" />
+      <rect
+         style="fill:#333333;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.2"
+         id="rect13317"
+         width="12.769682"
+         height="8.1546745"
+         x="43.854588"
+         y="168.56349" />
+      <g
+         id="g15824"
+         transform="matrix(0.95813343,0,0,0.45958844,-1.164386,86.707871)">
+        <path
+           style="fill:#00ff00;fill-opacity:0.5;stroke:none;stroke-width:0.292324px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           d="m 37.156467,153.79838 2.953651,3.34711 2.953652,-3.34711 z"
+           id="path3311-0"
+           sodipodi:nodetypes="cccc"
+           inkscape:export-filename="C:\Users\juanc\HESSENBOX-DA\Drops_Mechanism_GUI\A07-Drops-setup-GUI\imgs\cofocal_sensor.png"
+           inkscape:export-xdpi="96"
+           inkscape:export-ydpi="96" />
+        <path
+           style="fill:#00ff00;fill-opacity:0.5;stroke:none;stroke-width:0.292324px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           d="m 43.06377,160.4926 -2.953651,-3.34711 -2.953652,3.34711 z"
+           id="path3311-9-7"
+           sodipodi:nodetypes="cccc"
+           inkscape:export-filename="C:\Users\juanc\HESSENBOX-DA\Drops_Mechanism_GUI\A07-Drops-setup-GUI\imgs\cofocal_sensor.png"
+           inkscape:export-xdpi="96"
+           inkscape:export-ydpi="96" />
+      </g>
+    </g>
+  </g>
+</svg>
