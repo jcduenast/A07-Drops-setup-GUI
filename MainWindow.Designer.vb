@@ -97,6 +97,7 @@ Partial Class MainWindow
         Me.PictureBox2 = New System.Windows.Forms.PictureBox()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.PictureBox5 = New System.Windows.Forms.PictureBox()
+        Me.PumpToggleBtn = New System.Windows.Forms.Button()
         CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -819,11 +820,21 @@ Partial Class MainWindow
         Me.PictureBox5.TabIndex = 81
         Me.PictureBox5.TabStop = False
         '
+        'PumpToggleBtn
+        '
+        Me.PumpToggleBtn.Location = New System.Drawing.Point(160, 69)
+        Me.PumpToggleBtn.Name = "PumpToggleBtn"
+        Me.PumpToggleBtn.Size = New System.Drawing.Size(75, 43)
+        Me.PumpToggleBtn.TabIndex = 141
+        Me.PumpToggleBtn.Text = "Pump Toggle"
+        Me.PumpToggleBtn.UseVisualStyleBackColor = True
+        '
         'MainWindow
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1217, 736)
+        Me.Controls.Add(Me.PumpToggleBtn)
         Me.Controls.Add(Me.PictureBox4)
         Me.Controls.Add(Me.Label10)
         Me.Controls.Add(Me.Label11)
@@ -983,4 +994,5 @@ Partial Class MainWindow
     Friend WithEvents btnDZDown As Button
     Friend WithEvents btnDZUp As Button
     Friend WithEvents PictureBox4 As PictureBox
+    Friend WithEvents PumpToggleBtn As Button
 End Class

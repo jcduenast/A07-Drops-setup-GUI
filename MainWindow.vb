@@ -302,4 +302,8 @@ Public Class MainWindow
     Private Sub btnWXYZHome_Click(sender As Object, e As EventArgs) Handles btnWXYZHome.Click
         SerialPort1.WriteLine("WXYZH")
     End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles PumpToggleBtn.Click
+        SerialPort1.WriteLine("Pum:0")
+    End Sub
 End Class

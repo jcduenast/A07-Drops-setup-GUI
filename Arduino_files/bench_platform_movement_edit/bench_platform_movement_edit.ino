@@ -115,6 +115,7 @@ bool end_stop_activated =  false;
 bool endswitch_state[12] = {false} ; // [Sensor wave, X Y Z, min max], initialization unnecesary but made explicit
 // -----------------------------------
 
+const int PumSwitch = 52;           // Pin for the start/stop command to the pump / Pum: Pump Umschaltung 
 
 void setup() {
   Serial.begin(9600);              // Start the Serial monitor with speed of 9600 Bauds    
@@ -166,6 +167,8 @@ void setup() {
   pinMode(SZmin, INPUT);
   pinMode(SZmax, INPUT);
 
+  pinMode(PumSwitch, OUTPUT);
+  digitalWrite(PumSwitch, HIGH);
   
   stepperCX.setMaxSpeed(30000.0);        // Set Max Speed of Stepper (Faster for regular movements)
   stepperCX.setAcceleration(2000.0);     // Set Acceleration of Stepper
@@ -216,7 +219,15 @@ void loop() {
 
 //  scan_limit=int_posCZ+stepperCZ.currentPosition ();  // stores the new final position ?
 //  scan_limitF=int_posDZ+stepperDZ.currentPosition (); // stores the new final position ?
-
+    
+    if(servo =="Pum"){
+      digitalWrite(PumSwitch, LOW);
+      delay(200);
+      digitalWrite(PumSwitch, HIGH);
+      Serial.println("Pump state switched");
+      delay(200);
+    }
+    
     if(servo =="CXZ") {
       stepperCX.setCurrentPosition(0);                 // sets X-position as "home"
       scanit=0;
