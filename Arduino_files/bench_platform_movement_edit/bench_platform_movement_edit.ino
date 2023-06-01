@@ -111,6 +111,8 @@ const int WYmax = 32;
 const int WZmin = 34;
 const int WZmax = 36;
 
+const int CYmin = 38;
+
 bool end_stop_activated =  false;
 bool endswitch_state[12] = {false} ; // [Sensor wave, X Y Z, min max], initialization unnecesary but made explicit
 // -----------------------------------
@@ -713,12 +715,28 @@ void loop() {
     }else{
       if(stepperWZ.targetPosition()-stepperWZ.currentPosition()>0){   // if it wants to go further forward
         stepperWZ.setSpeed(0.0);                                      // do not allow it
-        stepperWZ.moveTo(stepperWZ.currentPosition ());
+        stepperWZ.moveTo(stepperWZ.currentPosition());
       }
     }
   }else{
     endswitch_state[10] = false;
     endswitch_state[11] = false;
+  }
+
+  if(digitalRead(CYmin)){
+    if(!endswitch_state[12]){      // checks if is the first time entering the loop
+      stepperCY.setSpeed(0.0);    // stops the motor
+      stepperCY.moveTo(stepperCY.currentPosition());
+      endswitch_state[12] = true;  // states that the motor has been stopped
+      Serial.println("CYmin reached");
+    }else{
+      if(stepperCY.targetPosition()-stepperCY.currentPosition()<0){   // if it wants to go further back
+        stepperCY.setSpeed(0.0);                          // do not allow it
+        stepperCY.moveTo(stepperCY.currentPosition());
+      }
+    }
+  }else{
+    endswitch_state[12] = false;
   }
   // --------------------- Endswitch stop logic [END] -----------------------
 
